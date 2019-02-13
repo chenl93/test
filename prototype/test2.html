@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    /* 
+      构造函数：构造函数要以大写字母开头
+    */
+    function Foo(name, age) {
+      this.name = name;
+      this.age = age;
+      this.class = 'class - 1';
+      //return this; 会默认有这行
+    }
+
+    var f = new Foo("cl", 20);
+    var f1 = new Foo("chenl", 18);
+
+    console.log(f instanceof Foo);
+
+    /* 
+      new 一个对象的过程
+        ·新创建一个对象
+        ·将构造函数的prototype赋值给新对象__proto__属性
+        ·绑定this
+        ·返回新对象
+    */
+
+    /* 
+      
+    */
+  </script>
+</body>
+
+</html>

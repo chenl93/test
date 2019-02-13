@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <script>
+    /* 回调方式 
+                const result = [];
+                ajax('url1', function (err, data) {
+                  if (err) {
+                    return
+                  }
+                  result.push(data);
+                  ajax('url2', function (err, data) {
+                    if (err) {
+                      return
+                    }
+                    result.push(data);
+                    console.log(result);
+                  })
+                })*/
+    /* async,await方式 */
+    async function example() {
+      const r1 = await new Promise(resolve => {
+        setTimeout(resolve, 500, 'slowest');
+      })
+      const r2 = await new Promise(resolve => {
+        setTimeout(resolve, 200, 'slow');
+      })
+      return [r1, r2];
+    }
+    example().then(result => {
+      console.log(result);
+    })
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+
+
+
+  <!-- 
+    1、所有对象都可以通过原型链最终找到Object.prototype
+    2、Object.prototype这个对象是引擎自己创建的
+    3、所有实例都是对象，但是所有对象不一定是实例
+    4、Function.prototype也是引擎创建的，并且通过__proto__将两者联系起来
+    5、不是所有函数都是new Function()产生的
+    6、先有了Function.prototype才有的function Function()
+    7、Object.prototype是原型链的终结，Object.prototype的__proto__是null
+   -->
+
+
+  <!-- 
+    1、每个实例对象都是通过new操作符创建的 （无论是function Foo()还是 let a = {b:1} function和对象字面量只是一种语法糖）
+    2、当使用new操作符会做以下四件事情：
+      ·创建一个新对象
+      ·连接到原型
+      ·绑定this
+      ·返回新对象
+    3、__proto__是每个实例对象都会拥有的隐式原型属性，实际指向[[prototype]]内部属性，内部属性不能访问
+    4、__proto__指向了创建该实例对象的构造函数的原型
+    5、通过__proto__将对象和原型联系起来组成原型链
+   -->
+
+  <style>
+
+  </style>
+</head>
+
+<body>
+
+
+</body>
+
+<script>
+  /* 
+    1、每个对象都有__proto__隐式原型属性
+    2、__proto__指向了创建该对象的构造函数的原型
+    3、其实__proto__指向了[[prototype]]，因为[[prototype]]是内部属性无法访问，所以使用__proto__来访问
+    4、js中没有类的概念，为了实现类似继承的方式，通过__proto__将对象和原型联系起来组成原型链
+   */
+  function Foo() {}
+
+  var foo = new Foo();
+
+  /* 这个函数是Function的实例对象 
+    function 就是一个语法糖
+    内部调用了 new Function(...)
+
+    当使用new操作符时，生成的实例对象被拥有了__proto__属性
+    新对象被添加了__proto__并且链接到构造函数的原型上
+
+    实例对象都是通过new产生的
+  */
+
+  /* 
+    new的过程
+    1、新生成了一个对象
+    2、链接到原型
+    3、绑定this
+    4、返回新对象
+   */
+
+  function create() {
+    //创建一个空的对象    
+    let obj = new Object();
+    //获得构造函数
+    let Con = [].shift.call(arguments) //shift：删除原数组第一项，并返回删除元素的值；如果数组为空则返回undefined
+    //链接到原型
+    obj.__proto__ = Con.prototype;
+    //绑定this，执行构造函数
+    let result = Con.apply(obj, arguments);
+
+    //确保new出来的是个对象
+    return typeof result === 'object' ? result : obj;
+  }
+
+  //let f = new Function();
+
+  let f = create(Function);
+
+  /* 对于创建对象来说，都是通过new产生的，无论是function Foo() 还是let a = {b:1} 
+    但列推荐使用字面量的方式创建对象，因使用new Object()的方式创建对象需要通过作用域链一层层找到Object,但是使用字面量的方式就没有这个问题
+  */
+</script>
+
+</html>

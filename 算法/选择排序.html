@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    /* 
+        基本排序的基本思想都非常类似，重排列时用的技术基本都是一组嵌套的for循环：
+        外循环遍历数组的每一项，内循环则用于比较元素
+    */
+
+    /* 选择排序比冒泡排序的效率高，并不是每次找到比外层循环小的值都进行位置交换，而只是在找到最小的元素再进行位置交换 */
+    /* 内层循环负责找到数组中最小元素的下标 */
+    /* 如果当前的元素不是最小的元素，进行位置的互换 */
+    let arr2 = [33, 12, 4, 53, 99];
+
+    function selectionSort(arr) {
+      let min;
+      for (let i = 0; i < arr.length; i++) {
+        min = i;
+        for (let j = i + 1; j < arr.length; j++) {
+          if (arr[min] > arr[j]) {
+            min = j;
+          }
+        }
+        if (i != min) {
+          [arr[i], arr[min]] = [arr[min], arr[i]];
+        }
+      }
+      return arr;
+    }
+    console.log(selectionSort(arr2));
+  </script>
+</body>
+
+</html>

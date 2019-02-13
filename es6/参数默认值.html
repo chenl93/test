@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    function fix(a = getA()) {
+      console.log('a', a);
+    }
+
+    function getA() {
+      console.log('get a');
+      return 2;
+    }
+
+    fix(1);
+    fix();
+
+    /* 函数参数值校验 */
+    function fix2(a = require()) {
+      console.log('a', a);
+    }
+
+    function require() {
+      throw new Error('缺少参数a')
+    }
+    fix2(1);
+    fix2();
+  </script>
+</body>
+
+</html>

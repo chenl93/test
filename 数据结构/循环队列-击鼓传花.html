@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <script>
+    let Queue = (function () {
+      const items = new WeakMap();
+
+      class Queue {
+        constructor() {
+          items.set(this, []);
+        }
+
+        enqueue(element) {
+          let s = items.get(this);
+          s.push(element);
+        }
+
+        dequeue() {
+          let s = items.get(this);
+          return s.shift();
+        }
+
+        front() {
+          let s = items.get(this);
+          return s[0];
+        }
+
+        isEmpty() {
+          let s = items.get(this);
+          return s.length == 0;
+        }
+
+        size() {
+          let s = items.get(this);
+          return s.length;
+        }
+
+        print() {
+          let s = items.get(this);
+          console.log(s.toString());
+        }
+      }
+
+      function hotPotato(nameList, num) {
+        let queue = new Queue();
+        for (let i = 0; i < nameList.length; i++) {
+          queue.enqueue(nameList[i]);
+        }
+
+        let eliminated = '';
+        while (queue.size() > 1) {
+          for (let i = 0; i < num; i++) {
+            queue.enqueue(queue.dequeue());
+          }
+          console.log(queue.print())
+          eliminated = queue.dequeue();
+          console.log(`${eliminated}在击鼓传花游戏中被淘汰`);
+        }
+        return queue.dequeue();
+      }
+      let names = ['John', 'Jack', 'Camlia', 'Ingrid', 'Carl'];
+      let winner = hotPotato(names, 7);
+      console.log(`the winner is:${winner}`)
+    })()
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    /* 
+          队列遵循先进先出的元责，队列在尾部添加元素，并从顶部移除元素，最新添加的元素必须在队列的末尾
+          例子是排队
+            */
+    class Queue {
+      constructor() {
+        let items = [];
+      }
+      enqueue(el) {
+        this.items.push(el);
+      }
+      dequeue() {
+        return this.items.shift();
+      }
+      /* 返回队列中的第一个元素，最先被添加，也是最先被移除的元素 */
+      front() {
+        return this.items[0];
+      }
+      isEmpty() {
+        return this.items.length == 0;
+      }
+      size() {
+        return this.size();
+      }
+      print() {
+        console.log(this.items.toString());
+      }
+    }
+
+    let queue = new Queue();
+    console.log(queue.isEmpty());
+    queue.enqueue("lala");
+  </script>
+</body>
+
+</html>

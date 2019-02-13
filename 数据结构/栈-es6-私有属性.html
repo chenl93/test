@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <script>
+    /* ES6新增了一种叫作 Symbol 的基本类型，它是不可变的，可以用作对象的属性。 */
+    let _items = Symbol(); /* 声明了 Symbol 类型的变量 _items */
+
+    class Stack {
+      constructor() {
+        this[_items] = [];
+      }
+      push(element) {
+        this[_items].push(element);
+      }
+      pop() {
+        this[_items].pop();
+      }
+      peek() {
+        return this[_items][this[_items].length - 1];
+      }
+      isEmpty() {
+        return this[_items].length == 0;
+      }
+      size() {
+        return this[_items].length;
+      }
+      clear() {
+        this[_items] = [];
+      }
+      print() {
+        console.log(this[_items].toString());
+      }
+    }
+    let stack = new Stack();
+    stack.push(5);
+    stack.push(8);
+    /* ES6新增的 Object.getOwnPropertySymbols 方法能够取到类里面声明的所有 Symbols 属性 */
+    let objectSymbols = Object.getOwnPropertySymbols(stack);
+    console.log(objectSymbols.length); // 1
+    console.log(objectSymbols); // [Symbol()]
+    console.log(objectSymbols[0]); // Symbol()
+    stack[objectSymbols[0]].push(1);
+    stack.print(); // 输出 5, 8, 1
+  </script>
+</body>
+
+</html>

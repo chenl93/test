@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <script>
+    let Stack = (function () {
+      /* ES6新增了一种叫作 Symbol 的基本类型，它是不可变的，可以用作对象的属性。 */
+      let items = new WeakMap(); /* 声明了 Symbol 类型的变量 _items */
+
+      class Stack {
+        constructor() {
+          items.set(this, []); /* 给WeakMap设置值，键为this，值是空的数组 */
+        }
+        push(element) {
+          let s = items.get(this);
+          s.push(element);
+        }
+        pop() {
+          let s = items.get(this);
+          let r = s.pop();
+          return r;
+        }
+        peek() {
+          let s = items.get(this);
+          return s[s.length - 1];
+        }
+        isEmpty() {
+          let s = items.get(this);
+          return s.length == 0;
+        }
+        size() {
+          let s = items.get(this);
+          return s.length;
+        }
+        clear() {
+          let s = items.get(this);
+          s = [];
+        }
+        print() {
+          let s = items.get(this);
+          console.log(s.toString());
+        }
+      }
+
+      /* 十进制转化成二进制: 要把十进制转化成二进制，可以将该十进制数字和2整除（二进制是满二进一），直到结果是0为止*/
+      function divideBy2(decNumber) {
+        let remStack = new Stack(),
+          rem, binaryString = '';
+        while (decNumber > 0) {
+          rem = Math.floor(decNumber % 2 == 0);
+          remStack.push(rem);
+          decNumber = Math.floor(decNumber / 2);
+        }
+        while (!remStack.isEmpty()) {
+          binaryString += remStack.pop();
+        }
+        return binaryString;
+      }
+
+      console.log(divideBy2(233));
+      console.log(divideBy2(10));
+      console.log(divideBy2(1000));
+
+
+      /* 进制转换算法 */
+      function baseConverter(devNumber, base) {
+        let remStack = new Stack(),
+          rem, baseString = '',
+          digits = '0123456789ABCDEF';
+
+        while (devNumber > 0) {
+          rem = Math.floor(devNumber % base);
+          remStack.push(rem);
+          devNumber = Math.floor(devNumber / base);
+        }
+        while (!remStack.isEmpty()) {
+          baseString += digits[remStack.pop()];
+        }
+        return baseString;
+      }
+
+      console.log(baseConverter(100345, 2));
+      console.log(baseConverter(100345, 8));
+      console.log(baseConverter(100345, 16));
+
+    })()
+  </script>
+</body>
+
+</html>

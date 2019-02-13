@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    /* json的key不能使用数字 */
+    var a = {},
+      b = {
+        key: 'b'
+      },
+      c = {
+        key: 'c'
+      };
+    a[b] = 123;
+    a[c] = 456;
+    console.log(a[b]);
+  </script>
+</body>
+
+</html>

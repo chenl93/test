@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    /* es6定义Stack栈类 ，es6Class不存在变量提升*/
+    class Stack {
+      /* Stack类的构造函数，
+        constructor方法是类的默认方法，通过new关键字生成对象实例时，自动调用该方法，一个类必须有constructor方法，
+        如果没有显示定义，一个空的construct会被默认添加
+        constructor方法默认返回实例对象（即this），完全可以指定返回另一个对象 
+        声明变量只能在类的构造函数constructor里声明
+      */
+      constructor() {
+        /* this关键字代表实例对象 */
+        this.items = [];
+      }
+
+      push(el) {
+        this.items.push(el);
+      }
+      pop() {
+        /* pop() 方法用于删除并返回数组的最后一个元素 */
+        return this.items.pop();
+      }
+      peek() {
+        return this.items[items.length - 1];
+      }
+      isEmpty() {
+        return this.items.length == 0;
+      }
+      clear() {
+        this.items = [];
+      }
+      size() {
+        return this.items.length;
+      }
+      print() {
+        console.log(this.items.toString());
+      }
+    }
+
+    let stack = new Stack();
+    let flag = stack instanceof Stack; /* instanceof构造函数，用来判断实例是否是构造函数的实例 */
+    console.log(flag);
+
+    /* 十进制转二进制，将十进制数字和2整除（二进制是满二进一）直到结果是0为止 */
+    function divideBy2(decNumber) {
+      var remStack = new Stack(),
+        rem, binaryString = '';
+      while (decNumber > 0) {
+        /* Math.floor 让除法的操作仅返回整数部分 */
+        rem = Math.floor(decNumber % 2);
+        remStack.push(rem);
+        decNumber = Math.floor(decNumber / 2);
+      }
+      while (!remStack.isEmpty()) {
+        binaryString += remStack.pop().toString();
+      }
+      return binaryString;
+    }
+    console.log(divideBy2(233));
+    console.log(divideBy2(10));
+    console.log(divideBy2(1000));
+  </script>
+</body>
+
+</html>

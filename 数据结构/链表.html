@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    function LinkedList() {
+      /*  Node 类表示要加入列表的项 element:即要添加到列表的值 next:指向列表中下一个节点项的指针 */
+      let Node = function (element) {
+        this.element = element;
+        this.next = null;
+      }
+
+      /* 存储列表项的数量的 length 属性 */
+      let length = 0;
+      /* 存储第一个节点的引用 */
+      let head = null;
+
+      /* 向列表尾部添加一个新的项向LinkedList对象尾部添加一个元素时，可能有两种场景：列表为空，添加的是第一个元素，或者列表不为空，向其追加元素*/
+      this.append = function (element) {
+        let node = new Node(element),
+          current;
+        if (head === null) { /* 列表中第一个节点 */
+          head = node;
+        } else {
+          current = head;
+
+          /* 循环列表，直到找到最后一项 */
+          while (current.next) {
+            current = current.next;
+          }
+
+          /* 找到最后一项，将其next赋为node，建立链接 */
+          current.next = node;
+        }
+        /* 更新列表的长度 */
+        length++;
+      }
+
+      /* 向列表的特定位置插入一个新的项 */
+      this.insert = function (position, element) {
+        if (position > -1 && position < length) {
+          /* current 变量是对列表中第一个元素的引用 */
+          let node = new Node(element),
+            current = head,
+            previous,
+            index = 0;
+
+          if (position == 0) {
+            /*  node.next 的值设为current （列表中第一个元素） head 和 node.next 都指向了 current */
+            node.next = current;
+            /* 把 head 的引用改为 node */
+            head = node;
+          } else {
+            /* 循环访问列表，找到目标位置 */
+            while (index++ < position) {
+              /* 跳出循环时， current 变量将是对想要插入新元素的位置之后一个元素的引用 */
+              previous = current;
+              /* previous 将是对想要插入新元素的位置之前一个元素的引用 */
+              current = current.next;
+            }
+            node.next = current;
+            /* 然后需要改变 previous 和 current 之间的链接 */
+            previous.next = node;
+          }
+          length++;
+          return true;
+        } else {
+          return false;
+        }
+      }
+
+      /* 从列表中移除一项 */
+      this.remove = function (element) {
+
+      }
+
+      /* 返回元素在列表中的索引。如果列表中没有该元素则返回 -1 */
+      this.indexOf = function (element) {}
+
+      /* 从列表的特定位置移除一项 */
+      this.removeAt = function (position) {
+        /* 验证这个位置是有效的 */
+        if (position > -1 && position < length) {
+          /* 用current 变量创建一个对列表中第一个元素的引用 */
+          let current = head,
+            previous, index = 0;
+
+          if (position === 0) {
+            /* 让 head 指向列表的第二个元素, 把 head 赋为current.next ，就会移除第一个元素 */
+            head = current.next;
+          } else {
+            /* 迭代列表，直到到达目标位置 */
+            while (index++ < position) {
+              /* current变量总是为对所循环列表的当前元素的引用.
+              要从列表中移除当前元素，要做的就是将 previous.next 和 current.next 链接起来 */
+              previous = current;
+              current = current.next;
+            }
+            previous.next = current.next;
+          }
+          length--;
+          return current.element;
+        } else {
+          /* 如果不是有效的位置，就返回 null */
+          return null;
+        }
+      }
+
+      /* 如果链表中不包含任何元素，返回 true ，如果链表长度大于0则返回 false */
+      this.isEmpty = function () {}
+
+      /* 返回链表包含的元素个数。与数组的 length 属性类似 */
+      this.size = function () {}
+
+      /* 由于列表项使用了 Node 类，就需要重写继承自JavaScript对象默认的toString 方法，让其只输出元素的值 */
+      this.toString = function () {
+        let current = head;
+        string = ``;
+        while (current) {
+          string += current.element + (current.next ? "n" : "");
+          current = current.next;
+        }
+        return string;
+      }
+
+      this.print = function () {}
+    }
+
+    let list = new LinkedList();
+    list.append(15);
+    list.append(10);
+  </script>
+</body>
+
+</html>

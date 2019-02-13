@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <script>
+    /* 栈是一种遵从后进先出（LIFO）原则的有序集合。例如：一摞书或者餐厅里堆放的盘子 */
+    /* Stack来表示栈 */
+    function Stack() {
+      let items = []; /* 数组来保存栈里的元素 */
+
+      /* 添加一个（或几个）新元素到栈顶 */
+      this.push = function (element) {
+        items.push(element);
+      }
+
+      /* 移除栈顶的元素，同时返回被移除的元素 */
+      this.pop = function () {
+        items.pop();
+      }
+
+      /* 查看栈顶元素 */
+      this.peek = function () {
+        return items[items.length - 1];
+      }
+
+      /* 检查栈是否为空 */
+      this.isEmpty = function () {
+        return items.length == 0;
+      }
+
+      /* 返回栈的长度 */
+      this.size = function () {
+        return items.length;
+      }
+
+      /* 移除栈里所有的元素 */
+      this.clear = function () {
+        items = [];
+      }
+
+      /* 把栈里的元素都输出到控制台 */
+      this.print = function () {
+        console.log(items.toString());
+      }
+    }
+
+    let stack = new Stack();
+    console.log(stack.isEmpty());
+
+    stack.push(5);
+    stack.push(8);
+
+    console.log(stack.peek());
+
+    stack.push(11);
+    console.log(stack.size());
+    console.log(stack.isEmpty());
+
+    stack.push(15);
+
+    stack.pop();
+    stack.pop();
+    console.log(stack.size());
+    stack.print();
+  </script>
+</body>
+
+</html>

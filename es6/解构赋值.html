@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    const {
+      inner,
+      outer,
+      ...restProps
+    } = {
+      inner: "This is inner",
+      outer: "This is outer",
+      v1: "1",
+      v2: "2",
+      v3: "3"
+    }
+    console.log(restProps);
+
+    /* 用解构赋值获取嵌套对象的属性，解构赋值的特性很强大，
+    它可以从一堆嵌套很深的对象属性中，很方便的拿到想要的那一个 */
+    const car = {
+      model: "bmw 2018",
+      engine: {
+        v6: true,
+        turbo: true,
+        vin: 12345
+      }
+    }
+
+    const modalAndVIN = ({
+      model,
+      engine: {
+        vin
+      }
+    }) => {
+      console.log(`model:${model},vin:${vin}`);
+    }
+
+    modalAndVIN(car);
+  </script>
+</body>
+
+</html>

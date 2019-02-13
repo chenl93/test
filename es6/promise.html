@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    let doSomething = function () {
+      return new Promise((resolve, reject) => {
+        resolve('返回值');
+      })
+    }
+    let doSomethingElse = function () {
+      return '新的值';
+    }
+
+    doSomething().then(function () {
+      return doSomethingElse();
+    }).then(resp => {
+      console.warn(resp);
+      console.warn('1======<');
+    })
+
+    doSomething().then(function () {
+      return doSomethingElse();
+    }).then(resp => {
+      console.warn(resp);
+      console.warn('2======<');
+    })
+
+
+    /* 
+      实例化一个promise对象必须传入一个包含resolve和reject参数的函数 
+      这个函数中会指定异步处理的结果
+        resolve:处理结果正常，调用resolve(处理结果值)
+        reject:处理结果错误，调用reject(Error对象)
+      对通过new生成的promise对象为了设置其值在resolve/reject时调用的回调函数可以使用promise.then()实例方法
+    
+    new Promise((resolve, reject) => {
+      console.log(1);
+      resolve(1);
+    }).then(res => {
+      console.log("res" + res)
+    })*/
+
+    console.log('here we go');
+    new Promise((resolve, reject) => {
+      setTimeout(() => {
+        resolve('hello');
+      }, 2000);
+    }).then(value => {
+      console.log(`${value}world`);
+    })
+  </script>
+</body>
+
+</html>

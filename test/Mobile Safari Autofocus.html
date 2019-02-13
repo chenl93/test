@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>Mobile Safari Autofocus</title>
+ <meta content='width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0' name='viewport'> 
+      <meta content='yes' name='apple-mobile-web-app-capable'> 
+    </head> 
+    <body>
+      <h1> 
+        Show keyboard without user focus and select text:
+      </h1> 
+      <p> 
+        <button id='focus-test-button'> 
+          Should focus on input when you click me after .5 second
+        </button> 
+        <input id='focus-test-input' type='number' value='20'> 
+      </p> 
+      <script type="text/javascript"> 
+        //<![CDATA[
+        var button = document.getElementById('focus-test-button');
+        var input  = document.getElementById('focus-test-input');
+
+        input.addEventListener('focusin', function(event) {
+          console.log('focus');
+          console.log(event);
+        });
+
+        button.addEventListener('click', function() {
+          // *** If triggered immediately - functionality occurs as expected
+          // input.focus();
+          // *** If called by callback - triggers the focusin event, but does not bring up keyboard or cursor
+          input.focus();
+          /*ar t = setTimeout("input.focus();",500);*/
+        });
+        //]]>
+      </script>
+    </body>
+  </html>

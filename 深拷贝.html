@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <script>
+    /* 使用JSON.stringify()也是有局限性的
+          会忽略undefined
+          不能序列化函数
+          不能解决循环引用的对象
+        */
+    let a = {
+      age: 1,
+      jobs: {
+        first: "FE"
+      }
+    }
+    let b = JSON.parse(JSON.stringify(a));
+    a.jobs.first = "native";
+    console.log(b.jobs.first);
+  </script>
+</body>
+
+</html>

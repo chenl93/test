@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    /* var add_step;
+    var add_level = (add_step == 5 && 1) || (add_step == 10 && 2) || (add_step == 12 && 4) || (add_step == 15 && 5) ||
+      0;
+    console.log(add_level)
+    console.log(add_step == 5 && 1)
+    console.log(5 && 1) */
+    var add_step = 10;
+    var add_level = {
+      '5': 1,
+      '10': 2,
+      '15': 5,
+      '12': 4
+    } [add_step] || 0;
+    console.log(add_level)
+  </script>
+</body>
+
+</html>

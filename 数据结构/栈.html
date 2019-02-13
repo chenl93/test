@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    function Stack() {
+      this.dataStore = [];
+      this.top = 0; /* 栈顶 */
+      this.push = push; /* 入栈 */
+      this.pop = pop; /* 出栈并删除 */
+      this.peek = peek; /* 出栈但不删除 */
+      this.clear = clear;
+      this.getLength = getLength;
+    }
+
+    function push(el) {
+      this.dataStore[this.top++] = el;
+    }
+
+    function pop() {
+      return this.dataStore[--this.top];
+    }
+
+    function peek() {
+      return this.dataStore[this.top - 1];
+    }
+
+    function clear() {
+      this.top = 0;
+    }
+
+    function getLength() {
+      return this.top;
+    }
+
+    var ins = new Stack();
+    ins.push('a');
+    ins.push('b')
+    ins.push('c');
+    console.log(ins)
+    console.log(ins.pop());
+    console.log(ins);
+    console.log(ins.peek());
+  </script>
+</body>
+
+</html>

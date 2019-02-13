@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    /* 
+              数组不是简单数据类型（值类型），会保存在堆（heap）中，当使用var arr1=arr2赋值时，只是浅拷贝，拿到了arr2的引用
+              这样带来的问题就是，修改arr1的时候arr2也会受到影响
+              arr2.push(arr2),这就是为什么有一个函数叫做concat,push会直接把整个数组push进去，而不会分开搞
+             */
+    var arr1 = "john".split('');
+    var arr2 = arr1.reverse();
+    var arr3 = "jones".split('');
+    arr2.push(arr3);
+    console.log("arr1:length:" + arr1.length + " last=" + arr1.slice(-1)); /* 5,[j,o,n,e,s] */
+    console.log("arr2:length:" + arr2.length + " last=" + arr2.slice(-1)); /* 5,[j,o,n,e,s] */
+  </script>
+</body>
+
+</html>

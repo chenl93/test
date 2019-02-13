@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    console.log(1 < 2 < 3); /* true */
+
+    console.log(3 > 2 > 1); /* false */
+    /* 核心在于js怎么去解析<和>运算符，在js中，这种运算符是从左到右运算的，所以
+    3>2>1 就被转换成了true>1,而true的值是1，接着比较1>1就返回false */
+
+    console.log(typeof typeof 1); /* string */
+    /* typeof返回的是字符串，typeof "number"  */
+    /* js运算一般会有两种操作
+      ·赋值操作，例如a=b 2>3之类的，是从左向右的顺序
+      ·取值操作，js问内存：有没有见过这个家伙?,比如console.log(a) typeof a都属于这个类型，是从右到左的
+     */
+
+    console.log(typeof undefined == typeof NULL); //true
+    /* ·typeof undefined 输出的是undefined;typeof null输出的是object 但是这里是NULL，js大小写敏感
+    所以 typeof NULL 返回 undefined*/
+
+    console.log("----------------------")
+
+    /*· -,+号会隐式转换为Number类型
+      · 当+号作为运算符出现在String类型前时，会认为需要字符串拼接，因此会隐式
+      · 当对非数字进行Number转换时会变成NAN
+     */
+    console.log(1 + "2" + "2"); /* 122 */
+    console.log(1 + (+"2") + "2"); /* 32 */
+    console.log(1 + -"1" + "2"); /* 02 */
+    console.log(+"1" + "1" + "2"); /* 112 */
+    console.log("A" - "b" + "2"); /* NAN2 */
+    console.log("A" - "b" + 2); /* NAN */
+  </script>
+</body>
+
+</html>

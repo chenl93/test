@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+
+  <style>
+
+  </style>
+</head>
+
+<body>
+
+
+</body>
+
+<script>
+  function foo() {
+    console.log(this.a);
+  }
+
+  var a = 1;
+
+  var obj = {
+    a: 2,
+    foo: foo
+  }
+
+  obj.foo();
+
+  //以上两者情况`this`只依赖于调用函数前的对象，优先级是第二个情况大于第一个情况
+
+  //以下情况是优先级最高的`this`只会绑定在`c`上，不会被任何方式修改`this`指向
+  var c = new foo();
+  c.a = 3;
+  console.log(c.a);
+
+  //还有种就是利用call,apply,bind改变this，这个优先级仅次于new
+</script>
+
+</html>

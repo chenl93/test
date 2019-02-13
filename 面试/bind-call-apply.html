@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+
+  </style>
+</head>
+
+<body>
+
+
+</body>
+
+<script>
+  /* call和apply都是为了解决改变this的指向，作用都是相同的，只是传参的方式不同 
+    除了第一个参数外，call可以接受一个参数列表，apply只接受一个参数数组
+  */
+
+  let a = {
+    value: 1
+  }
+
+  function getValue(name, age) {
+    console.log(name);
+    console.log(age);
+    console.log(this.value);
+  }
+
+  getValue.call(a, 'cl', '25');
+  getValue.apply(a, ['cl', '25']);
+
+
+  /* bind和其他两个方法作用也是一致的，只是该方法会返回一个函数，并且可以通过bind实现柯里化 */
+
+  /* 柯里化是函数的一个比较高级的应用，接收函数作为参数的函数都可以叫做高阶函数（常常利用高阶函数来封装一些公共的逻辑） 
+    柯里化其实就是高阶函数的一种特殊用法，
+    柯里化是指这样一个函数（假设叫做createCurry），他接收函数A作为参数，运行后能够返回一个新的函数。并且这个新的函数能够处理函数A的剩余参数
+  */
+
+  /* 如何实现一个bind函数 */
+  Function.prototype.myBind = function (context) {
+    if (typeof this !== 'function') {
+      throw new TypeError('Error');
+    }
+
+    var _this = this;
+    var args = [...arguments].slice(1);
+
+    return function F() {
+      if (this instanceof F) {
+        return new _this(...args, ...arguments);
+      }
+      return _this.apply(context, args.concat(...arguments))
+    }
+  }
+
+  /* 如何实现一个cal函数 */
+  Function.prototype.myCall = function (context) {
+    var context = context || window;
+    //给context添加一个属性
+    //getValue.call(a,'cl','25')=>a.fn=getValue
+    context.fn = this;
+    //将context后面的参数取出来
+    var args = [...arguments].slice(1);
+
+    var result = context.fn(...args);
+
+    delete context.fn;
+    return result;
+  }
+
+  getValue.myCall(a, 'cl', '25');
+
+  /* 如何实现一个apply函数 */
+  Function.prototype.myApply = function (context) {
+    var context = context || window;
+    context.fn = this;
+
+    var result;
+    //需要判断是否存在第二个参数
+    //如果存在就将第二个参数展开
+    if (arguments[1]) {
+      result = context.fn(...arguments[1]);
+    } else {
+      result = context.fn();
+    }
+    delete context.fn;
+    return result;
+  }
+</script>
+
+</html>

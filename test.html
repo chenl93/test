@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    let arr = [34, 2, 54, 121, 5, 75, 1, 9];
+
+    //从小大到冒泡排序
+    /* for (let i = 0; i < arr.length; i++) {
+      for (let j = i + 1; j < arr.length; j++) {
+        if (arr[i] > arr[j]) {
+          let a = arr[i];
+          arr[i] = arr[j];
+          arr[j] = a;
+        }
+      }
+    }
+    console.log(arr); */
+
+
+
+
+
+
+    /*     for (let i = 0; i < arr.length; i++) {
+          for (let j = i + 1; j < arr.length; j++) {
+            if (arr[i] > arr[j]) {
+              [arr[i], arr[j]] = [arr[j], arr[i]];
+            }
+          }
+        }
+ */
+
+    /*  let min;
+     for (let i = 0; i < arr.length; i++) {
+       min = i;
+       for (let j = i + 1; j < arr.length; j++) {
+         if (arr[min] > arr[j]) {
+           min = j;
+         }
+       }
+       if (min != i) {
+         [arr[min], arr[i]] = [arr[i], arr[min]];
+       }
+     }
+ */
+    /* preIndex是有序数列，current是无序数列中的第一个元素
+     for循环从无序数列开始遍历
+     while循环判断如果有序数列的值大于无序数列则将有序数列中增加一个元素，
+     预留出将要插入值的位置，while循环中将需要插入的值依次与有序数列的值
+     进行比较
+
+     arr[preIndex + 1] = current;是真正将无序数列中的值插入到有序数列中
+     preIndex + 1是插入无序数列值的位置
+     */
+
+    /* let preIndex, current;
+    for (let i = 1; i < arr.length; i++) {
+      preIndex = i - 1;
+      current = arr[i];
+      while (preIndex >= 0 && arr[preIndex] > current) {
+        arr[preIndex + 1] = arr[preIndex];
+        preIndex--;
+      }
+      arr[preIndex + 1] = current;
+    } */
+  </script>
+</body>
+
+</html>

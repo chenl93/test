@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <script>
+    let Stack = (function () {
+      /* ES6新增了一种叫作 Symbol 的基本类型，它是不可变的，可以用作对象的属性。 */
+      let items = new WeakMap(); /* 声明了 Symbol 类型的变量 _items */
+
+      class Stack {
+        constructor() {
+          items.set(this, []); /* 给WeakMap设置值，键为this，值是空的数组 */
+        }
+        push(element) {
+          let s = items.get(this);
+          s.push(element);
+        }
+        pop() {
+          let s = items.get(this);
+          s.pop();
+        }
+        peek() {
+          let s = items.get(this);
+          return s[s.length - 1];
+        }
+        isEmpty() {
+          let s = items.get(this);
+          return s.length == 0;
+        }
+        size() {
+          let s = items.get(this);
+          return s.length;
+        }
+        clear() {
+          let s = items.get(this);
+          s = [];
+        }
+        print() {
+          let s = items.get(this);
+          console.log(s.toString());
+        }
+      }
+      let stack = new Stack();
+      console.log(stack.isEmpty());
+      stack.push(5);
+      stack.push(8);
+
+      console.log(stack.peek());
+
+      stack.push(11);
+      console.log(stack.size());
+      console.log(stack.isEmpty());
+
+      stack.push(15);
+
+      stack.pop();
+      stack.pop();
+      console.log(stack.size());
+      stack.print();
+    })()
+  </script>
+</body>
+
+</html>

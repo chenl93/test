@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    /* 变量提升 */
+    (function () {
+      /* 由于try，catch没有独立的作用域，所以catch中的变量会进行变更提升 相当于在这里 var x,y */
+      try {
+        throw new Error();
+      } catch (x) {
+        /* catch内部的x，和上面的声明的x不是一回事，应该是传入的x参数被重新赋值为1 */
+        console.log(x);
+        var x = 1,
+          /* 内部没有声明，作用域链向上找 */
+          y = 2;
+        console.log(x);
+      }
+      console.log(x);
+      console.log(y);
+    })();
+
+    var x = 21;
+    var girl = function () {
+      console.log(x);
+      var x = 20;
+    }
+    girl();
+  </script>
+</body>
+
+</html>
