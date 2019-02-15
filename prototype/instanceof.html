@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <script>
+    /* 
+      ·instanceof 的意思是：左边操作数的__proto__原型链上是否包括右边操作数的prototype
+      ·也即如果有表达式：L instanceof R
+        则运算结果是：L.__proto__.__proto__... === R.prototype;
+        运算符左边最终结果是instanceof运算时会递归查找L的原型链    
+      
+      总结：instanceof运算符检测左侧操作的__proto__原型链上，只是存在右侧的prototype原型
+      
+    */
+    console.log(Object instanceof Function);
+    console.log(Function instanceof Object);
+  </script>
+</body>
+
+</html>

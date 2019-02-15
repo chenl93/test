@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <script>
+    function Foo(name, age) {
+      this.name = name;
+      this.age = age;
+    }
+
+    let f1 = new Foo("chenl", 25);
+    let f2 = new Foo("cl", 25);
+
+    let o1 = new Object();
+    let o2 = new Object();
+
+    console.log(f1.prototype); //undefied 实例对象没有prototype属性，只有函数才有prototype属性
+    console.log(f1.__proto__); //constructor Foo(name,age) 只有对象才有__proto__属性，指向的是构造函数的原型属性
+    console.log(Foo.prototype); //constructor Foo Foo是构造函数，它的prototype属性是函数本身
+    console.log(Foo.prototype.__proto__); //constructor Object
+
+    console.log("===========================");
+    console.log(o1.__proto__); //constructor Object
+    console.log("Object.prototype", Object.prototype); //constructor Object
+    console.log(Object.prototype.__proto__); //null
+
+    /* function Object created by Function */
+
+    console.log(Function.prototype); //native code 程序自带的,浏览器自己实现的...?
+    console.log(Function.prototype.__proto__) //constructor Object
+    console.log(Function.prototype.__proto__.__proto__); //null
+
+    console.log("------------------------------")
+    /* 
+      ·instanceof 的意思是：左边操作数的__proto__原型链上是否包括右边操作数的prototype
+      ·也即如果有表达式：L instanceof R
+        则运算结果是：L.__proto__.__proto__... === R.prototype;
+        运算符左边最终结果是instanceof运算时会递归查找L的原型链    
+      
+      总结：instanceof运算符检测左侧操作的__proto__原型链上，只是存在右侧的prototype原型
+      
+    */
+    console.log(Object instanceof Function);
+    console.log(Function instanceof Object);
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <script>
+    /* 
+      javascript的构造器Function和Object的关系
+        ·在javascript中所有的对象都继承自Object原型，而Function又充当了对象的构造器
+        ·一切皆对象
+        ·__proto__(原型链属性)是JavaScript中一切对象都有的属性，它一般指向创建它的函数的prototype属性（原型），
+        有一个例外是通过字面量创建的对象没有prototype属性
+        ·prototype是只有函数对象才有的属性，它的指向一般是函数本身
+
+      最重要的一点Function.prototype.constructor指向它本身，Object.prototype.constructor也指向Function
+      
+      结论：构造器的原型链是封闭的，它借由一个匿名函数实现，即Function.__proto__指向一个匿名函数function(){},
+            匿名函数的__proto__指向Object的prototype,Object的__proto__指向Function的prototype
+      
+    */
+    var a = {};
+    var b = Object.create(a);
+    console.log(b.__proto__);
+
+    console.log("Function.prototype.constructor", Function.prototype.constructor); //Function
+    console.log("Object.prototype.constructor", Object.prototype.constructor); //Object
+
+
+    console.log("=======================")
+    console.log(Function.__proto__);
+    console.log(Function.__proto__.__proto__);
+    console.log(Object.__proto__.__proto__)
+
+    console.log("==========================")
+
+    /* 
+      new + function的构造器实例化出来的对象不是函数，仅仅是Object的子类
+    */
+    function foo() {};
+    console.log(foo instanceof Function); //true
+    console.log(foo instanceof Object); //true
+    console.log(new foo() instanceof Function); //false
+    console.log(new foo() instanceof Object); //true
+
+    console.log("-----------------------------------");
+    /* 可以确定Object是由Function这个函数为原型的，而Function是以它自己为原型的 */
+    console.log(Object.constructor); //function Function(){[native code]}
+    console.log(Function.constructor); //function Function(){[native code]}
+
+    /* 
+      可以把所有的函数看作是Function的子类，但所有的一切包括Function都是Object的子类是不变的 
+      new Function();语句会产生一个匿名函数，由于Function是顶级函数所以可以产生自定义函数，我们可以把所有的函数看作是Function的子类
+    */
+    console.log(new Function() instanceof Object) //true
+    console.log(Object instanceof new Function()); //false
+    console.log(typeof new Function()); //function
+    console.log(typeof Object); //funciton
+    console.log(new Object().constructor); //function Object([native code])
+
+    /* 
+      可以说凡是可以放在new后面的都是一个函数构造器，所以Object确实也是像其它函数一样，是一个函数的指针或者是函数变量， 
+      但Function是顶级的所以Object要由Function来构造
+      所有的对象都要继承Object，包括Function
+      ·Function和Object既是对象又是函数
+    */
+    console.log("===========================")
+    console.log(Array instanceof Object); //true
+    console.log(String instanceof Object); //true
+    console.log(Number instanceof Object); //true
+    console.log(Object instanceof Array); //false
+    console.log(Object instanceof String); //false
+    console.log(Object instanceof Number); //false
+
+    /* js中内置对象即继承自Object，也是Function的子类，由Functin构造，如：
+      Array: new Array()的构造器是function Array()
+      String: new String()的构造器是function String()
+      Number: new Number()的构造器是function Number
+    */
+    console.log("============================")
+    console.log(Array instanceof Function); //true
+    console.log(String instanceof Function); //true
+    console.log(Number instanceof Function); //true
+    console.log(Array.constructor); //function Function(){[native code]}
+    console.log(String.constructor); //function Function(){[native code]}
+    console.log(Number.constructor); //function Function(){[native code]}
+
+    /* 
+      总结：
+        ·像内置的函数或说对象，如：Object,String,Array等和使用自定义的function关键字定义的函数都是Function的子类
+        ·new Function()相当于function关键字定义
+        ·Function.prototype原型链上的属性、所有函数共享
+        ·Object.prototype原型链上的属性、所有对象共享
+    */
+  </script>
+</body>
+
+</html>

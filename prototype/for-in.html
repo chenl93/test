@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    /* 
+      for...in语句 
+        ·用于对象数组或者对象的属性进行循环/迭代操作
+        ·对于数组，迭代出来的是数据元素，对于对象迭代出来的是对象的属性
+    */
+    let arr = [23, 34, 45, 66, 956];
+    for (let index in arr) {
+      console.log("array-for-in", arr[index]);
+    }
+    console.log("========================");
+
+    function Foo(name) {
+      this.name = name;
+    }
+    Foo.prototype.sayName = function () {
+      document.writeln(this.name);
+    }
+
+    let foo = new Foo("chenl");
+    foo.age = 10;
+    foo.sayName();
+
+    for (let item in foo) {
+      console.log("object-for-in key:", item, "value:", foo[item]);
+    }
+
+    console.log("========================");
+
+    function Foo2(name, age) {
+      this.name = name;
+    }
+
+    Foo2.prototype.alertName = function () {
+      document.writeln(this.name)
+    }
+    //创建示例
+    var f = new Foo2('zhangsan')
+    f.printName = function () {
+      console.log(this.name)
+    }
+    //测试
+    f.printName();
+    f.alertName();
+    for (let item in f) {
+      //高级浏览器已经在for in中屏蔽了来自原型的属性
+      //但是在这里建议大家还是加上这个判断，保证程序的健壮性 
+      if (f.hasOwnProperty(item)) {
+        console.log("item", item)
+      }
+    }
+
+    console.log("------------------")
+    console.log(f.toString());
+
+    /* 使用Object.prototype上的原生toString()方法判断数据类型 */
+
+    /* js实例对象和引用类型（数组，函数，原生引用类型） */
+    console.log(Object.prototype.toString.call(f));
+    console.log(Object.prototype.toString.call(["11", "22"]));
+    console.log(Object.prototype.toString.call(f.printName));
+    console.log(Object.prototype.toString.call(new Date()));
+    console.log(Object.prototype.toString.call({
+      "key": "value"
+    }));
+
+    /* js基础数据类型 */
+    console.log(Object.prototype.toString.call(1));
+    console.log(Object.prototype.toString.call(true));
+    console.log(Object.prototype.toString.call("12"));
+    console.log(Object.prototype.toString.call(undefined));
+    console.log(Object.prototype.toString.call(null));
+
+    /* Object.__proto__指向的是null */
+  </script>
+</body>
+
+</html>

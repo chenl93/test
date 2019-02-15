@@ -1,6 +1,6 @@
-var gulp        = require('gulp');
+var gulp = require('gulp');
 var browserSync = require('browser-sync').create();
-var reload      = browserSync.reload;
+var reload = browserSync.reload;
 
 gulp.task('serve', function () {
     var files = [
@@ -8,10 +8,13 @@ gulp.task('serve', function () {
     ];
 
     browserSync.init({
+        port: 2019,
         files: files,
-        server: { baseDir: "./" } 
+        server: {
+            baseDir: "./"
+        }
         /*proxy: "http://localhost:3000/"*/
-        
+
     });
     gulp.on("change", reload);
 });
