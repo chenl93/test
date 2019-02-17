@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <script>
+    /* 从一个自身拥有属性a,b的函数里创建一个对象o */
+    let f = function(){
+      this.a = 1;
+      this.b = 2;
+    }
+    let o = new f();
+
+    /* 在函数f的原型上定义属性 */
+    f.prototype.b = 3;
+    f.prototype.c = 4;
+
+    console.log(o)
+    console.log(f.prototype)
+    console.log("o.constructor",o.constructor)
+    console.log("o.__proto__",o.__proto__);
+    console.log("o.constructor.prototype",o.constructor.prototype) 
+    console.log("o.__proto__.__proto__",o.__proto__.__proto__) //Object.prototype
+    console.log(o.__proto__.__proto__.__proto__); //null  这条原型链的末尾
+
+    //通过__proto__将实例对象与构造函数的原型连接起来组成原型链
+
+    /* 
+      综上，整个原型链如下
+
+      ｛a:1,b:2｝---> {b:3,c:4} ---> Object.prototype ---> null
+    */
+
+
+
+    console.log("-----------------------")
+
+    
+  </script>
+</body>
+
+</html>
