@@ -41,6 +41,18 @@
         
         ·使用instanceof+构造函数 判断一个函数是否是另一个变量的构造函数 【instance：实例】
     */
+
+    function Person(name, age, job) {
+      this.name = name;
+      this.age = age;
+      this.job = job;
+      this.sayName = function () {
+        console.log(this.name);
+      }
+    }
+
+    var person1 = new Person("store", 28, "engineer");
+    var person2 = new Person("sophie", 29, "teacher")
   </script>
 </body>
 

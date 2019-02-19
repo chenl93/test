@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    /* 语法结构创建对象 */
+    var o = {
+      a: 1
+    };
+    /* 
+      · o这个对象继承了Object.prototype上面的所有属性
+      · o自身上没有名为hasOwnProperty的属性
+      · hasOwnProperty是Object.prototype的属性
+      · 因此o继承了Object.prototype的hasOwnPerty
+      · Object.prototype的原型为null
+      
+      原型链如下：
+        o ---> Object.prototype ---> null
+    */
+
+    var arr = ["yo", "whadup", "?"];
+    /* 
+      数组都继承于Array.prototype
+      (Array.prototype中包含indexOf,forEach等方法)
+      
+      原型链如下：
+        arr ---> Array.prototype ---> Object.prototype ---> null
+    */
+
+    function f() {
+      return 2;
+    }
+    /* 
+      · 函数都继承于Function.prototype
+      · （Function.prototype中包含call,bind等方法）
+
+      原型链如下：
+        f ---> Function.prototype ---> Object.prototype ---> null
+    */
+  </script>
+</body>
+
+</html>

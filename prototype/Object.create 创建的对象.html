@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    /* 
+      es5中引入了一个Object.create()，可以调用这个方法来创建一个新对象。
+      新对象的原型就是调用create方法时传入的第一个参数
+     */
+    var a = {
+      a: 1
+    };
+    //原型链 a ---> Object.prototype ---> null
+
+    var b = Object.create(a);
+    //原型链：b ---> a ---> Object.prototype ---> null
+    console.log(b.a); //
+
+    var c = Object.create(b);
+    //原型链 c ---> b ---> a ---> Object.prototype ---> null
+
+    var d = Object.create(null);
+    //原型链 d ---> null
+    console.log(d.hasOwnProperty); //undefined 因为d没有继承Object.prototype
+  </script>
+</body>
+
+</html>
