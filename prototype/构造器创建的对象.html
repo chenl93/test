@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    /* 
+      构造器创建的对象
+      
+      构造器其实就是一个普通的函数。当使用new操作符来作用这个函数时，它就可以被称构造方法（函数）
+
+    */
+    function Graph() {
+      this.vertices = [];
+      this.edges = [];
+    }
+
+    Graph.prototype = {
+      addVertex: function (v) {
+        this.vertices.push(v);
+      }
+    }
+
+    var g = new Graph();
+    g.addVertex(1);
+    console.log(g.vertices)
+    /* 
+      g是生成的对象，他的自身属性有vertices和edges
+      在g被实例化的时候，g.[[prototype]]指向了Graph.prototype
+    */
+  </script>
+</body>
+
+</html>

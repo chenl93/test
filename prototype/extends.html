@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    /* 
+      · 在js中任何函数都可以添加到对象上作为对象的属性；
+      · 函数的继承与其他属性继承没有差别；
+      · 属性遮蔽相当于其他语言中的重写；
+      · 当继承函数被调用时，this指向的是当前继承的对象，而不是继承函数所在的原型对象
+    */
+    var a = {
+      a: 2,
+      m: function () {
+        return this.a + 1;
+      }
+    }
+
+    console.log(o.m()); //当调用o.m时,this指向o
+
+    var p = Object.create(o); //p是一个继承自o的对象
+
+    p.a = 4; //创建p的自身属性
+    console.log(p.m()); //5 调用p.m时，this指向p
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    function A(a) {
+      this.varA = a;
+    }
+
+    A.prototype = {
+      //以上函数A的定义中，既然A.prototype.varA总是会被this.varA遮蔽，那么将varA加入到原型（prototype）中的目的是什么
+      varA: null,
+      /* 
+        既然它没有任何作用，干嘛不将varA从原型中去掉
+        也许作为一种在隐藏类中优化分配空间的考虑
+        如果varA并不是在每个实例中都被初始化，那这样做将是有效果的
+      */
+      doSomething: function () {
+        //...
+      }
+    }
+
+    function B(a, b) {
+      A.call(this, a);
+      this.varB = b;
+    }
+    B.prototype = Object.create(A.prototype, {
+      varB: {
+        value: null,
+        enumerable: true,
+        configurable: true,
+        writable: true
+      },
+      doSomething: {
+        value: function () {
+          A.prototype.doSomething.apply(this, arguments);
+          //call super
+          //...
+        },
+        enumerable: true,
+        configurable: true,
+        writable: true
+      }
+    })
+
+    B.prototype.constructor = B;
+
+    var b = new B();
+    b.doSomething();
+  </script>
+</body>
+
+</html>

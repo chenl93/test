@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <script>
+    let f = function () {
+      this.a = 1;
+      this.b = 2;
+    }
+
+    let o = new f();
+    f.prototype.b = 3;
+    f.prototype.c = 4;
+
+    console.log("o.__proto__", o.__proto__); //Object
+    console.log("o.__proto__.__proto__", o.__proto__.__proto__) //Object.prototype
+    console.log("o.__proto__.__proto__.__proto__", o.__proto__.__proto__.__proto__) //null
+
+    /* 
+      原型链如下：
+        {a:1,b:2} ---> {b:3,c:4} ---> Object.prototype ---> null
+        f ---> f.prototype ---> Object.prototype ---> null
+    */
+
+    console.log(o.b); //2 （先在f上查找，找不到会去原型上查找）属性遮蔽
+
+    console.log(o.c); //4
+
+    console.log(o.d); //undefined
+  </script>
+</body>
+
+</html>
