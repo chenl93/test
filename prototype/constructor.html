@@ -52,7 +52,26 @@
     }
 
     var person1 = new Person("store", 28, "engineer");
-    var person2 = new Person("sophie", 29, "teacher")
+    var person2 = new Person("sophie", 29, "teacher");
+
+    console.log("------------");
+
+    function Parent(age) {
+      this.age = age;
+    }
+    var p = new Parent(50);
+    console.log(p.constructor === Parent);
+    console.log(p.constructor === Object);
+
+    console.log("==========================");
+
+    function Foo() {
+      this.value = 33;
+    }
+
+    Foo.prototype = {
+      method: function () {}
+    }
   </script>
 </body>
 
