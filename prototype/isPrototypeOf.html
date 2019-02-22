@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    function Parent(value)  {
+      this.value = value;
+    }
+    Parent.prototype.getValue=function(){
+      return this.value;
+    }
+
+    function Child(myValue){
+      this.myValue=myValue;
+    }
+    //继承Parent Child.prototype被重写，会导致Child.prototype.constructor也被重写
+    Child.prototype = new Parent(11);
+
+    
+
+    Child.prototype.getMyValue = function(){
+      return this.myValue;
+    }
+
+    var instance = new Child(22);
+
+    var Child1 = new Parent(33);
+
+    console.log(Object.prototype.isPrototypeOf(instance));
+    console.log(Parent.prototype.isPrototypeOf(instance));
+    console.log(Child.prototype.isPrototypeOf(instance));
+    
+    console.log(instance.getValue());
+    console.log(Child1.getValue());
+  </script>
+</body>
+</html>
