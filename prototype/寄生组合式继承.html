@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    /* 
+      组合继承是js中最常用的继承模式，不过它也有自己的不足，组合继承最大的问题
+      就是无论在什么情况下都要调用两次父类构造函数：一次是在创建子类原型的时候，另一次
+      是在子类构造函数内部。寄生组合式继承就是为了**降低调用父类构造函数的开销**而出现的
+
+      其背后的基本思路是：不必为了指定子类型的原型而调用超类型的构造函数
+    */
+  
+    function extend(subClass,superClass){
+      var F = function(){};
+      F.prototype = superClass.prototype;
+      subClass.prototype = new F();
+      subClass.prototype.constructor = subClass;
+
+      subClass.superClass = superClass.prototype;
+
+      if(superClass.prototype.constructor == Object.prototype.constructor){
+        superClass.prototype.constructor = superClass;
+      }
+    }
+
+    function superClass(name){
+      this.name = name;
+    }
+
+    function subClass(name,age){
+      superClass.call(this);
+      this.age = age;
+    }
+
+    let test = extend(subClass,superClass);
+    console.log(subClass.name);
+    console.log(subClass.age);
+  </script>
+</body>
+</html>
