@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    var x = 1;
+    function test(){
+      console.log(this.x);
+    }
+    test();
+
+    function test2(){
+      console.log(this.x);
+    }
+    var obj = {};
+    obj.x = 3;
+    obj.m = test2;
+    obj.m();
+
+    function test3(){
+      this.x = 4;
+    }
+    var obj = new test3();
+    console.log(obj.x);
+
+    var y = 5;
+    function test4(){
+      console.log(this.y);
+    }
+    var obj = {};
+    obj.y = 6;
+    obj.m = test4;
+    obj.m.apply(obj);
+  </script>
+</body>
+</html>
