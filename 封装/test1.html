@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    /* 
+      特权方法-封装
+      类的内部this上定义的属性和方法可以复制到新创建的对象上，成为对象公有化的属性和方法，又可以访问私有属性
+      和私有方法，因此就是特权方法
+     */
+    var Book = function (id, name, price) {
+      //私有属性
+      var num = 1;
+      //私有方法
+      function checkId() {}
+
+      //特权方法
+      this.getName = function () {}
+      this.getPrice = function () {}
+      this.setName = function () {}
+      this.setPrice = function () {}
+
+      //对象公有属性
+      this.id = id;
+
+      //对象公有方法
+      this.copy = function () {}
+
+      //构造器
+      this.setName(name);
+      this.setPrice(price);
+    }
+    var b = new Book(1, 'javascript设计模式', 50);
+    console.log(b.num);
+    console.log(b.isJSBook);
+    console.log(b.id);
+    console.log(b.isChinese);
+  </script>
+</body>
+
+</html>

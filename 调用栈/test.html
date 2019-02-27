@@ -1,14 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
 </head>
+
 <body>
   <script>
-      /* 
+    /* 
         调用栈是解释器追踪函数执行流的一种机制。当执行环境中调用了多个函数时，
         通过这中机制，能够追踪到哪个函数正在执行，执行的函数中又调用了哪个函数
         ·每调用一个函数，解释器就会把该函数添加到执行栈并开始执行
@@ -16,37 +18,39 @@
         ·当函数执行完毕后，解释器会将其清出执行栈，继续执行当前环境下的剩余代码
         ·当分配的调用栈空间被占满时，会引发“堆栈溢出”
       */
-     function greeting(){
-       //[1]some codes here
-       sayHi();
-       //[2]some codes here
-     }
-     function sayHi(){
-       return "Hi";
-     }
+    function greeting() {
+      //[1]some codes here
+      sayHi();
+      //[2]some codes here
+    }
 
-     //调用greeting函数
-     greeting();
+    function sayHi() {
+      return "Hi";
+    }
 
-     //[3]some codes here
+    //调用greeting函数
+    greeting();
 
-     /* 
-        上面代码是这样执行的：
-          ·忽略前面所有的函数，直到greeting()函数被调用
-          ·把greeting()添加进调用栈列表
-          ·执行greeting()函数中的代码
-          ·代码执行到sayHi()时，该函数被调用
-          ·将sayHi()函数添加到调用栈列表
-          ·执行sayHi()函数中的代码，直到全部执行完毕
-          ·返回来继续执行greeting()函数体中sayHi()后面的代码
-          ·删除调用栈列表中的sayHi()函数
-          ·当greeting()函数体中的代码全部执行完毕，返回到调用greeting()的代码行，继续执行剩余的JS代码
-          ·删除调用栈中的greeting()函数
+    //[3]some codes here
+
+    /* 
+       上面代码是这样执行的：
+         ·忽略前面所有的函数，直到greeting()函数被调用
+         ·把greeting()添加进调用栈列表
+         ·执行greeting()函数中的代码
+         ·代码执行到sayHi()时，该函数被调用
+         ·将sayHi()函数添加到调用栈列表
+         ·执行sayHi()函数中的代码，直到全部执行完毕
+         ·返回来继续执行greeting()函数体中sayHi()后面的代码
+         ·删除调用栈列表中的sayHi()函数
+         ·当greeting()函数体中的代码全部执行完毕，返回到调用greeting()的代码行，继续执行剩余的JS代码
+         ·删除调用栈中的greeting()函数
 
 
-          一开始得到一个空的调用栈，随后每当有函数被调用时都会自动添加进调用栈，执行完函数代码后，
-          调用栈又会自动移除这个函数，最后得到一个空的调用栈
-      */
+         一开始得到一个空的调用栈，随后每当有函数被调用时都会自动添加进调用栈，执行完函数代码后，
+         调用栈又会自动移除这个函数，最后得到一个空的调用栈
+     */
   </script>
 </body>
+
 </html>
