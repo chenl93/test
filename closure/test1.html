@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    /* 
+      要理解闭包，必须理解Javascript特殊的变量作用域
+      变量的作用域无非就是两种：全局变量和局部变量
+      ·Javascript的特殊之处就是在于函数内部可以直接读取全局变量；
+      ·另一方面在函数外部自然无法读取函数内的局部变量
+      ·函数内部声明变量一定要使用var、let、const否则的话是声明了一个全局变量
+
+      如何从函数外部读取局部变量，那就是在函数的内部再定义一个函数
+
+      f2()被包含在f1()中，这时f1()中的所有局部局部变量对f2都是可见的。但是反过来就不行
+      这就是Javascript语言特有的“链式作用域”结构（chain scope），子对象会一级一级向上地寻找父对象的变量。所以，父对象的所有变量，对子对象都是可见的，反之不成立
+
+     */
+    function f1() {
+      var n = 999;
+
+      function f2() {
+        alert(n);
+      }
+    }
+
+    /* 
+      既然f2可以读取f1中的局部变量，那么只要将f2()作为返回值就可以在f1()外部读取它的内部变量
+    */
+    function f3() {
+      var n = 999;
+
+      function f4() {
+        alert(n);
+      }
+      return f4();
+    }
+    var result = f3();
+    result();
+
+    /* 
+      闭包就是能够读取其他函数内部
+     */
+  </script>
+</body>
+
+</html>

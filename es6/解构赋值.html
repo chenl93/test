@@ -47,54 +47,101 @@
 
     console.log("----------------------");
     /* 传统的做法，如何把一个数组的元素分别赋值给几个变量 */
-    var array = ['hello','javascript','es6'];
+    var array = ['hello', 'javascript', 'es6'];
     var x = array[0];
     var y = array[1];
     var z = array[2];
-    
-    var [x1,y1,z1] = array;
-    console.log(x1,y1,z1);
 
-    var [x2,[y2,z2]] = ['hello',['javascript','es6']];
-    console.log(x2,y2,z2);
+    var [x1, y1, z1] = array;
+    console.log(x1, y1, z1);
 
-    var [,,z3] = ['hello','javascript','es6'];
+    var [x2, [y2, z2]] = ['hello', ['javascript', 'es6']];
+    console.log(x2, y2, z2);
+
+    var [, , z3] = ['hello', 'javascript', 'es6'];
     console.log(z3);
 
     var person = {
-      name:'小明',
-      age:20,
-      gender:'male',
-      passport:'G-1234567',
-      school:'NO.4 middel school'
+      name: '小明',
+      age: 20,
+      gender: 'male',
+      passport: 'G-1234567',
+      school: 'NO.4 middel school'
     }
-    var {name,age,passport} = person;
-    console.log(name,age,passport); 
+    var {
+      name,
+      age,
+      passport
+    } = person;
+    console.log(name, age, passport);
 
     var person1 = {
-      name:'小明',
-      age:20,
-      gender:'male',
-      passport:'G-1234567',
-      school:'NO.4 middel school',
-      address:{
-        city:'Beijing',
-        street:'NO.1 Road',
-        zipcode:'100001'
+      name: '小明',
+      age: 20,
+      gender: 'male',
+      passport: 'G-1234567',
+      school: 'NO.4 middel school',
+      address: {
+        city: 'Beijing',
+        street: 'NO.1 Road',
+        zipcode: '100001'
       }
     }
-    var {name,address:{city,zip}} = person1;
-    console.log(name,city,zip); //小明 ‘Beijing’ undefined(因为属性名是zipcode而不是zip)
+    var {
+      name,
+      address: {
+        city,
+        zip
+      }
+    } = person1;
+    console.log(name, city, zip); //小明 ‘Beijing’ undefined(因为属性名是zipcode而不是zip)
     //console.log(address); //address不是变量，而是为了让city和zip获得嵌套的address对象的属性
 
-    
-    var {name,passport:id} = person; //把passport属性赋值给变量id:
-    console.log(name,id);
 
-    var {name,single=true} = person;
-    console.log(name,single);
+    var {
+      name,
+      passport: id
+    } = person; //把passport属性赋值给变量id:
+    console.log(name, id);
 
-    
+    var {
+      name,
+      single = true
+    } = person;
+    console.log(name, single);
+
+    console.log("---------------------");
+
+    var {
+      hostname: domain,
+      pathname: path
+    } = location;
+
+    console.log("domain", domain, "path", path);
+
+    function buildDate({
+      year,
+      month,
+      day,
+      hour = 0,
+      minute = 0,
+      second = 0
+    }) {
+      return new Date(`${year}-${month}-${day} ${hour}:${minute}:${second}`);
+    }
+
+    console.log(buildDate({
+      year: 2019,
+      month: 2,
+      day: 27
+    }));
+    console.log(buildDate({
+      year: 2019,
+      month: 2,
+      day: 27,
+      hour: 14,
+      minute: 40
+    }));
   </script>
 </body>
 
