@@ -30,7 +30,6 @@
     foo(16);
 
     function isPrime(num,divisor = 2){
-      debugger
       if(num<2 || (num >2 && num % divisor == 0)){
         return false;
       }
@@ -43,6 +42,16 @@
 
     console.log(isPrime(5))
     //console.log(isPrime(99))
+
+    console.log("--------------------")
+    
+    /* 斐波那契数  注意: 数列的前几个数值是： 0, 1, 1, 2, 3, 5, 8, 13, 21, 34, ... 每一个数字都是数列中前两个数字之和。*/
+    function fib(n){
+      if(n<=1) return n;
+      console.log(n);
+      return fib(n-2)+fib(n-1);
+    }
+    console.log("fib:",fib(6));
   </script>
 </body>
 </html>
