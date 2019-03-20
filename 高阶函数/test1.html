@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    /* Math.abs(x)=|x|；如果参数是非负数，则返回该参数。如果参数是负数，则返回该参数的相反数。  */
+    function add(x, y, fun) {
+      return fun(x) + fun(y);
+    }
+    x = -5;
+    y = 6;
+    f = Math.abs;
+    console.log(add(x, y, f));
+
+    console.log("--------------");
+
+    function sum(arr) {
+      return arr.reduce(function (x, y) {
+        return x + y;
+      })
+    }
+    console.log(sum([1, 2, 3, 4, 5]))
+  </script>
+</body>
+
+</html>

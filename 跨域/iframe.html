@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Page Title</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <script src="../js/jquery-3.1.0.min.js"></script>
+</head>
+
+<body>
+  <iframe id="iframeId" src="https://eu1-ds-iam.3dexperience.3ds.com/3DPassport/login?action=get_auth_params"
+    frameborder="0"></iframe>
+
+  <script>
+    $(function () {
+      let el = document.getElementById('iframeId').contentDocument;
+      console.log(el)
+
+    })
+  </script>
+</body>
+
+</html>

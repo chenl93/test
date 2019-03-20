@@ -1,19 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
 </head>
+
 <body>
   <script>
     var name = "The Window";
     var object = {
       name: "My Object",
-      getNameFunc:function(){
+      getNameFunc: function () {
         var that = this;
-        return function(){
+        /* 返回的闭包函数中包含了对object对象的this的引用 */
+        return function () {
           return that.name;
         }
       }
@@ -22,4 +25,5 @@
   </script>
 
 </body>
+
 </html>

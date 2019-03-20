@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    function lazy_sum(arr) {
+      var sum = function () {
+        return arr.reduce(function (x, y) {
+          return x + y;
+        })
+      }
+      return sum;
+    }
+    /* 每次调用都会返回一个新的函数，即使传入相同的参数 */
+    var f1 = lazy_sum([1, 2, 3, 4, 5]);
+    console.log(f1())
+
+    var f2 = lazy_sum([1, 2, 3, 4, 5]);
+    console.log(f1 === f2);
+
+
+    function count() {
+      var arr = [];
+      for (var i = 1; i <= 3; i++) {
+        arr.push(function () {
+          return i * i;
+        })
+      }
+      return arr;
+    }
+    var result = count();
+    var f3 = result[0]; //16
+    var f4 = result[1]; //16
+    var f5 = result[2]; //16
+    console.log("f3:", f3(), "f4:", f4(), "f5:", f5());
+
+    function count2() {
+      var arr = [];
+      for (var i = 1; i <= 3; i++) {
+        arr.push((function (n) {
+          return function () {
+            return n * n;
+          }
+        })(i))
+      }
+    }
+    
+  </script>
+</body>
+
+</html>

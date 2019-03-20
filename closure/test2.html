@@ -1,24 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
 </head>
+
 <body>
   <script>
-    var name = "The Window"  
+    var name = "The Window"
     var object = {
-      name:"My Object",
-      getNameFunc : function(){
-        return function(){
+      name: "My Object",
+      getNameFunc: function () {
+        console.log(this); //object
+        /* 
+          返回的闭包函数的this指向问题，返回的闭包函数在window的作用域下，this指向window
+         */
+        return function () {
+          console.log(this); //window
           return this.name;
         }
       }
     }
+    /* 
+      var closure = object.getNameFunc();
 
+     */
     console.log(object.getNameFunc()());
   </script>
 </body>
+
 </html>
