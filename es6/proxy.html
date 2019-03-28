@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    let obj = {};
+    let handler = {
+      get(target, property) {
+        console.log(`${property}被读取----`);
+        return property in target ? target[property] : 3;
+      },
+      set(target, property, value) {
+        console.log(`${property}被设置为${value}---`);
+        target[property] = value;
+      }
+    }
+
+    let p = new Proxy(obj, handler);
+    p.name = "tom";
+    p.age;
+    console.log(p.name);
+    console.log(p.age);
+
+    /* p读取属性的值时，实际上执行的是handler.get() : 在控制台输出信息，并且读取被代理对象obj的属性 */
+    /* p设置属性的值时，实际上执行的是handler.set() : 在控制台输出信息，并且读取被代理对象obj的属性的值 */
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    function deepClone(obj) {
+      let _obj = JSON.stringify(obj);
+      let objClone = JSON.parse(_obj);
+      return objClone;
+    }
+    let a = [1, 2, [3, 4], 5];
+    let b = deepClone(a);
+    a[0] = 1;
+    a[2][0] = 1;
+    console.table(a);
+    console.table(b);
+  </script>
+</body>
+
+</html>
