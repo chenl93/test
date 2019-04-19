@@ -10,13 +10,20 @@
 </head>
 
 <body>
-  <iframe id="iframeId" src="https://eu1-ds-iam.3dexperience.3ds.com/3DPassport/login?action=get_auth_params"
-    frameborder="0"></iframe>
+
+
+  mmm
+  <iframe style="width:100%;height:82vh;margin:0 auto" id="iframeId"
+    src="https://eu1-ds-iam.3dexperience.3ds.com/3DPassport/login?action=get_auth_params" frameborder="1"></iframe>
 
   <script>
     $(function () {
-      let el = document.getElementById('iframeId').contentDocument;
+      let el = document.getElementById('iframeId');
       console.log(el)
+      let $el = $("#iframeId");
+      console.log($el)
+      //let el = document.getElementById('iframeId').contentDocument;
+      //  console.log(el)
 
     })
   </script>

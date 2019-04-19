@@ -1,20 +1,22 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title>Page Title</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <script src="../js/jquery-3.1.0.min.js"></script>
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Page Title</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <script src="../js/jquery.form.js"></script>
-  </head>
+  <script src="../js/jquery-3.1.0.min.js"></script>
 
-  <body>
-    <!--  <iframe src="https://eu1-ds-iam.3dexperience.3ds.com/3DPassport/login?action=get_auth_params" frameborder="0"></iframe>
+</head>
+
+<body>
+  dsfsdfsdfsdfsdfsdfasdf
+  <!--  <iframe style="width:100%;height:82vh;margin:0 auto"
+    src="https://eu1-ds-iam.3dexperience.3ds.com/3DPassport/login?action=get_auth_params" frameborder="1"></iframe>
  -->
-    <!-- <form
+  <!-- <form
       action="https://eu1-ds-iam.3dexperience.3ds.com/3DPassport/login"
       method="get"
       id="form1"
@@ -22,53 +24,54 @@
       <input type="text" name="action" value="get_auth_params" />
       <button type="submit">aa</button>
     </form> -->
-    <script>
-      /* $(function() {
+  <script>
+    /* $(function() {
         $("#form1").ajaxForm(function(data) {
           console.log(data);
           console.log("str:" + JSON.stringify(data));
         });
       }); */
-      let apiUrl =
-        "https://eu1-ds-iam.3dexperience.3ds.com/3DPassport/login?action=get_auth_params";
+    let apiUrl =
+      "https://eu1-ds-iam.3dexperience.3ds.com/3DPassport/login?action=get_auth_params";
 
-      /*    $.ajax({
-                     async: true,
-                     url: apiUrl,
-                     type: "GET",
-                     //contentType: 'text/html',
-                     //contentType: 'application/javascript',
-                     //contentType: 'application/json',
+    /* $.ajax({
+      async: true,
+      url: apiUrl,
+      type: "GET",
+      //contentType: 'text/html',
+      //contentType: 'application/javascript',
+      //contentType: 'application/json',
 
-                     dataType: 'jsonp',
-                     jsonp: 'jsoncallback',
-                     timeout: 5000,
-                     success: function (result) {
-                       console.log(result)
-                     },
+      dataType: 'jsonp',
+      jsonp: 'jsoncallback',
+      timeout: 5000,
+      success: function (result) {
+        console.log(result)
+      },
 
-                   })
-                */
-      /* $.ajax({
-                  async: true,
-                  url: apiUrl,
-                  type: "GET",
-                  //contentType: 'text/html',
-                  //contentType: 'application/javascript',
-                  //contentType: 'application/json',
+    }) */
 
-                  dataType: 'json',
-                  //jsonp: 'jsoncallback',
-                  timeout: 5000,
-                  success: function (result) {
-                    console.log(result.lt)
-                  },
+    $.ajax({
+      async: true,
+      url: apiUrl,
+      type: "GET",
+      //contentType: 'text/html',
+      //contentType: 'application/javascript',
+      //contentType: 'application/json',
 
-                }) */
+      dataType: 'json',
+      //jsonp: 'jsoncallback',
+      timeout: 5000,
+      success: function (result) {
+        console.log(result.lt)
+      },
 
-      /* $.getJSON(apiUrl).done(function(data) {
-                    alert(data);
-                  }); */
-    </script>
-  </body>
+    })
+
+    /* $.getJSON(apiUrl).done(function(data) {
+                  alert(data);
+                }); */
+  </script>
+</body>
+
 </html>
