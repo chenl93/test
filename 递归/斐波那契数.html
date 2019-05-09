@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    /* 
+      递归：是当一个函数调用自身，并且该调用做了同样的事，这个循环条件满足时，调用循环返回
+      如果不能确保基本条件是递归的终结者，递归还一直执行下去，并且把项目损坏或锁死
+      执行栈，每次把要执行的函数压栈，执行完毕再出栈 LIFO 后进先出
+    */
+    /* 斐波那契数  注意: 数列的前几个数值是： 0, 1, 1, 2, 3, 5, 8, 13, 21, 34, ... 每一个数字都是数列中前两个数字之和。*/
+    /* 函数：使用公式f[n]=f[n-1]+f[n-2]，依次递归计算，递归结束条件是f[1]=1，f[2]=1。 */
+    function fib(n,m){
+      //console.log(n,m)
+      //console.trace();
+      if(n<=1) return n;
+      console.log( n,fib(n-2)+fib(n-1),"----")
+      return fib(n-2,"1")+fib(n-1,"2");
+    }
+    console.log("fib:",fib(3));
+  </script>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  sdfsdfsfd
+  <script>
+    function foo(n){
+      console.trace();
+      if(n<0){
+        return;
+      }
+      console.log("begin:"+n);
+      foo(n-1);
+      console.log("end:"+n);
+
+    }
+    foo(3);
+  </script>
+</body>
+</html>
