@@ -28,6 +28,8 @@ Function.prototype.newCall = function (context) {
     context = Object.create(null);
   }
 
+  let args = [...arguments].slice(1);
+  let result = context.fn()
 
 }
 
