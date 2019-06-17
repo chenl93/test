@@ -26,13 +26,15 @@
   }
 
   function getValue(name, age) {
+    console.log(this, "===")
     console.log(name);
     console.log(age);
     console.log(this.value);
+    console.log(...arguments);
   }
 
-  getValue.call(a, 'cl', '25');
-  getValue.apply(a, ['cl', '25']);
+  //getValue.call(a, 'cl', '25');
+  //getValue.apply(a, ['cl', '25']);
 
 
   /* bind和其他两个方法作用也是一致的，只是该方法会返回一个函数，并且可以通过bind实现柯里化 */
@@ -50,7 +52,7 @@
 
     var _this = this;
     var args = [...arguments].slice(1);
-
+    /* bind返回的是方法 ,arguments为返回方法的参数*/
     return function F() {
       if (this instanceof F) {
         return new _this(...args, ...arguments);
@@ -58,9 +60,12 @@
       return _this.apply(context, args.concat(...arguments))
     }
   }
+  let bindRes = getValue.myBind(a, 'chenlong', '20', 'hahaha');
+  console.log(bindRes("33", "55"));
 
   /* 如何实现一个cal函数 */
   Function.prototype.myCall = function (context) {
+    debugger
     var context = context || window;
     //给context添加一个属性
     //getValue.call(a,'cl','25')=>a.fn=getValue
