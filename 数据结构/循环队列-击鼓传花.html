@@ -59,6 +59,7 @@
         let eliminated = '';
         while (queue.size() > 1) {
           for (let i = 0; i < num; i++) {
+            //谁站在队列头，谁就是拿花的人
             queue.enqueue(queue.dequeue());
           }
           console.log(queue.print())

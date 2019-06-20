@@ -2,11 +2,9 @@
   链表就是一个头元素存储的就是下一个节点的Node对象里面的next
 */
 class Node{
-  constructor(value,next,prev){
+  constructor(value,next){
     this.value = value;
     this.next = next || null;
-    this.prev = prev || null;
-
   }
 }
 
@@ -47,7 +45,7 @@ class LinkedList{
   /* 在链表的尾加入一个元素  */
   push(value){
     const nodeToInsert = new Node(value,null);
-    if(!this.tail){
+    if(!tail){
       this.head = nodeToInsert;
       this.tail = nodeToInsert;
     }else{
@@ -74,20 +72,9 @@ function linkedListTest(){
   }
   console.time("shifting array element");
 
-  for(var i =0;i<1000;i++){
+  for(var i =0;i<100;i++){
     arr.shift();
   }
-  console.timeEnd("shifting array element");
-
-  const linkedList = new LinkedList();
-  for(var i=0;i<1000000;i++){
-    linkedList.push(i);
-  }
-
-  console.time("shifting a linked list");
-  for(var i=0;i<1000;i++){
-    linkedList.remove(0);
-  }
-  console.timeEnd("shifting a linked list");
+  console.timeEnd("shifting array element")
 }
 linkedListTest();
