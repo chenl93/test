@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    /* 防抖 */
+    function debounce(fn, wait) {
+      var timer = null;
+      return function () {
+        if (timer) {
+          clearTimeout(timer);
+        }
+        timer = setTimeout(fn, wait);
+      }
+    }
+
+    //处理函数 (函数只在停止滚动1000毫秒之后才会调用一次)
+    function handle() {
+      console.log(document.body.scrollTop || document.documentElement.scrollTop);
+    }
+
+    window.addEventListener('scroll', debounce(handle, 1000));
+
+    /* 节流-时间戳方式 */
+    var throttle_timeStamp = function (fn, delay) {
+      var prev = Date.now();
+      return function () {
+        var context = this;
+        var args = arguments;
+        var now = Date.now();
+        if (now - prev >= delay) {
+          fn.apply(context, args);
+          prev = Date.now();
+        }
+      }
+    }
+
+    function handle_throttle() {
+      console.log(document.body.scrollTop || document.documentElement.scrollTop);
+    }
+    window.addEventListener('scroll', throttle_timeStamp(handle_throttle, 1000))
+
+    /* 节流-定时器方式 */
+    var throttle_timeout = function (fn, delay) {
+      var timer = null;
+      return function () {
+        var context = this;
+        var args = arguments;
+        if (!timer) {
+          timer = setTimeout(function () {
+            fn.apply(context, args);
+            timer = null;
+          }, delay);
+        }
+      }
+    }
+
+    function handle_timeout() {
+      console.log(document.body.scrollTop || document.documentElement.scrollTop);
+    }
+    window.addEventListener('scroll', throttle_timeout(handle_timeout, 1000))
+  </script>
+</body>
+
+</html>

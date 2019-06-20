@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    div {
+      width: 100px;
+      height: 200px;
+      border: 1px solid #098;
+    }
+  </style>
+</head>
+
+<body>
+  <div>111</div>
+  <div>222</div>
+  <div>333</div>
+  <div>444</div>
+  <div>555</div>
+  <div>666</div>
+  <div>777</div>
+  <script>
+    function throttle(method, mustRunDelay) {
+      let timer, args = arguments,
+        start;
+      return function loop() {
+        let selt = this;
+        let now = Date.now();
+        if (!start) {
+          start = now;
+        }
+        if (timer) {
+          clearTimeout(timer);
+        }
+        if (now - start >= mustRunDelay) {
+          method.apply(self, args);
+          start = now;
+        } else {
+          timer = setTimeout(function () {
+            loop.apply(self, args);
+          }, 50);
+        }
+      }
+    }
+
+    window.onscroll = throttle(function () {
+      let scrollTop = document.body.scrollTop || document.documentElement.scrollTop;
+      console.log("滚动条位置：" + scrollTop);
+    }, 800)
+  </script>
+</body>
+
+</html>
