@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    /* 请求某个图片资源 */
+    function requestImg() {
+      var p = new Promise(function (resolve, reject) {
+        var img = new Image();
+        img.onload = function () {
+          resolve(img);
+        }
+        //img.src = "../images/p3.jpg"
+        img.src = "aaa/aaa.jpg"
+      })
+      return p;
+    }
+
+    /* 延时函数，用于请求计时 */
+    function timeout() {
+      var p = new Promise(function (resolve, reject) {
+        setTimeout(function () {
+          reject("图片请求超时")
+        }, 5000);
+      })
+      return p;
+    }
+
+    Promise.race([requestImg(), timeout()]).then(function (results) {
+      console.log(results);
+    }).catch(function (reason) {
+      console.log(reason);
+    })
+  </script>
+</body>
+
+</html>

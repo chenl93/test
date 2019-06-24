@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <ul>
+    <li>
+      <div>
+        <p><span>hahaha</span></p>
+      </div>
+    </li>
+    <li>
+      <div>
+        <p><span>hehehe</span></p>
+      </div>
+    </li>
+  </ul>
+
+  <script>
+    function traversal(node) {
+      if (node && node.nodeType === 1) {
+        console.log(node.nodeName);
+      }
+      var i = 0,
+        childNodes = node.childNodes,
+        item;
+      for (; i < childNodes.length; i++) {
+        item = childNodes[i];
+        if (item.nodeType === 1) {
+          //递归先序遍历子节点
+          traversal(item);
+        }
+      }
+    }
+    let node = document.getElementsByTagName("li")[0];
+    traversal(node)
+  </script>
+</body>
+
+</html>
