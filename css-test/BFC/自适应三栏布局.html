@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>自适应两栏布局</title>
+  <style>
+    html,
+    body {
+      height: 100%;
+      width: 100%;
+      margin: 0;
+      padding: 0;
+    }
+
+    .left {
+      background-color: pink;
+      float: left;
+      width: 180px;
+    }
+
+    .center {
+      background: lightyellow;
+      overflow: hidden;
+    }
+
+    .right {
+      background: lightblue;
+      width: 180px;
+      float: right;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- 这个布局的特点在于左右两栏的宽度固定，中间栏可以根据浏览器宽度自适应 -->
+  <div class="container">
+    <div class="left">
+      <pre>
+        .left{
+          background:pink;
+          float: left;
+          width:180px;
+        }
+      </pre>
+    </div>
+    <div class="right">
+      <pre>
+        .right{
+          background:lightblue;
+          width:180px;
+          float:right;
+        }
+      </pre>
+    </div>
+    <div class="center">
+      <pre>
+        .center{
+          background:lightyellow;
+          overflow:hidden;
+          height:116px;
+        }
+      </pre>
+    </div>
+  </div>
+</body>
+
+</html>

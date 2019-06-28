@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>两个相邻Box垂直方向margin重叠</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    .wrap {
+      overflow: hidden;
+      /* 新的BFC */
+    }
+
+    p {
+      color: #f55;
+      background: #fcc;
+      width: 200px;
+      line-height: 100px;
+      text-align: center;
+      margin: 100px;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- 
+    两个P之间的距离为100px,发生了margin重叠（塌陷），以最大的为基准，如果第一个P的margin为80的话，两个p之间的距离还是100,以最大的为准
+    根据BFC布局规则第二条：
+      - Box垂直方向的距离由margin决定。属于同一个BFC（上例中是body根元素的BFC）的两个相邻的Box的margin会发生重叠
+      - 解决方法，可以在p外面包裹一层容器，并触发该容器产生一个新的BFC。那么两个p便不属于同一个BFC，就不会发生margin重叠了
+   -->
+  <p>haha</p>
+  <div class="wrap">
+    <p>hehe</p>
+  </div>
+</body>
+
+</html>

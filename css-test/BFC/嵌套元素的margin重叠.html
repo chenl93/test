@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>嵌套元素的margin重叠</title>
+  <style>
+    html,
+    body {
+      height: 100%;
+      width: 100%;
+      margin: 0;
+      padding: 0;
+    }
+
+    .first {
+      margin: 20px;
+      background: lightgreen;
+      width: 100px;
+      height: 100px;
+    }
+
+    /* 要阻止嵌套元素的margin重叠，只需让ul生成BFC即可（display:inline-block;） ，这样div、ul、li之间便不会发生重叠现象*/
+    ul {
+      display: inline-block;
+      margin: 10px;
+      background: lightblue;
+    }
+
+    /* 而li位于同一BFC内所以仍然存在重叠现象，给li设置一个inline-block重新生成一个BFC就不存在重叠现象了 */
+    li {
+      display: inline-block;
+      margin: 25px;
+    }
+  </style>
+</head>
+
+<body class="claro">
+  <div class="first"></div>
+  <ul>
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+  </ul>
+</body>
+
+</html>
