@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>居中方法</title>
+  <style>
+    /* 针对inline, 内联块inline-block, 内联表inline-table, inline-flex元素及img,span,button等元素 */
+    .btn {
+      text-align: center;
+    }
+
+    /* 不定宽块状元素居中 */
+    .box {
+      width: 100px;
+      margin: 0 auto;
+    }
+
+    /* 通过给父元素设置 float，然后给父元素设置 position:relative 和 left:50%，
+    子元素设置 position:relative 和 left: -50% 来实现水平居中。 */
+    .wrap {
+      float: left;
+      position: relative;
+      left: 50%;
+      clear: both;
+    }
+
+    .wrap-center {
+      left: -50%;
+    }
+  </style>
+</head>
+
+<body>
+  <button class="btn">哈哈哈</button>
+
+  <div class="box">不定宽块状元素居中</div>
+
+  <div class="wrap">
+    <div class="wrap-center">
+      哈哈哈哈哈哈
+    </div>
+  </div>
+</body>
+
+</html>
