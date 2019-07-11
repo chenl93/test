@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="test">111</div>
+  <script>
+    //创建事件
+    let event = document.createEvent("HTMLEvents");
+    //初始化一个点击事件，可以冒泡，无法被取消
+    event.initEvent("click", true, false);
+    let elm = document.getElementById('test');
+    //设置事件监听
+    elm.addEventListener("click", (e) => {
+      console.log(e);
+    }, false);
+    //触发监听事件
+    elm.dispatchEvent(event);
+  </script>
+</body>
+
+</html>
