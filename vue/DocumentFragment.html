@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app">
+    <input type="text" name="" id="test">
+    <span id="text"></span>
+  </div>
+
+  <script>
+    var dom = nodeToFragment(document.getElementById("app"));
+    console.log(dom);
+
+    function nodeToFragment(node) {
+      var flag = document.createDocumentFragment();
+      var child;
+      console.log(node.firstChild)
+      /* 
+        首先，所有表达式必然会返回一个值，赋值表达式亦不例外
+        其次，appendChild 方法有个隐蔽的地方，就是调用以后 child 会从原来 DOM 中移除
+        所以，第二次循环时，node.firstChild 已经不再是之前的第一个子元素了
+      */
+      while (child = node.firstChild) {
+        flag.appendChild(child); //支持node的所有子节点
+      }
+
+      return flag;
+    }
+    document.getElementById("app").appendChild(dom);
+  </script>
+</body>
+
+</html>

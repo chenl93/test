@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>极简双向绑定的实现</title>
+</head>
+
+<body>
+  <input type="text" name="" id="test">
+  <span id="text"></span>
+
+  <script>
+    /* 
+      此例实现的效果是：随着文本框输入文字的变化，span中会同步显示相同的文字内容；在js或控制台显示修改obj.hello的值，视图会相应更新
+      这样就实现了model->view以及view->model的双向绑定
+    */
+    var obj = {};
+    Object.defineProperty(obj, "hello", {
+      set: function (newVal) {
+        document.getElementById("test").value = newVal;
+        document.getElementById("text").innerHTML = newVal;
+      }
+    })
+
+    document.addEventListener("keyup", function (e) {
+      obj.hello = e.target.value;
+    })
+  </script>
+</body>
+
+</html>

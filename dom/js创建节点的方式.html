@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="wrapper"></div>
+  <script>
+    var ow = document.getElementById("wrapper");
+    console.time("document.createElement()----");
+
+    for (var i = 0; i < 1000; i++) {
+      var temp = document.createElement("p");
+      temp.innerHTML = i;
+      ow.appendChild(temp);
+    }
+    console.timeEnd("document.createElement()----");
+
+    console.time("innerHTML----");
+    var str = "";
+    for (var i = 0; i < 1000; i++) {
+      str += `<p>${i}<p>`;
+    }
+    ow.innerHTML = str;
+    console.timeEnd("innerHTML----");
+
+    console.time("documentFragment----");
+    var oFragment = document.createDocumentFragment();
+    for (var i = 0; i < 1000; i++) {
+      var p = document.createElement("p");
+      p.innerHTML = i;
+      oFragment.appendChild(p);
+    }
+    ow.appendChild(oFragment);
+    console.timeEnd("documentFragment----");
+  </script>
+</body>
+
+</html>

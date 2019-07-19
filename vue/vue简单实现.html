@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>vue简单实现</title>
+</head>
+
+<body>
+  <!-- 
+    首先将实现分为以下几个子任务
+      - 输入框以及方本节点与data中的数据绑定
+      - 输入框内容变化时，data中的数据同步变化，即view->model的变化
+      - data中的数据变化时，文本节点的内容同步变化，即model->view的变化
+  -->
+  <div id="app">
+    <input type="text" v-model="text">
+    {{ text }}
+  </div>
+  <script>
+    /* 主题对象 */
+    function Dep() {
+      this.subs = [];
+    }
+    Dep.prototype = {
+      addSub: function (sub) {
+        this.subs.push(sub);
+      },
+      notify: function () {
+        this.subs.forEach(function (sub) {
+          sub.update();
+        })
+      }
+    }
+    /* 订阅者 */
+    function Watcher(vm, node, name) {
+      //首先，将自己赋给了一个全局变量 Dep.target；
+      Dep.target = this;
+      this.name = name;
+      this.node = node;
+      this.vm = vm;
+      /*执行了 update 方法，进而执行了 get 方法，get 的方法读取了 vm 的访问器属性，
+      从而触发了访问器属性的 get 方法，get 方法中将该 watcher 添加到了对应访问器属性的 dep 中；*/
+      this.update();
+      /*  Dep.target 设为空。因为它是全局变量，也是 watcher 与 dep 关联的唯一桥梁，
+      任何时刻都必须保证 Dep.target 只有一个值。 */
+      Dep.target = null;
+    }
+
+    Watcher.prototype = {
+      update: function () {
+        this.get();
+        this.node.nodeValue = this.value;
+      },
+      //获取data中属性值
+      get: function () {
+        this.value = this.vm[this.name]; //触发相应属性的get
+      }
+    }
+
+    function defineReactive(obj, key, val) {
+
+      var dep = new Dep();
+
+      Object.defineProperty(obj, key, {
+        get: function () {
+          //添加订阅者watcher到主题对象Dep
+          if (Dep.target) dep.addSub(Dep.target);
+          return val;
+        },
+        set: function (newVal) {
+          if (newVal === val) return;
+          val = newVal;
+          //作为发布者发出通知
+          dep.notify();
+          console.log(val); //方便看效果
+        }
+      })
+    }
+
+    /* 数据监听器Observer，能够对数据对象的所有属性进行监听，如有变动可拿到最新值并通知订阅者 */
+    function observe(obj, vm) {
+      Object.keys(obj).forEach(function (key) {
+        defineReactive(vm, key, obj[key]);
+      })
+    }
+    /* 
+      编译 HTML
+      要实现任务一，需要对DOM进行编译，这里有一个知识点DocumentFragment
+    */
+    function nodeToFragment(node, vm) {
+      var flag = document.createDocumentFragment();
+      var child;
+      /* 
+        首先，所有表达式必然会返回一个值，赋值表达式亦不例外
+        其次，appendChild 方法有个隐蔽的地方，就是调用以后 child 会从原来 DOM 中移除
+        所以，第二次循环时，node.firstChild 已经不再是之前的第一个子元素了
+      */
+      while (child = node.firstChild) {
+        compile(child, vm)
+        flag.appendChild(child); //劫持node的所有子节点
+      }
+      return flag;
+    }
+
+    /* 指令解析器Compile，对每个元素节点的指令进行扫描和解析，根据指令模板替换数据，以及绑定相应的更新函数 */
+    function compile(node, vm) {
+      var reg = /\{\{(.*)\}\}/;
+      console.log(node);
+      //节点类型为元素
+      if (node.nodeType === 1) {
+        var attr = node.attributes;
+        //解析属性
+        for (var i = 0; i < attr.length; i++) {
+          if (attr[i].nodeName == "v-model") {
+            var name = attr[i].nodeValue; //获取v-model绑定的属性名
+            //给相应的data属性赋值，进而触发该属性的set方法
+            node.addEventListener("input", function (e) {
+              vm[name] = e.target.value;
+            })
+
+            node.value = vm.data[name]; //将data的值赋给该node
+
+            node.removeAttribute("v-model");
+          }
+        }
+      }
+      //节点类型为text
+      if (node.nodeType === 3) {
+        if (reg.test(node.nodeValue)) {
+          var name = RegExp.$1; //获取匹配到的字符串
+          name = name.trim();
+          //node.nodeValue = vm[name];
+
+          //为每个与数据绑定相关的节点生成一个订阅者watcher，watcher会将自己添加到相应属性的dep(主题对象)中
+          new Watcher(vm, node, name);
+        }
+      }
+    }
+
+    function Vue(options) {
+      this.data = options.data;
+
+      var data = this.data;
+
+      observe(data, this);
+
+      var id = options.el;
+      var dom = nodeToFragment(document.getElementById(id), this);
+      //console.log(dom);
+      //编译完成后，将dom返回到app中
+      document.getElementById(id).appendChild(dom);
+    }
+    /* 
+      每当new一个Vue,主要做了两件事件：
+        第一个是监听数据：observe(data);
+        第二个是编译HTML：nodeToFragment(id);
+    */
+    var vm = new Vue({
+      el: "app",
+      data: {
+        text: "hello world"
+      }
+    });
+  </script>
+</body>
+
+</html>
