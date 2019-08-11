@@ -32,7 +32,7 @@ function deepClone2(obj){
   if(typeof obj === "object" && obj){
     for(let key in obj){
       if(typeof obj[key] === "object" && obj[key]){
-        newObj[key] = deepClone2(obj[key]);
+        newObj[key] = deepClone2([key]);
       }else{
         newObj[key] = obj[key];
       }
