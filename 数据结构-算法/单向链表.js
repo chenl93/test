@@ -175,4 +175,22 @@ const obj = new LinkedList();
 obj.append(0);
 obj.append(1);
 obj.append(2);
-obj.printf();
+console.log(obj.printf());
+
+obj.insert(3, 3);
+console.log(obj.printf());
+
+obj.remove(3);
+console.log(obj.printf());
+
+obj.removeAt(0);
+console.log(obj.printf());
+
+obj.setIndex(0, 0);
+console.log(obj.printf());
+
+console.log(obj.indexOf(2));
+console.log(obj.length());
+
+obj.clear();
+console.log(obj.printf());
