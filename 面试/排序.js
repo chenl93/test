@@ -52,8 +52,9 @@ function quickSort(arr) {
   if (arr.length <= 1) {
     return arr;
   }
-  //找到基准
+  //找到基准，数组中间值
   let midIndex = Math.floor(arr.length / 2);
+  //将中间值从arr中取出
   let midVal = arr.splice(midIndex, 1);
   //比大小，分左右
   let left = [];

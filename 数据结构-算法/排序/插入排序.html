@@ -27,7 +27,6 @@
         current = arr[i]; //从无序的数列中将值通过for循环依次取出，用作与有序数列中的值依次对比
         //如果有序数列中是有值的，并且有序数列中的具体元素大于当前for循环中的元素
         while (preIndex >= 0 && arr[preIndex] > current) {
-          debugger
           //向有序数列中的具体元素后增加一个值
           arr[preIndex + 1] = arr[preIndex];
           preIndex--;
