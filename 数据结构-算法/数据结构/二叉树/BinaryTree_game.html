@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    #stage {
+      width: 300px;
+      height: 300px;
+      position: relative;
+    }
+    #background {
+      width: 300px;
+      height: 300px;
+      position: absolute;
+      top: 0px;
+      left: 0px;
+      background-color: #000;
+    }
+    #hr {
+      height: 2px;
+      width: 100%;
+      position: absolute;
+      top: 266px;
+      left: 0;
+      background-color: #ffffff;
+    }
+    /*大炮*/     
+    #cannon {
+      width: 0;
+      height: 0;
+      border: 10px solid transparent;
+      border-bottom: #06b5eb solid 10px;
+      position: absolute;
+      top: 270px;
+      left: 140px;
+    }
+    /*外星人*/      
+    #alien {
+      width: 20px;
+      height: 20px;
+      position: absolute;
+      top: 20px;
+      left: 80px;
+      background-color: yellow;
+    }
+    /*炮弹*/     
+    #missile {
+      width: 10px;
+      height: 10px;
+      position: absolute;
+      top: 270px;
+      left: 140px;
+    }
+    /*击中外星人*/      
+    #explosion {
+      width: 20px;
+      height: 20px;
+      position: absolute;
+      top: 0px;
+      left: 0px;
+      background-color: red;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+    <div id="stage">
+      <div id="background"></div>
+      <div id="hr"></div>
+      <div id="cannon"></div>
+      <div id="missile"></div>
+      <div id="alien"></div>
+      <div id="explosion"></div>
+    </div><!-- <div id="stage"> -->
+
+    <p id="output">请输入X和Y坐标（0-300），然后点击fire</p>
+    <input id="inputX" type="text" placeholder="X...">
+    <input id="inputY" type="text" placeholder="Y...">
+    <button style="cursor: pointer;">fire!</button>
+
+  <script src="./BinaryTree.js"></script>
+  <script>
+    
+  </script>
+</body>
+</html>
