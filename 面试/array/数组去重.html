@@ -25,6 +25,25 @@
       return init;
     }, []);
     console.log(result);
+
+    let arr = [1,2,3,4,4,1];
+let newArr = arr.reduce((pre,cur)=>{
+  if(!pre.includes(cur)){
+    return pre.concat(cur);
+  }else{
+    return pre;
+  }
+},[]);
+console.log(newArr);
+
+let arr4 = [1,2,3,4,4,1];
+let newArr4 = arr4.reduce((init,cur)=>{
+  if(!init.includes(cur)){
+    init.push(cur);
+  }
+  return init;
+},[]);
+console.log(newArr4);
   </script>
 </body>
 
