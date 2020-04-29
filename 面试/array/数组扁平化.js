@@ -4,7 +4,12 @@ let arr = [1,[2,[3,[4,[5]]]],6]; //->[1,2,3,4,5,6]
 let str = JSON.stringify(arr);
 console.log(str)
 
-/* ES6中的flat方法 */
+/* 
+ES6中的flat方法 
+参数depth： 指定列展開的深度。 預設為1。
+Infinity：是无限，不管多少层嵌套都会展开
+*/
+
 console.log(arr.flat(Infinity));
 
 /* replace + split */
