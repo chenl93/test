@@ -27,3 +27,13 @@ function factorialize3(num) {
 console.log(factorialize3(5));
 
 
+function factorialize4(num) {
+  let result = num;
+  while (num > 1) {
+    num--
+    result *= num
+  }
+  return result
+}
+
+console.log(factorialize4(5));
