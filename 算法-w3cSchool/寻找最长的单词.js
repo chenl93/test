@@ -3,15 +3,17 @@
  * 返回值应该是一个数字。
  * */ 
 
-function findLongestWord(str) {
+function titleCase(str) {
+  var arr = str.toLowerCase().split(" ")
 
-  let arr = str.split(" ");
-  let max = arr[0].length;
-  arr.forEach(item => {
-    if (item.length > max) {
-      max = item.length
-    }
-  })
-  return max
+  //forEach中没有修改原数组
+  // arr.forEach(item => {
+  //   item = item[0].toUpperCase() + item.substring(1, item.length)
+  // })
+
+  for (let i = 0; i < arr.length; i++) {
+    arr[i] = arr[i][0].toUpperCase() + arr[i].substring(1, arr[i].length)
+  }
+  return arr.join(" ");
 }
-console.log(findLongestWord("The quick brown fox jumped over the lazy dog"));
+console.log(titleCase("I'm a little tea pot"));
