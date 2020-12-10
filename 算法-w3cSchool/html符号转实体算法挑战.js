@@ -4,8 +4,16 @@
 
 function convert(str) {
   // &colon;&rpar;
-  let reg = /\&|\<|\>|\"|\/
+  let map = {
+    "&": "&amp;",
+    "<": "&lt;",
+    ">": "&gt;",
+    '"': "&quot;",
+    "'": "&apos;",
+  };
+  for (var key in map) {
+    str = str.replace(new RegExp(key, "g"), map[key]);
+  }
   return str;
 }
-
-convert("Dolce & Gabbana");
+console.log(convert("Dolce & Gabbana"));
