@@ -6,5 +6,25 @@
   "dependencies": {
     "jshint": "^2.10.1",
     "vuex": "^3.1.1"
-  }
+  },
+  "name": "test",
+  "version": "1.0.0",
+  "main": "test.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chenl93/test.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/chenl93/test/issues"
+  },
+  "homepage": "https://github.com/chenl93/test#readme",
+  "description": ""
 }

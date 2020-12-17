@@ -26,6 +26,7 @@
 样例解释:
   将其变成一个只包含整数的简单列表。
 */
+// ES6 提供的flat()方法可以将数组扁平化， 默认调用.flat()会展开一层，可以传参数展开多层
 const flatten = function(arr){
   return arr.flat(4)
 }
