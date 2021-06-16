@@ -1,3 +1,9 @@
+/* 
+  # 判断是否是数组的三种方式
+    - Object.prototype.toString.call()
+    - instanceof
+    - Array.isArray()
+*/
 /* 1、Object.prototype.toString.call */
 const arr = ["hello", "an"];
 console.log(arr.toString());
@@ -15,5 +21,8 @@ console.log(Object.prototype.toString.call({
 }));
 
 /* 2、instanceof */
+const arr1 = [1, 2, 3]
+console.log(arr1 instanceof Array);
 
 /* 3、Array.isArray */
+console.log(Array.isArray(arr1));

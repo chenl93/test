@@ -1,15 +1,26 @@
-var a;
-if(true){
-  a=5;
-  function a(){
-    console.log("33333")
-  }
-  a=0;
-  console.log(a);
-}
-console.log(a); 
-
+var b = 10;
+(function b(){
+  /* 
+    内部作用域， 会先去查找是已有变量b的声明， 有就直接赋值20， 确实是有的。 发现了是具名函数
+    IIFE（自执行函数）无法进行赋值（内部机制，类似const定义的常量），所以无效
+   */
+  b = 20
+  console.log(b)
+})()
 console.log("------------------------------");
+
+// var a;
+// if(true){
+//   a=5;
+//   function a(){
+//     console.log("33333")
+//   }
+//   a=0;
+//   console.log(a);
+// }
+// console.log(a); 
+
+// console.log("------------------------------");
 
 /* 
 变量声明比函数声明更优先
