@@ -47,8 +47,9 @@ wifi:
   sme_veh 整车：
     SME_VEH_ADMIN: 123456
     sme_veh_fr_dt1: 123456
-    frbranch：40zP5Toj
-    sme_veh_opt_9010/123456（财务）
+    frbranch / 40zP5Toj （物流）
+    sme_veh_opt_9010 / 123456（财务）
+    veh_finance / ukNYPpR0  (国家经理跟财务)
   --------------------------------------
   smi 印尼：
     smi_operator/123456
@@ -115,6 +116,7 @@ wifi:
     }
 
     各位可以在本地尝试，但不要提交.babelrc文件
+  17、type: number; defaultNull: true;数字框不设置默认值
 
 =======================================================
 
@@ -185,6 +187,15 @@ wifi:
 =====================================================
 
 # MDM:
+	Req 1296 修改Sales/ Franchise Starting Date 的必填性验证
+	feature-SalesStartingDate-0729
+	[feat][Req-1296][organisationMangement]: dealerManagement,distributorManagement页面startingDate根据franchiseStatus判断是否必填
+
+	:required="dialogForm.franchiseStatus === '1' ? false : true"
+	:required="dialogForm.franchiseStatus === '1' ? franchiseStartingDate.required = false : franchiseStartingDate.required = true"
+
+	-----------------------------------------------
+
 	需求 1256 Distributor详情页面优化
 	feature-1256-distributorDetailAddFilterFranchiseState-20210701
 	[feat][Req-1256][organisationMangement]: distributorManagement详情页面FranchiseState改为Franchise Status
@@ -233,6 +244,53 @@ wifi:
 
 # 整车：
 	
+	-----------------------------------------------------
+	
+	Req 1289 vehicle tracking新增页面
+	feature-smev-vehicleTrackingQueryForCountryManager-20210726
+	[feat][Req-1234][SMEV - logistics]: 两个新的vehicleTracking页面vin点击查看详情权限增加
+
+	-----------------------------------------------------
+
+	Test ENV
+	feature-smev-testEnv-20210609
+	[feat][SMEV]: test环境上传文件时的url未经拦截器替换api地址
+	http://10.130.161.113/sme-veh-test/
+	test jenkins: chenlinjun/chenlinjun
+
+	-----------------------------------------------------
+	
+	Bug # 6893 COC , VIN - Relation 页面界面优化
+	feature-smev-cocPrint-20210526
+	[feat][Bug-6893][SMEV - ecoc]: template，vinTemplateRelation页面单行下载数据时的报错提示修改
+
+	文件下载报错提示处理
+
+	LSJE24096MG050886
+	LSJZ14U97LS019639
+
+	------------------------------------------------------
+
+	Bug # 6888 To dn list》allocation页面勾选全选的时候 会选每张订单的第一行物料，并不是全部选择
+	hotfix-smev-allocationSearchResultCheckAll-20210716
+	[hotfix][Req-6888][SMEV - logistics]: toDnList，Quota分配页面confirm拼写错误
+
+	搜索数据结果根据saleOrderNo判断是否重复导致每个订单下只有一条数据可选中，已改为id
+
+	------------------------------------------------------
+
+	Req # 1277 创建发票接口入参重构
+	hotfix-smev-refactorInvoiceCreate-20210708
+	[hotfix][Req-1277][SMEV - invoice]: toinvoicelist页面接口参数重构，修改传参
+
+	------------------------------------------------------
+	
+	Bug # 6873 Quota>QUota Allocate页面》allocate》submit页面复刻，to dn list页面
+	hotfix-smev-QuotaAllocateBtnVisible-20210715
+	[hotfix][Bug-6873][SMEV - common]: newTable前端分页时搜索后分页数据显示不正确
+
+	------------------------------------------------------
+
 	Bug 6834  Quota》Quota Allocate页面，点击confrim应添加置灰，不能多次连续点击
 	hotfix-smev-QuotaAllocateConfrimBtn-20210712
 	[hotfix][Bug-6834][SMEV - quota]: quotaAllocate页面Confrim增加loading
@@ -308,14 +366,6 @@ wifi:
 	BUG # 6734  Logigtics》Outbound》To DN List 》Allocation页面交互优化
 	hotfix-smev-toDnListAllocation-20210623
 	[hotfix][Bug-6734][SMEV - logistics]: toDnList页面Allocation的Tree筛选条件优化
-
-	-----------------------------------------------------
-
-	Test ENV
-	feature-smev-testEnv-20210609
-	[feat][SMEV]: test环境路由配置修改
-	http://10.130.161.113/sme-veh-test/
-	test jenkins: chenlinjun/chenlinjun
 
 	----------------------------------------------------
 
@@ -1020,136 +1070,22 @@ wifi:
 
 ======================================================
 
-# 墨西哥:
-	缺少：
-		localDTD
-		DN Preview
-		DN QTY
-		Delivered Date (E)
+# 欧洲配件  release-sme-sprint-20210413
 
-	dt用户西班牙语
-	dt用户DeliveryNote页面按钮缺少语言配置
+	Req 1266 Outbound Claim  [2021/7/19拉分支]
+	feature-1266-sme-OutboundClaim-20210712
+	[feat][Req-1266][SME - Claim]: outboundClaimRequestApprove页面Item Approve Amount是否可编辑根据resolution值
 
-	dt用户面包屑导航未翻译，左侧菜单鼠标悬停提示未翻译
+	6A9AAB214012
 
-	dt用户增加英文西班牙语切换
+	 parseInt(obj.preResolution) !== CONST_SME.INDEX_CLAIM_ITEM_CONVERT_TO_AP
+                && parseInt(obj.preResolution) !== CONST_SME.INDEX_CLAIM_ITEM_OFFLINE_CREDIT_NOTE,
+I	NDEX_CLAIM_ITEM_CONVERT_TO_AP_AND_SHIP_BACK
+	---------------------------------------------------
 
-	非dt用户配置英文
-
-	{{ $t(`lang.menu.${data.name.replaceAll(" ", "").toLowerCase()}`) }}
-	//item.name = localStorage.getItem("roleCodeList") === "MENU_SMMX_DT" ? this.$t(`lang.menu.${item.menuName.replaceAll(" ", "").toLowerCase()}`) : item.menuName
-
-=====================================================
-
-# 中东
-	release-DCSSMME-20210121
-
-	-------------------------------------------------------
-	bug # 6828  bug 5084
-
-	6828  财务无法修改索赔金额
-	
-	5084  Claim Settlement Preview 页面，Item Confirmed AP Amount可编辑性
-
-	4634  索赔凭证已经confirmed，点进去Preview时，Item Confirmed AP Amount置灰不可编辑
-
-	hotfix-smme-claimSettlementEdit-20210223
-
-	[hotfix][bug-6828][SMME - settlementManagement]: 登录后获取customer权限增加为空判断
-	
-	-------------------------------------------------------
-
-	# 1172 Sales Item界面增加BO QTY字段
-	feature-smme-augmentSalesItemBoQty-20210514
-	[feat][Req-1172][SMME - salesManagement]: salesReport页面去除B/O查询条件
-
-	-------------------------------------------------------
-
-  	Bug 6583 SO Approve分配SOH多于订单数量
-	hotfix-smme-SOApproveAdjustmentQty-20210623
-	[hotfix][SMME - Claim Management]:
-
-	-------------------------------------------------------
-
-	#Req-782: Lead Time维护页面字段修改
-	feature-smme-leadTimeChangeField-20201120
-	[feat][SMME -  logisticsManagement]: leadTimeManagement页面参数logisticsLineDtlList中Purchase_Internal_Approve，PKL的leadTime设置为0
-
-	-------------------------------------------------------
-
-	#Req：507 支持手工创ASN以及虚拟库入库
-	feature-createAsnAndvirtualWms-20201015
-	[feat][SMME - warehouseManagement]: inventoryEnquiry页面ofclaim窗口增加returnedBoe#字段
-
-	git stash list
-
-	------------------------------------------------------
-
-	feature-addPlnBaseButton-20201010
-	[feat][SMME - planningManagement]: RecommOrderList页面CreateNewRecommendedOrder传值错误修改
-
-	-----------------------------------------------
-
-	## BUG 2600 - 索赔查询界面发票显示
-	hotfix-ClaimRequestEnquiryInvoice-20200629
-	[hotfix][SMME - Claim Management]: outboundClaimRequestEnquiry详情页面附件下载链接修改，paymentInformationDetail页面下载链接文字修改
-
-	----------------------------------------------------------
-
-	## 需求-salesCi界面cancle按钮调整
-	- 分支：feature-SalesCiViewCancleButtonAdjust-20200623
-	[feat][SMME - Invoice Management]: Sales CI Management详情页面cancel按钮移到最左边
-
-	----------------------------------------------------------
-
-	## 需求 383 - 组商品价格变更
-	- 分支：feature-groupPriceChange-20200619
-	[feat][Req-383][SMME - Price Management]: Sales Price Maintenance页面dialog弹窗增加title
-
-	---------------------------------------------------------
-
-	## Stock Replenishment （补货）
-
-	- 分支：feature-smme-1939-stockReplenishment-20200427
-
-	---- ** save按钮默认是置灰
-	---- ** DT Sales Data页面模板下载根据Data Type区分
-
-	+ side.vue中增加了静态写死的菜单，后台不未添加菜单 
-
-	[feat][Task-1939][SMME - Planning Management]: recommOrderPrev页面pickClass查询条件改为下拉框
-
-	-------------------------------------------------------
-
-	Req-482
-	feature-changPaymentInfor-20200603
-	[feat][Req-482][SMME - Payment Management]: paymentInformation页面list接口修改
-
-	-------------------------------------------------------
-
-	## Task-1182 索赔模块
-
-	分支： feature-smme-claimRequest-20200122
-
-	[feat][Task-1182][SMME - Claim Management]: Outbound Claim Request Review，Outbound Claim Request Approve界面return,reject接口增加comments参数
-	[feat][Task-1182][SMME - Claim Management]: Claim Settlement页面Total Confirmed AP Amount计算
-	[feat][Task-1182][SMME - Claim Management]: Claim Settlement页面confirm接口修改
-
-	[feat][Task-1182][SMME - Claim Management]: Claim Settlement页面confirm按钮显示判断， Claim Request approve页面overdue显示值修改
-
-	[feat][Task-1182][SMME - Claim Management]: claimItemsTable组件watch invoiceNo清空itemData
-
-	-------------------------------------------------------
-
-	Req-489:
-	    feature-dnItemViewAddDnPklNo-20200511
-	    [feat][Req-489][SMME - Logistics Management]: DnItem界面添加pkl
-
-======================================================
-
-# 欧洲配件
-
-	release-sme-sprint-20210413
+	需求 1279 入库GR QTY = 0的成本需摊到同一批次其他行项目，计算其他零件Unit Cost
+	feature-1279-sme-UpdateUnitCost-20210721
+	[feat][Req-1279][SME - Warehouse Management]: inventoryEnquiry页面 # of GR Preview弹窗增加sharingCost字段
 
 	---------------------------------------------------
 
@@ -1169,7 +1105,7 @@ wifi:
 	
   	# 1245 客户账号支持多语言
 	feature-sme-1245-dtPageI18N-20210628
-	[feat][Req-1245][SME - DTAll]: 翻译错误修改MX->EU
+	[feat][Req-1245][SME - DTAll]:  德语个别字段翻译修改
  	dt用户登录多语言，其他用户重置为英语
 
 	-----------------------------------------------------
@@ -1328,6 +1264,145 @@ wifi:
 	[feat][SME - Marster Data ]: customer列表删除salesType列和搜索项
 
 =======================================================
+
+# 中东 release-DCSSMME-20210121
+	
+	bug 6944 salseItemEnquiry delete校验
+	hotfix-6944-smme-salesItemEnquiryCheck-20210728
+	[hotfix][6944][SMME - salesManagement]: orderType"2","5","7"时不能删除
+
+	2,5,7
+
+	-------------------------------------------------------
+
+	bug 6853 客户无法提交付款信息
+	hotfix-smme-paymentAdvicePaymentAmountNotEnough-20210714
+	[hotfix][6853][SMME - paymentManagement]: paymentAdviced页面数据精度报错PaymentAmount Not Enough
+
+	-------------------------------------------------------
+	bug # 6828  bug 5084
+
+	6828  财务无法修改索赔金额
+	
+	5084  Claim Settlement Preview 页面，Item Confirmed AP Amount可编辑性
+
+	4634  索赔凭证已经confirmed，点进去Preview时，Item Confirmed AP Amount置灰不可编辑
+
+	hotfix-smme-claimSettlementEdit-20210223
+
+	[hotfix][bug-6828][SMME - settlementManagement]: 登录后获取customer权限增加为空判断
+	
+	-------------------------------------------------------
+
+	# 1172 Sales Item界面增加BO QTY字段
+	feature-smme-augmentSalesItemBoQty-20210514
+	[feat][Req-1172][SMME - salesManagement]: salesReport页面去除B/O查询条件
+
+	-------------------------------------------------------
+
+  	Bug 6583 SO Approve分配SOH多于订单数量
+	hotfix-smme-SOApproveAdjustmentQty-20210623
+	[hotfix][SMME - Claim Management]:
+
+	-------------------------------------------------------
+
+	#Req-782: Lead Time维护页面字段修改
+	feature-smme-leadTimeChangeField-20201120
+	[feat][SMME -  logisticsManagement]: leadTimeManagement页面参数logisticsLineDtlList中Purchase_Internal_Approve，PKL的leadTime设置为0
+
+	-------------------------------------------------------
+
+	#Req：507 支持手工创ASN以及虚拟库入库
+	feature-createAsnAndvirtualWms-20201015
+	[feat][SMME - warehouseManagement]: inventoryEnquiry页面ofclaim窗口增加returnedBoe#字段
+
+	git stash list
+
+	------------------------------------------------------
+
+	feature-addPlnBaseButton-20201010
+	[feat][SMME - planningManagement]: RecommOrderList页面CreateNewRecommendedOrder传值错误修改
+
+	-----------------------------------------------
+
+	## BUG 2600 - 索赔查询界面发票显示
+	hotfix-ClaimRequestEnquiryInvoice-20200629
+	[hotfix][SMME - Claim Management]: outboundClaimRequestEnquiry详情页面附件下载链接修改，paymentInformationDetail页面下载链接文字修改
+
+	----------------------------------------------------------
+
+	## 需求-salesCi界面cancle按钮调整
+	- 分支：feature-SalesCiViewCancleButtonAdjust-20200623
+	[feat][SMME - Invoice Management]: Sales CI Management详情页面cancel按钮移到最左边
+
+	----------------------------------------------------------
+
+	## 需求 383 - 组商品价格变更
+	- 分支：feature-groupPriceChange-20200619
+	[feat][Req-383][SMME - Price Management]: Sales Price Maintenance页面dialog弹窗增加title
+
+	---------------------------------------------------------
+
+	## Stock Replenishment （补货）
+
+	- 分支：feature-smme-1939-stockReplenishment-20200427
+
+	---- ** save按钮默认是置灰
+	---- ** DT Sales Data页面模板下载根据Data Type区分
+
+	+ side.vue中增加了静态写死的菜单，后台不未添加菜单 
+
+	[feat][Task-1939][SMME - Planning Management]: recommOrderPrev页面pickClass查询条件改为下拉框
+
+	-------------------------------------------------------
+
+	Req-482
+	feature-changPaymentInfor-20200603
+	[feat][Req-482][SMME - Payment Management]: paymentInformation页面list接口修改
+
+	-------------------------------------------------------
+
+	## Task-1182 索赔模块
+
+	分支： feature-smme-claimRequest-20200122
+
+	[feat][Task-1182][SMME - Claim Management]: Outbound Claim Request Review，Outbound Claim Request Approve界面return,reject接口增加comments参数
+	[feat][Task-1182][SMME - Claim Management]: Claim Settlement页面Total Confirmed AP Amount计算
+	[feat][Task-1182][SMME - Claim Management]: Claim Settlement页面confirm接口修改
+
+	[feat][Task-1182][SMME - Claim Management]: Claim Settlement页面confirm按钮显示判断， Claim Request approve页面overdue显示值修改
+
+	[feat][Task-1182][SMME - Claim Management]: claimItemsTable组件watch invoiceNo清空itemData
+
+	-------------------------------------------------------
+
+	Req-489:
+	    feature-dnItemViewAddDnPklNo-20200511
+	    [feat][Req-489][SMME - Logistics Management]: DnItem界面添加pkl
+
+======================================================
+
+
+# 墨西哥:
+	缺少：
+		localDTD
+		DN Preview
+		DN QTY
+		Delivered Date (E)
+
+	dt用户西班牙语
+	dt用户DeliveryNote页面按钮缺少语言配置
+
+	dt用户面包屑导航未翻译，左侧菜单鼠标悬停提示未翻译
+
+	dt用户增加英文西班牙语切换
+
+	非dt用户配置英文
+
+	{{ $t(`lang.menu.${data.name.replaceAll(" ", "").toLowerCase()}`) }}
+	//item.name = localStorage.getItem("roleCodeList") === "MENU_SMMX_DT" ? this.$t(`lang.menu.${item.menuName.replaceAll(" ", "").toLowerCase()}`) : item.menuName
+
+=====================================================
 
 # 印尼
 
