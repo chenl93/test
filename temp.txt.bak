@@ -242,8 +242,11 @@ wifi:
 
 =====================================================
 
-# 整车：
+# 整车： TestENV：feature-smev-testEnv-20210609
 	
+	Req # 1297 PDFcoc证书以及 发票下载
+	feature-smev-pdfDownload-20210729
+
 	-----------------------------------------------------
 	
 	Req 1289 vehicle tracking新增页面
@@ -1074,7 +1077,7 @@ wifi:
 
 	Req 1266 Outbound Claim  [2021/7/19拉分支]
 	feature-1266-sme-OutboundClaim-20210712
-	[feat][Req-1266][SME - Claim]: outboundClaimRequestApprove页面Item Approve Amount是否可编辑根据resolution值
+	[feat][Req-1266][SME - Claim]:  Claim Settlement Preview中，Item Approve Amount未显示值
 
 	6A9AAB214012
 

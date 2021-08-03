@@ -189,7 +189,7 @@ wifi:
 # MDM:
 	Req 1296 修改Sales/ Franchise Starting Date 的必填性验证
 	feature-SalesStartingDate-0729
-	[feat][Req-1296][organisationMangement]: dealerManagement,distributorManagement页面startingDate根据franchiseStatus判断是否必填
+	[feat][Req-1296][organisationMangement]: dealerManagement,distributorManagement页面修改时startingDate根据franchiseStatus判断是否必填
 
 	:required="dialogForm.franchiseStatus === '1' ? false : true"
 	:required="dialogForm.franchiseStatus === '1' ? franchiseStartingDate.required = false : franchiseStartingDate.required = true"
@@ -242,8 +242,11 @@ wifi:
 
 =====================================================
 
-# 整车：
+# 整车： TestENV：feature-smev-testEnv-20210609
 	
+	Req # 1297 PDFcoc证书以及 发票下载
+	feature-smev-pdfDownload-20210729
+
 	-----------------------------------------------------
 	
 	Req 1289 vehicle tracking新增页面
