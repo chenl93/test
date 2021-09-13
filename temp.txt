@@ -17,6 +17,7 @@ wifi:
     smil_it/KdpZSC9l
     om_dd/123456
     om_it/123456
+    veh_viewer/123456
   mdm - uat:
     https://uat-dcs.smil.com/smil-mdm/#/login
     mdmadmin/mdm!@#123
@@ -47,6 +48,7 @@ wifi:
   sme_veh 整车：
     SME_VEH_ADMIN: 123456
     sme_veh_fr_dt1: 123456
+    sme_veh_dt6: 123456
     frbranch / 40zP5Toj （物流）
     sme_veh_opt_9010 / 123456（财务）
     veh_finance / ukNYPpR0  (国家经理跟财务)
@@ -187,6 +189,20 @@ wifi:
 =====================================================
 
 # MDM:
+
+	Req 1314 新增字段、页面及变更计数逻辑
+	feature-newItem1214-20210816
+	[feat][Req-1314][organisationMangement]: 全局文本域diabled时字体颜色修改
+	
+	https://eappfile.blob.core.windows.net/smil-mdm-dealer/Intended%20Dealership%20Comprehensive%20Assessment%20Record%20Form.docx
+	-----------------------------------------------
+	
+	BUG # 7088 Edit界面优化
+	hotfix-editSaveLoading-20210809
+	[hotfix][BUG-7088][SMEV - organisationMangement]: 各页面添加，保存按钮增加loading
+
+	-----------------------------------------------
+
 	Req 1296 修改Sales/ Franchise Starting Date 的必填性验证
 	feature-SalesStartingDate-0729
 	[feat][Req-1296][organisationMangement]: dealerManagement,distributorManagement页面修改时startingDate根据franchiseStatus判断是否必填
@@ -242,10 +258,74 @@ wifi:
 
 =====================================================
 
-# 整车： TestENV：feature-smev-testEnv-20210609
+# 整车： TestENV：feature-smev-testEnv-20210609 多语言增加配件文件中未添加test环境配置
+
+	Bug # 7474 Payment界面添加发票列表下载按钮
+	hotfix-smev-ecocAddStatusFilter-20210910
+	[hotfix][Bug-7474][SMEV - Ecoc]: ecocVinList页面增加status搜索条件
+
+	-----------------------------------------------------
+
+	Bug # 7541 Payment界面添加发票列表下载按钮
+	hotfix-smev-paymentDownload-20210908
+	[hotfix][Bug-7541][SMEV - payment]: paymentInfo页面增加下载按钮
+
+	------------------------------------------------------
+
+	Bug # 7511 To DN List页面， 使用Allocate分车， 当只选订单中的部分item时， 提交报错
+	hotfix-smev-ToDNListAllocateError-20210902
+	[hotfix][Bug-7511][SMEV - logistics]: To DN List页面Allocate时订单中包含多个物料号，只选择一个物料号未拼装数据
+
+	------------------------------------------------------
+
+	Bug # 7437 CRM的FLeet订单，在OrderDetail页面的NOTE内标记Fleet
+	hotfix-smev-SOEnquiryDetailPageNoteField-20210831
+	[hotfix][Bug-7437][SMEV - sales]: SOEnquiry详情页面Note字段未显示
+
+	------------------------------------------------------
+
+	Req # 1264 1305 信贷功能改造     
+	feature-smev-updateCredit-20210705
+	[feat][Req-1264-1305][SMEV - Credit]: dnAllowConfirm页面联调
+
+	resendType = 3 不显示
+
+	-----------------------------------------------------
+
+	Bug # 6990  sme-veh-test-api/sale/invoice-preview 入参修改。
+	hotfix-smev-changeRequestOfSalesSettlement-20210817
+	[hotfix][Bug-6990][SMEV - salesSettlement]: salesInvoiceSettlement页面invoice-preview接口参数修改
+
+	-----------------------------------------------------
+
+	Req # 7225 手动分车页面 前端提交分车传值有误
+	hotfix-smev-toDnListAllocation-20210817
+	[hotfix][Bug-7225][SMEV - logistics]: toDnList分车页面删除数据后导致数据出错
+
+	4BICC121803 4BICC121804 
+
+	----------------------------------------------------
+
+	Req # 1313 vehicle tracking-country manager功能显示及下载新增字段
+	feature-smev-vehicleTrackingCountryMangerAddFields-20210811
+	[feat][Req-1313][SMEV - logistics]: vehicleTrackingCountryManager页面增加字段
+
+	-----------------------------------------------------
+
+	Bug # 7145  销售凭证， Reverse Error应该显示Rev Error Handle 图标	
+	hotfix-smev-invoiceSettlementReverseErrorHandleIcon-20210812
+	[hotfix][Bug-7145][SMEV - Settlement]: invoiceSettlement页面ErrorHandle图标文字修改
+
+	-----------------------------------------------------
 	
 	Req # 1297 PDFcoc证书以及 发票下载
 	feature-smev-pdfDownload-20210729
+
+	-----------------------------------------------------
+
+	Bug # 6975 页面上有Dealer类型，但是新建客户时候类型下拉列表没有Dealer选项
+	hotfix-smev-customerTypeDealer-20210804
+	[hotfix][Bug-6975][SMEV - masterData]: customerManagement详情页面下拉框增加Dealer
 
 	-----------------------------------------------------
 	
@@ -1074,16 +1154,29 @@ wifi:
 ======================================================
 
 # 欧洲配件  release-sme-sprint-20210413
+	
+	Req 1282  去除所有角色下DN non-pack/Cancelled选项，支持后台取消 
+	feature-1282-sme-deliveryNoteRemoveBtn-20210819
+	[feat][Req-1282][SME - logisticsManagement]: deliveryNote页面隐藏non-pack/Cancelled按钮
+
+	---------------------------------------------------
+
+	Bug 7257 客户账号在DN明细界面Total QTY未能按PKL数量更新
+	hotfix-7257-sme-DeliveryItemTrackingTotalQty-20210819
+	[hotfix][Bug-7257][SME - Customer]: deliveryItemTracking页面table中totalQty列取值修改
+
+	---------------------------------------------------
 
 	Req 1266 Outbound Claim  [2021/7/19拉分支]
 	feature-1266-sme-OutboundClaim-20210712
-	[feat][Req-1266][SME - Claim]:  Claim Settlement Preview中，Item Approve Amount未显示值
+	[feat][Req-1266][SME - Customer]:  claimRequestCreation页面tooMuchClaimQty报错判断修改
 
 	6A9AAB214012
+	6A9LIC204016
 
-	 parseInt(obj.preResolution) !== CONST_SME.INDEX_CLAIM_ITEM_CONVERT_TO_AP
-                && parseInt(obj.preResolution) !== CONST_SME.INDEX_CLAIM_ITEM_OFFLINE_CREDIT_NOTE,
-I	NDEX_CLAIM_ITEM_CONVERT_TO_AP_AND_SHIP_BACK
+	Claim Request Creation
+	Claim Request Enquiry
+			
 	---------------------------------------------------
 
 	需求 1279 入库GR QTY = 0的成本需摊到同一批次其他行项目，计算其他零件Unit Cost
@@ -1269,6 +1362,27 @@ I	NDEX_CLAIM_ITEM_CONVERT_TO_AP_AND_SHIP_BACK
 =======================================================
 
 # 中东 release-DCSSMME-20210121
+
+
+	Req-1215-VOR订单转Forward Order
+	feature-1215-smme-vor2forward-20210706
+	[feat][Req-1215][SMME - ALL]: Dn页面VOR-Forward订单类型的DN不可以去Non-Pack
+	4AAYM321901
+
+	-------------------------------------------------------
+
+	Req 1230 增加Purchase Price下载滚动标志
+	feature-1230-PurchasePriceDownloadLoading-20210910
+	[feat][Req-1230][SMME - priceManagement]: purchasePriceManagement页面download按钮增加loading效果
+
+
+	-------------------------------------------------------
+
+	Bug 6857 索赔查询界面索赔单对应客户名为空
+	hotfix-6857-smme-outboundClaimRequestEnquiryCustomerName-20210827
+	[hotfix][6857][SMME - ClaimManagement]: Outbound Claim Management下Approve,Enquiry,Review页面customerName显示问题修改
+
+	-------------------------------------------------------
 	
 	bug 6944 salseItemEnquiry delete校验
 	hotfix-6944-smme-salesItemEnquiryCheck-20210728
