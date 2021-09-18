@@ -1,6 +1,8 @@
 ﻿
 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
+https://github.com.cnpmjs.org/
+
 wifi: 
   SACO_COP02/222bbbBBB
   SACO_COP02 2/222bbbBBB
@@ -175,92 +177,30 @@ wifi:
 
 =======================================================
 
-# AM: 
-	#Req 1089 AM页面中所有涉及到 组织 的展示中都加上code值，格式为：260008 - Al Yousuf MotorsAl Yousuf，后端传值不变。
-	feature-1089-orgAddcode-20210312
-	[feat][Req-1089][am - dictionaryList - dimensionList - userList]: 数据维度管理、数据字典管理、用户管理页面 组织 的展示中都加上code值
-
-	----------------------------------------------------
-
-	#Req 1225 AM 创建用户时候左侧增加根据组织编号筛选
-	feature-1225-addUserTreeFilter-20210607
-	[feat][Req-1225][am - userList]: 创建用户时候左侧增加根据组织编号筛选
-
-=====================================================
-
-# MDM:
-
-	Req 1314 新增字段、页面及变更计数逻辑
-	feature-newItem1214-20210816
-	[feat][Req-1314][organisationMangement]: 全局文本域diabled时字体颜色修改
-	
-	https://eappfile.blob.core.windows.net/smil-mdm-dealer/Intended%20Dealership%20Comprehensive%20Assessment%20Record%20Form.docx
-	-----------------------------------------------
-	
-	BUG # 7088 Edit界面优化
-	hotfix-editSaveLoading-20210809
-	[hotfix][BUG-7088][SMEV - organisationMangement]: 各页面添加，保存按钮增加loading
-
-	-----------------------------------------------
-
-	Req 1296 修改Sales/ Franchise Starting Date 的必填性验证
-	feature-SalesStartingDate-0729
-	[feat][Req-1296][organisationMangement]: dealerManagement,distributorManagement页面修改时startingDate根据franchiseStatus判断是否必填
-
-	:required="dialogForm.franchiseStatus === '1' ? false : true"
-	:required="dialogForm.franchiseStatus === '1' ? franchiseStartingDate.required = false : franchiseStartingDate.required = true"
-
-	-----------------------------------------------
-
-	需求 1256 Distributor详情页面优化
-	feature-1256-distributorDetailAddFilterFranchiseState-20210701
-	[feat][Req-1256][organisationMangement]: distributorManagement详情页面FranchiseState改为Franchise Status
-
-	-----------------------------------------------
-
-	BUG # 6672 系统踢出用户登陆状态
-	hotfix-requestHeadersAuthorization-20210611
-	[hotfix][BUG-6672][SMEV - All]: 设置Authorization的大小写统一
-
-	--------------------------------------------
-
-	BUG #6574 登陆界面优化
-	hotfix-menuDefaultOpeneds-20210528
-	[hotfix][BUG-6574][SMEV - All]: organisationMangement菜单项默认展开区分用户
-
-	--------------------------------------------
-
-	BUG #6547 新建dealer - 点击distributor name下拉框，选择一个distributor，然后再次点击想换一个，结果下拉框只显示选过的distributor，无法更改其他的。
-	feature-countryOfSatesManagementAddResetBtn-20210511
-	[BUG][BUG-6547][SMEV - organisationMangement]: dealerManagement页面Distributor下拉框查询代码还原
-
-	---------------------------------------------
-	
-	Req# 1182 销售国家分配页面优化
-	feature-countryOfSatesManagementAddResetBtn-20210511
-	[feat][Req-1182][login]: 用户4011退出登录清除vuex中的菜单数据
-
-	---------------------------------------------
-
-	BUG #6246 dealer详情页面，others brand name(sales)和others brand name(aftersales)字段值不显示。
-	BUG #6243 新增或编辑一个distributor / Dleader： Ending Date字段不填值，保存后会自动赋一个值。
-	relese-smil-mdm-client
-	[BUG][BUG-6182][SMEV - organisationMangement]: 四个页面download接口增加timezone修改为timeZone
-
-	生产配置文件api配置项添加
-
-	companyManagement页面查询列表接口增加timeZone参数
-	es目录增加city.js,errors.js;en目录增加errors.js配置
-
-	en目录deliveryAdvice.js文件中缺少配置
-
-	2001错误返回时token更新修改
-
-=====================================================
 
 # 整车： TestENV：feature-smev-testEnv-20210609 多语言增加配件文件中未添加test环境配置
 
-	Bug # 7474 Payment界面添加发票列表下载按钮
+	Bug # 7802 Expense Invoice必填项VAT# Country无必填校验
+	hotfix-smev-expenseInvoiceInputVerification-7802-20210916
+	[hotfix][Bug-7802][SMEV - Invoice]: expenseInvoice页面disabled的不需要required
+
+	-----------------------------------------------------
+
+	Req # 1264 1305 信贷功能改造     
+	feature-smev-updateCredit-20210705
+	[feat][Req-1264-1305][SMEV - Credit]: freePeriodManagement页面添加行项目报错
+
+	resendType = 3 不显示
+
+	-----------------------------------------------------
+	
+	Bug # 7710 Customer Management界面Delivery Address项添加zipcode必填校验
+	feature-Req7710-smev-updateCustomerZipCode-20210913
+	[feat][Bug-7710][SMEV - masterData]: Customer Management界面Delivery Address项添加zipcode必填
+
+	-----------------------------------------------------
+
+	Bug # 7474 ECOC 增加status筛选项目
 	hotfix-smev-ecocAddStatusFilter-20210910
 	[hotfix][Bug-7474][SMEV - Ecoc]: ecocVinList页面增加status搜索条件
 
@@ -268,7 +208,7 @@ wifi:
 
 	Bug # 7541 Payment界面添加发票列表下载按钮
 	hotfix-smev-paymentDownload-20210908
-	[hotfix][Bug-7541][SMEV - payment]: paymentInfo页面增加下载按钮
+	[hotfix][Bug-7541][SMEV - payment]: paymentInfo页面下载按钮checkSelecteds无值时不传值
 
 	------------------------------------------------------
 
@@ -283,14 +223,6 @@ wifi:
 	[hotfix][Bug-7437][SMEV - sales]: SOEnquiry详情页面Note字段未显示
 
 	------------------------------------------------------
-
-	Req # 1264 1305 信贷功能改造     
-	feature-smev-updateCredit-20210705
-	[feat][Req-1264-1305][SMEV - Credit]: dnAllowConfirm页面联调
-
-	resendType = 3 不显示
-
-	-----------------------------------------------------
 
 	Bug # 6990  sme-veh-test-api/sale/invoice-preview 入参修改。
 	hotfix-smev-changeRequestOfSalesSettlement-20210817
@@ -1154,6 +1086,25 @@ wifi:
 ======================================================
 
 # 欧洲配件  release-sme-sprint-20210413
+
+	Req 1329 Outbound Claim升级v1.5
+	feature-1266-sme-OutboundClaim-20210712
+
+
+	---------------------------------------------------
+	
+	Bug 7804 EU HS Code--相同的hs#，不同的purchase group，删掉其中一条数据，所有相同hs#的数据会被同时删除
+	feature-bug7804-sme-hsCodeDelete-20210917
+	[feat][Bug-7804][SME - masterData]: hsCode页面删除接口url修改
+	欧洲配件 删除hscode 换个接口
+
+	---------------------------------------------------
+
+	Req 1411  支持客户绑定新Sales Company
+	feature-1411-sme-CustomerMgmtSalesCompanyEdit-20210915
+	[feat][Req-1411][SME - masterData]: CustomerMgmt页面Sales Company没有值的情况下可以编辑一次
+	
+	---------------------------------------------------
 	
 	Req 1282  去除所有角色下DN non-pack/Cancelled选项，支持后台取消 
 	feature-1282-sme-deliveryNoteRemoveBtn-20210819
@@ -1363,10 +1314,11 @@ wifi:
 
 # 中东 release-DCSSMME-20210121
 
+	------------------------------------------------------
 
 	Req-1215-VOR订单转Forward Order
 	feature-1215-smme-vor2forward-20210706
-	[feat][Req-1215][SMME - ALL]: Dn页面VOR-Forward订单类型的DN不可以去Non-Pack
+	[feat][Req-1215][SMME - ALL]: soApprove详情页面boQty查询条件修改
 	4AAYM321901
 
 	-------------------------------------------------------
@@ -1499,6 +1451,94 @@ wifi:
 
 ======================================================
 
+# MDM:
+	BUG # 7793 Edit界面优化
+	hotfix-frontPaging-20210916
+	[hotfix][BUG-7793][organisationMangement]: distributorManagement页面及前端分页翻页后再查询数据错误
+
+	----------------------------------------------------------
+
+	Req 1314 新增字段、页面及变更计数逻辑
+	feature-newItem1214-20210816
+	[feat][Req-1314][organisationMangement]: 全局文本域diabled时字体颜色修改
+	
+	https://eappfile.blob.core.windows.net/smil-mdm-dealer/Intended%20Dealership%20Comprehensive%20Assessment%20Record%20Form.docx
+
+	-----------------------------------------------
+	
+	BUG # 7088 Edit界面优化
+	hotfix-editSaveLoading-20210809
+	[hotfix][BUG-7088][SMEV - organisationMangement]: 各页面添加，保存按钮增加loading
+
+	-----------------------------------------------
+
+	Req 1296 修改Sales/ Franchise Starting Date 的必填性验证
+	feature-SalesStartingDate-0729
+	[feat][Req-1296][organisationMangement]: dealerManagement,distributorManagement页面修改时startingDate根据franchiseStatus判断是否必填
+
+	:required="dialogForm.franchiseStatus === '1' ? false : true"
+	:required="dialogForm.franchiseStatus === '1' ? franchiseStartingDate.required = false : franchiseStartingDate.required = true"
+
+	-----------------------------------------------
+
+	需求 1256 Distributor详情页面优化
+	feature-1256-distributorDetailAddFilterFranchiseState-20210701
+	[feat][Req-1256][organisationMangement]: distributorManagement详情页面FranchiseState改为Franchise Status
+
+	-----------------------------------------------
+
+	BUG # 6672 系统踢出用户登陆状态
+	hotfix-requestHeadersAuthorization-20210611
+	[hotfix][BUG-6672][SMEV - All]: 设置Authorization的大小写统一
+
+	--------------------------------------------
+
+	BUG #6574 登陆界面优化
+	hotfix-menuDefaultOpeneds-20210528
+	[hotfix][BUG-6574][SMEV - All]: organisationMangement菜单项默认展开区分用户
+
+	--------------------------------------------
+
+	BUG #6547 新建dealer - 点击distributor name下拉框，选择一个distributor，然后再次点击想换一个，结果下拉框只显示选过的distributor，无法更改其他的。
+	feature-countryOfSatesManagementAddResetBtn-20210511
+	[BUG][BUG-6547][SMEV - organisationMangement]: dealerManagement页面Distributor下拉框查询代码还原
+
+	---------------------------------------------
+	
+	Req# 1182 销售国家分配页面优化
+	feature-countryOfSatesManagementAddResetBtn-20210511
+	[feat][Req-1182][login]: 用户4011退出登录清除vuex中的菜单数据
+
+	---------------------------------------------
+
+	BUG #6246 dealer详情页面，others brand name(sales)和others brand name(aftersales)字段值不显示。
+	BUG #6243 新增或编辑一个distributor / Dleader： Ending Date字段不填值，保存后会自动赋一个值。
+	relese-smil-mdm-client
+	[BUG][BUG-6182][SMEV - organisationMangement]: 四个页面download接口增加timezone修改为timeZone
+
+	生产配置文件api配置项添加
+
+	companyManagement页面查询列表接口增加timeZone参数
+	es目录增加city.js,errors.js;en目录增加errors.js配置
+
+	en目录deliveryAdvice.js文件中缺少配置
+
+	2001错误返回时token更新修改
+
+=====================================================
+
+# AM: 
+	#Req 1089 AM页面中所有涉及到 组织 的展示中都加上code值，格式为：260008 - Al Yousuf MotorsAl Yousuf，后端传值不变。
+	feature-1089-orgAddcode-20210312
+	[feat][Req-1089][am - dictionaryList - dimensionList - userList]: 数据维度管理、数据字典管理、用户管理页面 组织 的展示中都加上code值
+
+	----------------------------------------------------
+
+	#Req 1225 AM 创建用户时候左侧增加根据组织编号筛选
+	feature-1225-addUserTreeFilter-20210607
+	[feat][Req-1225][am - userList]: 创建用户时候左侧增加根据组织编号筛选
+
+=====================================================
 
 # 墨西哥:
 	缺少：
