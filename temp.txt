@@ -180,6 +180,12 @@ wifi:
 
 # 整车： TestENV：feature-smev-testEnv-20210609 多语言增加配件文件中未添加test环境配置
 
+	Bug # 7896 warehouse页面city应该显示 cityName ，而不是cityCode
+	hotfix-smev-warehouseCityName-20210924
+	[hotfix][Bug-7896][SMEV - masterData]: warehouse页面city修改为cityName
+
+	------------------------------------------------------
+
 	Bug # 7802 Expense Invoice必填项VAT# Country无必填校验
 	hotfix-smev-expenseInvoiceInputVerification-7802-20210916
 	[hotfix][Bug-7802][SMEV - Invoice]: expenseInvoice页面disabled的不需要required
@@ -1089,7 +1095,9 @@ wifi:
 
 	Req 1329 Outbound Claim升级v1.5
 	feature-1266-sme-OutboundClaim-20210712
-
+	[feat][Req-1329][SME - invoiceManagement]: 各页面调整
+	
+	6ANXXX219006
 
 	---------------------------------------------------
 	
