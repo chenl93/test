@@ -1099,8 +1099,19 @@ wifi:
 	
 	6ANXXX219006
 
+	CiNO： 6ANLIC219005
+	CnNo： 6A9LIC204018
+
+	** 接口基本联调好了，再重新根据原型检查一遍
+
 	---------------------------------------------------
-	
+
+	Req1418 ASN界面支持下载
+	feature-1418-sme-asnDownload-20210917
+	[feat][Req-1418][SME - logisticsManagement]: 增加download按钮
+
+	----------------------------------------------------
+
 	Bug 7804 EU HS Code--相同的hs#，不同的purchase group，删掉其中一条数据，所有相同hs#的数据会被同时删除
 	feature-bug7804-sme-hsCodeDelete-20210917
 	[feat][Bug-7804][SME - masterData]: hsCode页面删除接口url修改
@@ -1326,8 +1337,9 @@ wifi:
 
 	Req-1215-VOR订单转Forward Order
 	feature-1215-smme-vor2forward-20210706
-	[feat][Req-1215][SMME - ALL]: soApprove详情页面boQty查询条件修改
+	[feat][Req-1215][SMME - ALL]: soApprove详情页面boQty查询按钮显示
 	4AAYM321901
+
 
 	-------------------------------------------------------
 
