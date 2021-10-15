@@ -20,6 +20,7 @@ wifi:
     om_dd/123456
     om_it/123456
     veh_viewer/123456
+    mdmuser / p@ss1234
   mdm - uat:
     https://uat-dcs.smil.com/smil-mdm/#/login
     mdmadmin/mdm!@#123
@@ -68,6 +69,7 @@ wifi:
     vincent p@ss1234
   --------------------------------------
   uat - smev:
+    FILIPPI2 / KmOVdHnD
     FILIPPI/qxHCXWlW
     sme_veh_operator/SAICECars2019
     admin/xPDeYC71
@@ -109,7 +111,10 @@ wifi:
 	并且downloadFile方法调用时要传入this
   14、numberFormatter: 'numberForSme', 价格格式化（欧洲）；numberFormatter: 'price'（中东）
   15、comboInline
-  16、王佳龙:【babelrc热加载慢】
+  16、多个下载按钮loading问题，在newTable中渲按钮时onclick()加传入当前按钮index参数，再传入到common.js中downloadFile
+	downloadFile()方法增加参数btnIndex,如果有，直接使用这个Index按钮的loading
+	在vinTemplateRelation页面exportPDF按钮有参考
+  17、王佳龙:【babelrc热加载慢】
 
     前端修改文件后 热加载慢的问题 解决方法：
 
@@ -180,6 +185,25 @@ wifi:
 
 # 整车： TestENV：feature-smev-testEnv-20210609 多语言增加配件文件中未添加test环境配置
 
+
+	Req # 1297 PDFcoc证书以及 发票下载
+	feature-smev-pdfDownload-20210729
+	[feat][Req-1297][SMEV - coc - invoice]: exportPDF按钮联调
+
+	------------------------------------------------------
+	
+	Bug #  8119  COC 页面搜索栏长度太短，无法输完整数据
+	hotfix-smev-COCSearchFieldWidth-20211012
+	[hotfix][Bug-8119][SMEV - COC]: template页搜索框maxLength修改
+
+	-----------------------------------------------------
+
+	Req # 1440 ECOC 增加ERROR MSG列 用以返回车管所的报错
+	feature-smev-ecocVinListAddErrorMessage-20211009
+	[feat][Req-1440][SMEV - coc]: ecocVinList页面增加errorMessage字段
+
+	-----------------------------------------------------
+
 	Bug # 7896 warehouse页面city应该显示 cityName ，而不是cityCode
 	hotfix-smev-warehouseCityName-20210924
 	[hotfix][Bug-7896][SMEV - masterData]: warehouse页面city修改为cityName
@@ -194,7 +218,7 @@ wifi:
 
 	Req # 1264 1305 信贷功能改造     
 	feature-smev-updateCredit-20210705
-	[feat][Req-1264-1305][SMEV - Credit]: freePeriodManagement页面添加行项目报错
+	[feat][Req-1264-1305][SMEV - Credit]: bug8120, 8115, 8114, 8098
 
 	resendType = 3 不显示
 
@@ -1095,20 +1119,30 @@ wifi:
 
 	Req 1329 Outbound Claim升级v1.5
 	feature-1266-sme-OutboundClaim-20210712
-	[feat][Req-1329][SME - invoiceManagement]: 各页面调整
-	
-	6ANXXX219006
+	[feat][Req-1329][SME - Customer]: creditNoteEnquir页面列表字段名称修改
 
-	CiNO： 6ANLIC219005
-	CnNo： 6A9LIC204018
 
-	** 接口基本联调好了，再重新根据原型检查一遍
+
+	 if(PaymentTotal > (InvoiceTotal - cnTotal)){
+		Advanced Payment Balance = PaymentTotal - (InvoiceTotal - cnTotal)
+	 }else{
+		Advanced Payment Balance = 0
+	 }
+
+	CiNO： 6ANLIC219005 
+	CnNo： CNANCu321A003 CNANCu321A004 CNANCu321A005
+
+	 //  this.totalInfo.totalAdvancedPayment = 
+        //   this.totalInfo.totalPaymentAmount - this.totalInfo.totalPaidAmount - this.totalInfo.totalAdvancedPayment
+
+	totalApproveAmount = totalClaimPrice + totalVatAmount + repairCost + freightCost
+	(d.preResolution === 3 || d.preResolution === 4) ? d.itemClaimAmount = d.claimQty  * d.ciUnitPrice : 0
 
 	---------------------------------------------------
 
 	Req1418 ASN界面支持下载
 	feature-1418-sme-asnDownload-20210917
-	[feat][Req-1418][SME - logisticsManagement]: 增加download按钮
+	[feat][Req-1418][SME - logisticsManagement]: asn页面createAsn弹窗中附件显示宽度修改
 
 	----------------------------------------------------
 
@@ -1337,10 +1371,9 @@ wifi:
 
 	Req-1215-VOR订单转Forward Order
 	feature-1215-smme-vor2forward-20210706
-	[feat][Req-1215][SMME - ALL]: soApprove详情页面boQty查询按钮显示
+	[feat][Req-1215][SMME - purchaseManagement]: purchaseOrderCreation详情页面dealer展示修改为code + name 
 	4AAYM321901
 
-**	forWard单 查询重置按钮
 
 	-------------------------------------------------------
 
@@ -1473,6 +1506,12 @@ wifi:
 ======================================================
 
 # MDM:
+	BUG # 8055  MDM用户权限取值错误
+	hotfix-8055-queryMdmRoleMenuError-20211009
+	[hotfix][BUG-7793][permission]:  MDM用户权限取值错误
+
+	----------------------------------------------------------
+
 	BUG # 7793 Edit界面优化
 	hotfix-frontPaging-20210916
 	[hotfix][BUG-7793][organisationMangement]: distributorManagement页面及前端分页翻页后再查询数据错误
