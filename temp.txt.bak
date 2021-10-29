@@ -55,6 +55,7 @@ wifi:
     frbranch / 40zP5Toj （物流）
     sme_veh_opt_9010 / 123456（财务）
     veh_finance / ukNYPpR0  (国家经理跟财务)
+    pq100 / W2sZAuyC (dt用户)
   --------------------------------------
   smi 印尼：
     smi_operator/123456
@@ -185,10 +186,33 @@ wifi:
 
 # 整车： TestENV：feature-smev-testEnv-20210609 多语言增加配件文件中未添加test环境配置
 
+	Req # 1458 DEALER VIEW 法语页面
+	feature-smev-dealerLanguage-20211026
+	[feat][Req-1297][SMEV - Customer]: dt法语翻译添加
+
+	-------------------------------------------------------
+
+	Req # 1455 PAYMENT界面调整适应财务对账需求
+	feature-smev-addDownloadAndViewForPayment-20211018
+	[feat][Req-455][SMEV - payment]: paymentConfirm详情页面样式
+
+	-------------------------------------------------------
+
+	Bug # 8324 Expense Settlement页面优化
+	hotfix-smev-ExpenseSettlement-8324-20211025
+	[hotfix][Bug-8324][SMEV - settlement]: expenseSettlement页面查询条件修改
+
+	------------------------------------------------------
+	
+	Bug # 8258 COC页面搜索栏长度太短，无法输完整数据（VIN - Template Relation）
+	hotfix-smev-VINTemplateRelationSearchFieldWidth-20211018
+	[feat][Req-8258][SMEV - coc ]: VINTemplateRelation页面cocNo搜索框maxlength修改为999
+
+	------------------------------------------------------
 
 	Req # 1297 PDFcoc证书以及 发票下载
 	feature-smev-pdfDownload-20210729
-	[feat][Req-1297][SMEV - coc - invoice]: exportPDF按钮联调
+	[feat][Req-1297][SMEV - coc - invoice]: exportPDF按钮check数据后才可能点击
 
 	------------------------------------------------------
 	
@@ -1119,24 +1143,29 @@ wifi:
 
 	Req 1329 Outbound Claim升级v1.5
 	feature-1266-sme-OutboundClaim-20210712
-	[feat][Req-1329][SME - Customer]: creditNoteEnquir页面列表字段名称修改
+	[feat][Req-1329][SME - paymentManagement]: totalVatAmount值计算
+	table item preReliis  === cn -> cost可编辑
+
+	CNA9RSA207005 CNANCu321A004
+	Repair Shop ARepair Shop A
+
+	totalVatAmount: (Total Net Claim Amount + 两个cost) * vatRate
 
 
+	9. 客户账号下CN明细界面，行项目信息缺失
+	11. 索赔单内Comments字段，必填逻辑调整
 
-	 if(PaymentTotal > (InvoiceTotal - cnTotal)){
-		Advanced Payment Balance = PaymentTotal - (InvoiceTotal - cnTotal)
-	 }else{
-		Advanced Payment Balance = 0
-	 }
+	* cn相当于已经付过的钱（抵用券），抵用券的钱要先抵扣
 
-	CiNO： 6ANLIC219005 
-	CnNo： CNANCu321A003 CNANCu321A004 CNANCu321A005
+	Credit Note Amount > Payable Amount - Payment Amount 
 
-	 //  this.totalInfo.totalAdvancedPayment = 
-        //   this.totalInfo.totalPaymentAmount - this.totalInfo.totalPaidAmount - this.totalInfo.totalAdvancedPayment
+	unpaid <= cnAmount
 
-	totalApproveAmount = totalClaimPrice + totalVatAmount + repairCost + freightCost
-	(d.preResolution === 3 || d.preResolution === 4) ? d.itemClaimAmount = d.claimQty  * d.ciUnitPrice : 0
+	----------------------------------------------------
+
+	Bug 8303 Customer Management页面编辑客户信息后，退出重新新增时，sales company变成不可选，需重新退出登录才可选择
+	hotfix-8303-sme-CustomerManagementSalesCompanyDisabled-20211020
+	[hotfix][Bug-8303][SME - MasterData]: CustomerManagement页面Prev时表单值的disabled
 
 	---------------------------------------------------
 
@@ -1367,11 +1396,15 @@ wifi:
 
 # 中东 release-DCSSMME-20210121
 
+	Bug 8377 VOR订单内分配SOH时不应校验是否为Dangerous
+	hotfix-8377-smme-salesOrderApproveVORForward-20211027
+	[hotfix][8377][SMME - salesManagement]: salesOrderApprove页面转vorforward时vorForwardList参数未清空
+
 	------------------------------------------------------
 
 	Req-1215-VOR订单转Forward Order
 	feature-1215-smme-vor2forward-20210706
-	[feat][Req-1215][SMME - purchaseManagement]: purchaseOrderCreation详情页面dealer展示修改为code + name 
+	[feat][Req-1215][SMME - purchaseManagement]: VOR-Forward显示名称统一
 	4AAYM321901
 
 
@@ -1380,7 +1413,6 @@ wifi:
 	Req 1230 增加Purchase Price下载滚动标志
 	feature-1230-PurchasePriceDownloadLoading-20210910
 	[feat][Req-1230][SMME - priceManagement]: purchasePriceManagement页面download按钮增加loading效果
-
 
 	-------------------------------------------------------
 
