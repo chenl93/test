@@ -186,6 +186,26 @@ wifi:
 
 # 整车： TestENV：feature-smev-testEnv-20210609 多语言增加配件文件中未添加test环境配置
 
+ *	Req # 1468 信贷额度设置批量导入功能
+	feature-smev-creditManagementAddBatchImport-20211028
+	[feat][Req-1468][SMEV - Customer]:
+
+	-------------------------------------------------------
+
+ *	Req # 1467 DEALER VIEW 增加用户余额查询页面
+	feature-smev-dealerViewAddAmountQuery-20211029
+	[feat][Req-1467][SMEV - Customer]:
+
+	-------------------------------------------------------
+
+	sit测过之后 uat要重新发版
+	Bug # 8465 Customer Management - ltaly点击Add item页面错误
+	feature-smev-updateCredit-20210705
+	[featur]e[Bug-8465][SMEV - masterData]:Customer Management - ltaly点击Add item页面错误
+
+	-------------------------------------------------------
+
+
 	Req # 1458 DEALER VIEW 法语页面
 	feature-smev-dealerLanguage-20211026
 	[feat][Req-1297][SMEV - Customer]: dt法语翻译添加
@@ -1143,11 +1163,21 @@ wifi:
 
 	Req 1329 Outbound Claim升级v1.5
 	feature-1266-sme-OutboundClaim-20210712
-	[feat][Req-1329][SME - paymentManagement]: totalVatAmount值计算
+	[feat][Req-1329][SME - paymentManagement]: uatbug修改
 	table item preReliis  === cn -> cost可编辑
 
 	CNA9RSA207005 CNANCu321A004
 	Repair Shop ARepair Shop A
+
+	* ap = payableAmount - paidAmount - unpaidAmount
+
+	ap = payableAmount - cnAmount - paidAmount
+
+	6ANLIC21B002
+
+	payableAmount - cnAmount > 0 有未付的钱
+	payableAmount - cnAmount < 0 没有未付的钱
+	payableAmount - cnAmount > 0 ? payableAmount - cnAmount : 
 
 	totalVatAmount: (Total Net Claim Amount + 两个cost) * vatRate
 
@@ -1395,6 +1425,11 @@ wifi:
 =======================================================
 
 # 中东 release-DCSSMME-20210121
+
+ *	Req 1294 Part Tracking增加Spec订单展示
+	feature-smme-1294-addSpecialPartTarcking-20211029
+
+	-----------------------------------------------------
 
 	Bug 8377 VOR订单内分配SOH时不应校验是否为Dangerous
 	hotfix-8377-smme-salesOrderApproveVORForward-20211027
