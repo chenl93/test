@@ -75,7 +75,16 @@ wifi:
     sme_veh_operator/SAICECars2019
     admin/xPDeYC71
   UAT - sme:
-    smf_approver / P@ss1234
+    smf_approver / P@ss1234 
+    sme_approver / P@ss1234 订单审批
+    sme_dhl / P@ss1234 仓库
+    sme_finance / P@ss1234 账务经理
+    sme_fin_support  / P@ss1234 账务出纳
+    David  / P@ss1234 整车团队（只读权限）
+    VMAG  / P@ss1234 客户，荷兰（内销）
+    Maxomotive / P@ss1234 客户，比利时（外销，欧盟内）
+    FAT / P@ss1234 客户，法国
+    NMGA / P@ss1234 客户，挪威（外销，欧盟外）
   UAT - SMME:
     salih / P@ss1234
 
@@ -186,29 +195,42 @@ wifi:
 
 # 整车： TestENV：feature-smev-testEnv-20210609 多语言增加配件文件中未添加test环境配置
 
- *	Req # 1468 信贷额度设置批量导入功能
+	Req # 1476 Vehicle Tracking界面添加Related PO Invoice Price/Invoice Currency字段
+	feature-smev-vehicleTrackingAddInvoicePriceAndCurrency-20211111
+	[feat][Req-1476][SMEV - logistics]:Vehicle Tracking界面添加Related PO Invoice Price/Invoice Currency字段
+
+	Req1476  Related PO Invoice Price -> cifPrice
+                 Invoice Currency -> poCurrency
+
+	--------------------------------------------------------
+
+	Bug # 8519 Receipt Confirm界面空格显示问题
+	hotfix-smev-ReceiptConfirmReceiptNoSpace-8519-20211103
+	[hotfix][Bug-8519][SMEV - payment]: Receipt Information界面空格显示问题
+
+	-------------------------------------------------------
+
+	Req # 1468 信贷额度设置批量导入功能
 	feature-smev-creditManagementAddBatchImport-20211028
-	[feat][Req-1468][SMEV - Customer]:
+	[feat][Req-1468][SMEV - credit]: creditManagement页面增加导入数据功能
 
 	-------------------------------------------------------
 
- *	Req # 1467 DEALER VIEW 增加用户余额查询页面
+	Req # 1467 DEALER VIEW 增加用户余额查询页面
 	feature-smev-dealerViewAddAmountQuery-20211029
-	[feat][Req-1467][SMEV - Customer]:
+	[feat][Req-1467][SMEV - Customer]: DEALER VIEW 增加用户余额查询页面
 
 	-------------------------------------------------------
 
-	sit测过之后 uat要重新发版
 	Bug # 8465 Customer Management - ltaly点击Add item页面错误
 	feature-smev-updateCredit-20210705
 	[featur]e[Bug-8465][SMEV - masterData]:Customer Management - ltaly点击Add item页面错误
 
 	-------------------------------------------------------
 
-
 	Req # 1458 DEALER VIEW 法语页面
 	feature-smev-dealerLanguage-20211026
-	[feat][Req-1297][SMEV - Customer]: dt法语翻译添加
+	[feat][Req-1297][SMEV - Customer]: dt法语翻译错误字段修改
 
 	-------------------------------------------------------
 
@@ -1163,17 +1185,18 @@ wifi:
 
 	Req 1329 Outbound Claim升级v1.5
 	feature-1266-sme-OutboundClaim-20210712
-	[feat][Req-1329][SME - paymentManagement]: uatbug修改
+	[feat][Req-1329][SME - paymentManagement]: creditNoteEnquiry详情页面根据原型V5调整
 	table item preReliis  === cn -> cost可编辑
+
+	0.0012
 
 	CNA9RSA207005 CNANCu321A004
 	Repair Shop ARepair Shop A
 
 	* ap = payableAmount - paidAmount - unpaidAmount
 
-	ap = payableAmount - cnAmount - paidAmount
+	* ap = payableAmount - cnAmount - paidAmount
 
-	6ANLIC21B002
 
 	payableAmount - cnAmount > 0 有未付的钱
 	payableAmount - cnAmount < 0 没有未付的钱
@@ -1426,8 +1449,9 @@ wifi:
 
 # 中东 release-DCSSMME-20210121
 
- *	Req 1294 Part Tracking增加Spec订单展示
+	Req 1294 Part Tracking增加Spec订单展示
 	feature-smme-1294-addSpecialPartTarcking-20211029
+	[hotfix][8377][SMME - partTracking]: 增加Spec订单字段和tab
 
 	-----------------------------------------------------
 
@@ -1573,6 +1597,11 @@ wifi:
 ======================================================
 
 # MDM:
+	Req 1463 新增SAP字段及其新功能
+	feature-1463-addSAPField-20211103
+
+	----------------------------------------------------------
+
 	BUG # 8055  MDM用户权限取值错误
 	hotfix-8055-queryMdmRoleMenuError-20211009
 	[hotfix][BUG-7793][permission]:  MDM用户权限取值错误
