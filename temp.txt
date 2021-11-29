@@ -38,8 +38,19 @@ wifi:
     sme_dt3/123456：客户，瑞士（外销，欧盟外）
     sme_operator
     sme_approver/123456：订单审批
-    sme_fr_sub_approver/123456
-    sme_fr_sub_finance : 123456
+    sme_fr_sub_approver / 123456
+    sme_fr_sub_finance / 123456
+    SME_GE_SUB_Operator / 123456
+    SME_GE_SUB_Finance / 123456
+    SME_IT_SUB_OPERATOR / 123456
+    SME_IT_SUB_FINANCE / 123456
+    SME_IT_SUB_DT1 / 123456
+    SME_SP_SUB_OPERATOR / 123456
+    SME_SP_SUB_FINANCE / 123456
+
+    AAB / 123456
+    sme_fr_sub_approver / 123456
+    sme_fr_sub_finance / 123456
   --------------------------------------
   smme 中东 sit：
     salih/123456(订单审批角色)
@@ -65,6 +76,9 @@ wifi:
   smmx 墨西哥：
      smmx_approver/123456
      smmx_dt1/123456
+  smsa 南美配件：
+     http://10.130.161.113/smsa/login
+     smsa_operator / 123456
   --------------------------------------
   uat - sim: 
     vincent p@ss1234
@@ -183,6 +197,12 @@ wifi:
 	git push -d origin branchName：删除远程分支
 	git push -f origin：强制提交
 
+	git stash save -u "" 保存本地新添加文件
+
+	- 撤销push
+	git reset --hard HEAD~1 回退一个版本
+	git push origin HEAD --force 强制push
+
 =======================================================
 
 # Other
@@ -192,15 +212,75 @@ wifi:
 
 =======================================================
 
+# 整车： TestENV：feature-smev-testEnv-20210609 
 
-# 整车： TestENV：feature-smev-testEnv-20210609 多语言增加配件文件中未添加test环境配置
+	Req #  1500 分支 vender新增页面加上salesCompany   
+	feature-smev-Req1500-vendorSalescompany-20211117
+	[feat][Req-1500][SMEV - masterData]: vendorManagement页面add时增加salesCompany
+
+	/supplier/supplierInfo->/supplier/supplierBySalesCompanyInfo
+
+	---------------------------------------------------------
+
+	Req # 1506 复制GWS改密码功能
+	feature-smev-ForgetPassword-1506-20111118
+	[feat][Req-1506][SMEV - login]: 增加修改密码
+
+	---------------------------------------------------------
+
+	Bug # 8698 Receipt Confirm界面添加SAP凭证号搜索框
+	hotfix-smev-receiptConfirmSapVoucherQuery-8698-20211118
+	[hotfix][Bug-8698][SMEV - payment]: receiptConfirm页面增加sapVoucherNo，sapReverseVoucherNo搜索条件
+
+	---------------------------------------------------------
+
+	Bug # 8685 vendor 无法创建
+	hotfix-smev-VendorCreateError-8685-20211117
+	[hotfix][Bug-8586][SMEV - masterData]: vendorManagement页面添加时增加vatNumber参数
+
+	---------------------------------------------------------
+	
+	Bug # 8626 Fleet订单allocation页面优化
+	feature-smev-fleetOrderAllocationWarehouseReminder-8626-20111116
+	[feat][Bug-8626][SMEV - logistics]: 无痕模式dt用户登录默认英文
+	
+	---------------------------------------------------------
+
+	Req # 1426 ECOC 开给经销商/分公司的页面
+	feature-smev-cocPrintAddDealerView-20211110
+	[feat][Req-1426][SMEV - cust]: vinPrint页面多语言配置
+
+	---------------------------------------------------------
+
+	Req # 1486 三包计提到物料号级别维护
+	feature-smev-Req1486-updateAccrualWarranty-20211105
+	[feat][Req-1316][SMEV - Price]:bankAccountManagement页面currency接口未传分页参数
+	
+	https://eappfile.blob.core.windows.net/sme-veh-template/AccrualWarrantyTemplate.xlsx
+	MAKRSF2C6DYWSD
+	EEK4UC19GCLWSB
+
+	--------------------------------------------------------
+
+	Bug # 8586 sme_veh_dt6用户下Purchase Order选择Price Package后再点开Use Finance Company会报错
+	hotfix-smev-dtSalesOrderUseFinanceCompanyRequestError-8586-20211109
+	[hotfix][Bug-8586][SMEV - customer]: 客户下单getUseFinanceCompany修改为统一方式
+
+	---------------------------------------------------------
+	
+	Req # 1316 增加客户收货撤回功能
+	feature-smev-customerDeliveryCancel-1316-20211103
+	[feat][Req-1316][SMEV - adminTools]: 增加undoCustomerReceive页面，联调接口
+	undo-customer-receive
+
+	---------------------------------------------------------
 
 	Req # 1476 Vehicle Tracking界面添加Related PO Invoice Price/Invoice Currency字段
 	feature-smev-vehicleTrackingAddInvoicePriceAndCurrency-20211111
 	[feat][Req-1476][SMEV - logistics]:Vehicle Tracking界面添加Related PO Invoice Price/Invoice Currency字段
 
 	Req1476  Related PO Invoice Price -> cifPrice
-                 Invoice Currency -> poCurrency
+        Invoice Currency -> poCurrency
 
 	--------------------------------------------------------
 
@@ -1183,6 +1263,51 @@ wifi:
 
 # 欧洲配件  release-sme-sprint-20210413
 
+	Req 1302 增强“Customer Mgmt”信息汇总
+
+	-------------------------------------------------
+
+	Bug 8811  EHF客户账号乱码
+	hotfix-8811-sme-dtDefaultLanguage-20211124
+	[hotfix][Bug-8811][SME - Language]: dt用户登录后初始语言设置
+
+	------------------------------------------------------
+
+	Bug 8808 XML设置Name of Debitor不支持长名称
+	hotfix-8808-sme-paymentXMLFilesNameofDebitorLength-20211124
+	[hotfix][Bug-8808][SME - paymentManagement]: paymentXMLFiles页面nameOfTheDebitor字段maxlength修改为60
+
+	------------------------------------------------
+	
+	Bug 8790 Operator账号没有配上传DCS Parts Group权限
+	hotfix-8790-sme-roleCodeOperatorUploadDCSPartsGroup-20211123
+	[hotfix][Bug-8790][SME - partManagement]: salesPartData页面upload,template按钮显示权限
+
+	------------------------------------------------
+	
+	Req 1322 分公司索赔功能
+	feature-1245-sme-OutboundClaim-20211111
+	[feat][Req-1322][SME - All]: outboundClaimRequestReview页面修改
+
+	6ANXXX218001
+	
+	http://10.130.161.109:8080/dcs-sme-api/clmCreation/getInvoiceDetails
+	返回coNo!=9000 :claimType-》excess 中没有new order类型
+
+	-----------------------------------------------
+
+	Req # 1321 采购单取消信息同步
+	feature-sme-1321-cancelPurOrder-20211115
+	[feat][Req-1321][SME - purchaseManagement]: purchaseItemTracking页面remarks字段修改
+
+	-----------------------------------------------
+	
+	Bug 8669  法国采购凭证Error Handle不起作用
+	hotfix-8669-sme-subCompanypurchaseSettlement-20211116
+	[hotfix][Bug-8669][SME - settlementManagement]: subCompanypurchaseSettlement页面invoiceErrorHandle接口voucherId传参修改
+
+	----------------------------------------------
+
 	Req 1329 Outbound Claim升级v1.5
 	feature-1266-sme-OutboundClaim-20210712
 	[feat][Req-1329][SME - paymentManagement]: creditNoteEnquiry详情页面根据原型V5调整
@@ -1449,6 +1574,7 @@ wifi:
 
 # 中东 release-DCSSMME-20210121
 
+
 	Req 1294 Part Tracking增加Spec订单展示
 	feature-smme-1294-addSpecialPartTarcking-20211029
 	[hotfix][8377][SMME - partTracking]: 增加Spec订单字段和tab
@@ -1599,7 +1725,7 @@ wifi:
 # MDM:
 	Req 1463 新增SAP字段及其新功能
 	feature-1463-addSAPField-20211103
-	[feat][Req-1463][organisationMangement]: dealerManagement,distributorManagement页面增加sap及sap弹窗
+	[feat][Req-1463][organisationMangement]: dealerManagement,distributorManagement页面submitted显示
 
 	----------------------------------------------------------
 
@@ -1685,6 +1811,12 @@ wifi:
 =====================================================
 
 # AM: 
+	BUG # 8794 AM用户管理-用户列表界面‘所属组织’搜索优化
+	hotfix-8794-userListBelongsListFilterable-20211123
+	[hotfix][BUG-8794][userList]:  userList页面所属组织下拉框增加搜索功能
+
+	----------------------------------------------------
+
 	#Req 1089 AM页面中所有涉及到 组织 的展示中都加上code值，格式为：260008 - Al Yousuf MotorsAl Yousuf，后端传值不变。
 	feature-1089-orgAddcode-20210312
 	[feat][Req-1089][am - dictionaryList - dimensionList - userList]: 数据维度管理、数据字典管理、用户管理页面 组织 的展示中都加上code值
