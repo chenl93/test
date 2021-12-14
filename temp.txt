@@ -49,8 +49,8 @@ wifi:
     SME_SP_SUB_FINANCE / 123456
 
     AAB / 123456
-    sme_fr_sub_approver / 123456
-    sme_fr_sub_finance / 123456
+
+    sme_claim / 123456
   --------------------------------------
   smme 中东 sit：
     salih/123456(订单审批角色)
@@ -150,6 +150,8 @@ wifi:
 
     各位可以在本地尝试，但不要提交.babelrc文件
   17、type: number; defaultNull: true;数字框不设置默认值
+  18、 :requsetData="Object.assign(searchOption.formlist, {multipleFlag: true})"
+	multipleFlag: true不进行查询条件的查询
 
 =======================================================
 
@@ -213,6 +215,66 @@ wifi:
 =======================================================
 
 # 整车： TestENV：feature-smev-testEnv-20210609 
+
+	Bug # 9010 信贷额度设置批量导入功能_新增下载批量上传模板按钮
+	feature-smev-creditManagementAddBatchImport-20211028
+	[feat][Req-1468][SMEV - credit]: creditManagement页面增加模板new item template按钮
+	new item template
+	ImportCreditAccountTemplate.xlsx
+
+	--------------------------------------------------------
+
+	Bug # 9009 Bank Account Management币种下拉框no data
+	hotfix-smev-9009-BankAccountManagementCurrencySelect-20211213
+	[hotfix][Bug-9009][SMEV - masterData]: BankAccountManagement页面Currency下拉框传参错误
+
+	--------------------------------------------------------
+
+	Req # 1528 配车界面添加Public选项
+	feature-smev-allocateAddPublicGroupValid-1528-20211207
+	[feat][Req-1528][SMEV - logistics]: toDnList分车增加allowPublicGroup
+
+	1528分支与1540冲突，将1528合到1540
+
+	--------------------------------------------------------
+	
+	Req # 1540 配车界面'Target'处添加批量上传配车需求清单的功能 2
+	feature-smev-allocateTargetAddImport-1540-20211206
+	[feat][Req-1540][SMEV - logistics]: toDnList分车import子项qty使用requestQty
+
+	---------------------------------------------------------
+
+	Req # 1527 配车界面Add弹窗SO批量查询 1
+	feature-smev-allocateAddOrderBatchQuery-1527-20211203
+	[feat][Req-1527][SMEV - logistics]: toDnList分车Add弹窗增加SO批量查询查询条件newtable组件修改
+
+	1527分支与1540冲突，将1527合到1540
+
+	---------------------------------------------------------
+
+	1544  ECOC的Setting界面添加条件搜索
+	feature-smev-addFilterForEcocSettings-20211206
+	[feat][Req-1527][SMEV - coc]: Settings页面createTime，lastUpdateTime设置为utc+2
+
+	---------------------------------------------------------
+	
+	Bug # 8868 8867 配车界面SO的quantity会随着输入数据改变; 配车界面quantity应仅为正整数
+	hotfix-smev-8868-8867-toDNListAllocate-20211130
+	[hotfix][Bug-8868-8867][SMEV - logistics]: toDnList页面quantity小数字符负数报错添加
+
+	---------------------------------------------------------
+
+	Req 1522 与new - mdm 对接
+	feature-req1522-newMdmSapCode-20211129
+	[feat][Req-1522][SMEV - masterData]: customerManagement页面保存修改
+
+	---------------------------------------------------------
+
+	Bug # 8866 忘记密码/修改密码：密码校验都统一为 6-20位
+	hotfix-smev-8866-changePassword-20211129
+	[hotfix][Bug-8866][SMEV - all]: 修改密码：密码校验正则提示与忘记密码保持一致
+
+	----------------------------------------------------------
 
 	Req #  1500 分支 vender新增页面加上salesCompany   
 	feature-smev-Req1500-vendorSalescompany-20211117
@@ -364,7 +426,7 @@ wifi:
 
 	Req # 1264 1305 信贷功能改造     
 	feature-smev-updateCredit-20210705
-	[feat][Req-1264-1305][SMEV - Credit]: bug8120, 8115, 8114, 8098
+	[feat][Req-1264-1305][SMEV - Credit]: creditFreezeUnfreeze，creditDeductionCancelDeduction页面resend后未刷新页面
 
 	resendType = 3 不显示
 
@@ -1263,7 +1325,22 @@ wifi:
 
 # 欧洲配件  release-sme-sprint-20210413
 
+	Req 1545 添加新WS Price类型
+
+	------------------------------------------------
+
+	Req 1552 调整欧洲Claim Operator角色权限
+	feature-sme-1552-ClaimOperatorPermissions-20211209
+	[feat][Req-1552][SME - salesManagement - priceManagement]: 根据MENU_SME_CLAIM角色判断页面不显示添加，删除等按钮
+
+	MENU_SME_CLAIM
+	let roleCodeList = localStorage.getItem('roleCodeList')
+
+	------------------------------------------------
+
 	Req 1302 增强“Customer Mgmt”信息汇总
+	feature-sme-1302-CustomerMgmtInfoALl-20211126
+	[feat][Req-1322][SME - masterData]: customerManagement页面customerType重复
 
 	-------------------------------------------------
 
@@ -1298,7 +1375,7 @@ wifi:
 
 	Req # 1321 采购单取消信息同步
 	feature-sme-1321-cancelPurOrder-20211115
-	[feat][Req-1321][SME - purchaseManagement]: purchaseItemTracking页面remarks字段修改
+	[feat][Req-1321][SME - purchaseManagement]: purchaseOrderEnquiry页面中PurchaseOrderStatus增加显示closed
 
 	-----------------------------------------------
 	
@@ -1573,7 +1650,12 @@ wifi:
 =======================================================
 
 # 中东 release-DCSSMME-20210121
-
+	
+	需求 1518 VOR-Forward开票逻辑调整
+	feature-smme-1518-VorForWardBilling-20211125
+	[feat][Req-1518][SMME - salesManagement]: salesOrderApprove详情页面preview弹窗值Manually Booked QTY显示问题
+	
+	-----------------------------------------------------
 
 	Req 1294 Part Tracking增加Spec订单展示
 	feature-smme-1294-addSpecialPartTarcking-20211029
@@ -1722,10 +1804,13 @@ wifi:
 
 ======================================================
 
-# MDM:
+# MDM:  relese-smil-mdm-client
+
+	Rate 评分
+
 	Req 1463 新增SAP字段及其新功能
 	feature-1463-addSAPField-20211103
-	[feat][Req-1463][organisationMangement]: dealerManagement,distributorManagement页面submitted显示
+	[feat][Req-1463][organisationMangement]: dealerManagement,distributorManagement页面创建SAPCode接口增加countryCode参数
 
 	----------------------------------------------------------
 
