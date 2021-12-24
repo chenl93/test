@@ -1,4 +1,6 @@
-﻿
+﻿2021-12-10 崴脚
+2021-12-22 大媛肠胃镜
+
 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
 https://github.com.cnpmjs.org/
@@ -50,7 +52,7 @@ wifi:
 
     AAB / 123456
 
-    sme_claim / 123456
+    sme_claim / 123456 (Claim operator角色)
   --------------------------------------
   smme 中东 sit：
     salih/123456(订单审批角色)
@@ -58,6 +60,7 @@ wifi:
     luyuan/123456(财务角色)
     tnc/123456(客户角色)
     jeyakumar/123456(订单操作角色)
+    smme_claim_orerator/123456 (Claim operator角色)
   --------------------------------------
   sme_veh 整车：
     SME_VEH_ADMIN: 123456
@@ -215,6 +218,28 @@ wifi:
 =======================================================
 
 # 整车： TestENV：feature-smev-testEnv-20210609 
+
+	Req # 1589 创建新客户从new - mdm获取数据时候不读取 city
+	feature-smev-1589-customerNewMdm-20211223
+	[feat][Req-1589][SMEV - masterData]: mdm获取数据时候不读取 city
+
+	--------------------------------------------------------
+	
+	Bug # 9168 SO/PO复制按钮单词更正
+	hotfix-smev-9168-SO/PODuplicateBtn-20211223
+	[hotfix][Bug-9168][SMEV - sales - purchase]: SO/PO复制按钮单词更正
+
+	--------------------------------------------------------
+
+	Req # 1563 ‘Quota Allocate’子页面'Vehicle Allocater'处’Shipping’状态添加子菜单等页面调整
+	feature-smev-updateQuotaAllocateViewStockStatus-1563-20211215
+	[feat][Req-1563][SMEV - quota]: quotaAllocate页面labelCheckbox，label修改
+
+	it.showCheckAll ? this.mainDialog.formlist[it.checkAllField] = selectValue[it.checkAllField] : ''
+	
+	EEK4UC19GCLWSB
+
+	--------------------------------------------------------
 
 	Bug # 9010 信贷额度设置批量导入功能_新增下载批量上传模板按钮
 	feature-smev-creditManagementAddBatchImport-20211028
@@ -1324,8 +1349,17 @@ wifi:
 ======================================================
 
 # 欧洲配件  release-sme-sprint-20210413
+	
+	Bug 9059 Claim查询界面按时间查询报错
+	hotfix-9059-sme-claimRequestEnquirySearchFieldError-20211216
+	[hotfix][Bug-9059][SME - customer]: claimRequestEnquiry页面时间查询报错
+
+	------------------------------------------------
 
 	Req 1545 添加新WS Price类型
+	feature-smev-1545-addWsPrice-20211213
+	[feat][Req-1545][SME - masterData]: hscode页面purchaseGroupName显示报错
+	270312
 
 	------------------------------------------------
 
@@ -1650,6 +1684,15 @@ wifi:
 =======================================================
 
 # 中东 release-DCSSMME-20210121
+
+	Req 1551 创建中东Claim operator角色
+	feature-smme-1551-ClaimOperatorPermissions-20211215
+	[feat][Req-1551][SMME - priceManagement]: salesPriceMaintenance页面按钮权限调整
+
+	let roleCodeList = localStorage.getItem('roleCodeList')
+	MENU_SMME_CLAIM_OPERATOR
+
+	-----------------------------------------------------
 	
 	需求 1518 VOR-Forward开票逻辑调整
 	feature-smme-1518-VorForWardBilling-20211125
@@ -1805,8 +1848,26 @@ wifi:
 ======================================================
 
 # MDM:  relese-smil-mdm-client
+	
+	----------------------------------------------------------
+	
+	Req 1572 前端 网发部门Q4新需求 
+	feature-req-1572-ScoringAndFiltering-20211221
+	[feat][Req-1572][organisationMangement]: dealer页面增加评分，Franchise Status状态不可逆
 
-	Rate 评分
+	已暂存代码
+
+	customerRatingDto: {
+          customerSatisfaction: this.customerSatisfaction,
+          dealerNo: this.dialogForm.dealerNo,
+          financialSituation: this.financialSituation,
+          internalManagement: this.internalManagement,
+          internalTraining: this.internalTraining,
+          investInterests: this.investInterests,
+          willingToInvest: this.willingToInvest
+        },
+
+	----------------------------------------------------------
 
 	Req 1463 新增SAP字段及其新功能
 	feature-1463-addSAPField-20211103
@@ -1896,6 +1957,17 @@ wifi:
 =====================================================
 
 # AM: 
+	BUG # 8762 AM-权限管理-角色授权页面增一个“返回“按钮。点击之后返回前一个页面。
+	hotfix-8762-roleAuthorizationListBackBtn-20211220
+	[hotfix][BUG-8762][roleAuthorizationList]:  角色授权页面增一个“返回“按钮
+
+	----------------------------------------------------
+
+	第三方 - 菜单 - 分支
+	feature-addPermissionGroup-20201209
+
+	----------------------------------------------------
+
 	BUG # 8794 AM用户管理-用户列表界面‘所属组织’搜索优化
 	hotfix-8794-userListBelongsListFilterable-20211123
 	[hotfix][BUG-8794][userList]:  userList页面所属组织下拉框增加搜索功能
