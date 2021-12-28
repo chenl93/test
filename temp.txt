@@ -218,6 +218,18 @@ wifi:
 =======================================================
 
 # 整车： TestENV：feature-smev-testEnv-20210609 
+	
+	Req # 1595 Payment界面Receipt创建时对Customer的SalesType进行筛选
+	feature-req1595-smev-customerSalesTypeQuery-20211227
+	[feat][Req-1595][SMEV - payment]: receiptInformation页面customer下拉框接口url修改
+
+	-------------------------------------------------------
+
+	Bug # 9191 InvoiceList下载按钮功能优化
+	hotfix-smev-9191-downloadInvoiceError-20211227
+	[hotfix][Bug-9191][SMEV - invoice]: invoicelist页面下载增加ciNos参数
+
+	--------------------------------------------------------
 
 	Req # 1589 创建新客户从new - mdm获取数据时候不读取 city
 	feature-smev-1589-customerNewMdm-20211223
@@ -1684,6 +1696,12 @@ wifi:
 =======================================================
 
 # 中东 release-DCSSMME-20210121
+	
+	Req 1574 混包的Normal单对应采购发票明细与抬头相符
+	feature-1574-smme-queryPurCiItemList-20211228
+	[feat][Req-1574][SMME - invoiceManagement]: purchaseCIEnquiry详情页面/purCI/itemList接口增加ciRefNo参数
+
+	-----------------------------------------------------
 
 	Req 1551 创建中东Claim operator角色
 	feature-smme-1551-ClaimOperatorPermissions-20211215
@@ -1853,7 +1871,7 @@ wifi:
 	
 	Req 1572 前端 网发部门Q4新需求 
 	feature-req-1572-ScoringAndFiltering-20211221
-	[feat][Req-1572][organisationMangement]: dealer页面增加评分，Franchise Status状态不可逆
+	[feat][Req-1572][organisationMangement]: dealer页面perview时评分显示修改
 
 	已暂存代码
 
