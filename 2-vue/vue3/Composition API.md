@@ -1,6 +1,7 @@
 # Composition API
- - 将零散的逻辑组合在一起维护，还可以将独立的功能逻辑拆分成单独的文件
- - Composition API下包含：reactive,ref,toRefs,watch,watchEffect,computed,生命周期钩子
+  - Compositon API不是一个api，而是很多个API组合的一套API
+  - 将零散的逻辑组合在一起维护，还可以将独立的功能逻辑拆分成单独的文件
+  - Composition API下包含：reactive,ref,toRefs,watch,watchEffect,computed,生命周期钩子
 
 ## setup是组件内使用Composition API的入口，两个参数 setup(props, context) 
   - setup其实是个生命周期的钩子函数，可以通过这个函数来定义vue2中的data,methods,watch,computed但最后都需要return回去，另外对其赋值或者取值的时候必须通过.value的写法去读或写

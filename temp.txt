@@ -218,6 +218,18 @@ wifi:
 =======================================================
 
 # 整车： TestENV：feature-smev-testEnv-20210609 
+
+	Req # 1593 配车子页面’Shipping’状态添加子菜单等页面调整
+	feature-smev-updateToDnListAllocateShppingDtail-1593-20211228
+	[feat][Req-1593][SMEV - logistics]: todnlist页面分车labelCheckbox，label修改
+
+	-------------------------------------------------------
+
+	Bug # 9243 Logistics配车界面Add添加单个SO不覆盖原清单
+	hotfix-smev-9243-vehicleAllocaterAddSOError-20211228
+	[hotfix][Bug-9243][SMEV - logistics]: toDnList分车页面Add添加单个SO不覆盖原清单
+
+	-------------------------------------------------------
 	
 	Req # 1595 Payment界面Receipt创建时对Customer的SalesType进行筛选
 	feature-req1595-smev-customerSalesTypeQuery-20211227
@@ -227,7 +239,7 @@ wifi:
 
 	Bug # 9191 InvoiceList下载按钮功能优化
 	hotfix-smev-9191-downloadInvoiceError-20211227
-	[hotfix][Bug-9191][SMEV - invoice]: invoicelist页面下载增加ciNos参数
+	[hotfix][Bug-9191][SMEV - invoice]: invoicelist页面下载ciNos传参修改
 
 	--------------------------------------------------------
 
@@ -1362,6 +1374,12 @@ wifi:
 
 # 欧洲配件  release-sme-sprint-20210413
 	
+	Req 1568 小红点提醒增加覆盖界面
+	feature-1568-sme-addRedDotReminder-20211227
+	[feat][Req-1568][SME - Menu]: side组件增加/clm/todo接口
+
+	------------------------------------------------
+	
 	Bug 9059 Claim查询界面按时间查询报错
 	hotfix-9059-sme-claimRequestEnquirySearchFieldError-20211216
 	[hotfix][Bug-9059][SME - customer]: claimRequestEnquiry页面时间查询报错
@@ -1370,7 +1388,7 @@ wifi:
 
 	Req 1545 添加新WS Price类型
 	feature-smev-1545-addWsPrice-20211213
-	[feat][Req-1545][SME - masterData]: hscode页面purchaseGroupName显示报错
+	[feat][Req-1545][SME - masterData]: salesPriceMaintenance页面upload后刷新列表
 	270312
 
 	------------------------------------------------
@@ -1697,6 +1715,13 @@ wifi:
 
 # 中东 release-DCSSMME-20210121
 	
+	Req 1493 支持与GDS Future Order对接
+	feature-1493-smme-normal2FutureOrder-20211206
+	[feat][Req-1493][SMME - Purchase]Purchase下各页面增加orderQty， approvedQty，refOrderNo字段
+	refOrderNo: 'Ref Order#',
+
+	-----------------------------------------------------
+	
 	Req 1574 混包的Normal单对应采购发票明细与抬头相符
 	feature-1574-smme-queryPurCiItemList-20211228
 	[feat][Req-1574][SMME - invoiceManagement]: purchaseCIEnquiry详情页面/purCI/itemList接口增加ciRefNo参数
@@ -1871,7 +1896,7 @@ wifi:
 	
 	Req 1572 前端 网发部门Q4新需求 
 	feature-req-1572-ScoringAndFiltering-20211221
-	[feat][Req-1572][organisationMangement]: dealer页面perview时评分显示修改
+	[feat][Req-1572][organisationMangement]: dealer页面sapCode功能修改到preview页面中
 
 	已暂存代码
 
