@@ -26,6 +26,7 @@
   - reactive这种方式写起来更清晰，不需要return一堆东西，写法更简洁
 
 ### toRefs()函数对reavtive()函数解构返回
+  - toRefs()用于将一个reactive对象转化为属性全部为ref对象的普通对象
   - reactive返回的对象需要在template中使用data.才能调用，又不可以通过解构直接返回
   - 使用toRefs()函数处理就可以在模板中直接使用
   - 通过toRefs()函数处理后再进行解构也不会破坏他的响应式

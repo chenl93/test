@@ -219,6 +219,10 @@ wifi:
 
 # 整车： TestENV：feature-smev-testEnv-20210609 
 
+	Bug # 9294 COC打印dealer界面添加批量搜索VIN按钮
+
+	-------------------------------------------------------
+
 	Req # 1593 配车子页面’Shipping’状态添加子菜单等页面调整
 	feature-smev-updateToDnListAllocateShppingDtail-1593-20211228
 	[feat][Req-1593][SMEV - logistics]: todnlist页面分车labelCheckbox，label修改
@@ -1373,6 +1377,12 @@ wifi:
 ======================================================
 
 # 欧洲配件  release-sme-sprint-20210413
+
+	Req 1526 客户账号下创建订单德国翻译文字调整
+	feature-1526-sme-dtDeLabelChange-20211231
+	[feat][Req-1526][SME - purchaseManagement]: purchaseOrderCreation详情页面city字段德语翻译修改
+
+	------------------------------------------------
 	
 	Req 1568 小红点提醒增加覆盖界面
 	feature-1568-sme-addRedDotReminder-20211227
@@ -1896,7 +1906,7 @@ wifi:
 	
 	Req 1572 前端 网发部门Q4新需求 
 	feature-req-1572-ScoringAndFiltering-20211221
-	[feat][Req-1572][organisationMangement]: dealer页面sapCode功能修改到preview页面中
+	[feat][Req-1572][organisationMangement]: dealer编辑页面sapCode显示submitted
 
 	已暂存代码
 
