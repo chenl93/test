@@ -219,7 +219,15 @@ wifi:
 
 # 整车： TestENV：feature-smev-testEnv-20210609 
 
+	Req # 1609 配车页面新增批量匹配指定VIN功能子页面
+
+	-------------------------------------------------------
+
 	Bug # 9294 COC打印dealer界面添加批量搜索VIN按钮
+	hotfix-smev-9294-vinPrintAddBatchVinSearch-20220104
+	[hotfix][Bug-9294][SMEV - customer]: vinPrint页面增加批量搜索vin
+	LSJ131949L0261082
+	LSJ131949L0261083
 
 	-------------------------------------------------------
 
@@ -1377,6 +1385,11 @@ wifi:
 ======================================================
 
 # 欧洲配件  release-sme-sprint-20210413
+	
+	Bug 9321 销售凭证Error Handle未能按SAP Account Date取对应SAP Account Year
+	hotfix-9321-sme-salesSettlementErrorHandleSAPAccountYear-20220105
+	[hotfix][Bug-9321][SME - settlementManagement]: salesSettlement页面Handle弹窗中sapAccountYear根据sapAccountDate变化
+	------------------------------------------------
 
 	Req 1526 客户账号下创建订单德国翻译文字调整
 	feature-1526-sme-dtDeLabelChange-20211231
@@ -1724,6 +1737,12 @@ wifi:
 =======================================================
 
 # 中东 release-DCSSMME-20210121
+	
+	Req 1604 DT账号Part Data界面Lead Time未能区分Dangerous/Non-dangerous
+	feature-1604-smme-dtPartDataLeadTime-20211230
+	[feat][Req-1604][SMME - Customer - logisticsManagement]: partEnquiry页面leadTime字段修改，leadTimeManagement页面增加下载按钮
+
+	-----------------------------------------------------
 	
 	Req 1493 支持与GDS Future Order对接
 	feature-1493-smme-normal2FutureOrder-20211206

@@ -65,3 +65,13 @@ let tupleType: [string, boolean]
 tupleType = ["hhh", true]
 console.log(tupleType[0]);
 console.log(tupleType[1]);
+
+// void类型: 与any类型相反，表示没有任何类型，当一个函数没有返回值时通常看到返回值类型是void
+function warnUser(): void{
+  console.log(`This is my warning message`);
+}
+
+// Never: 表示的是那些永不存在的值。例如：never类型是那些总是会抛出异常或根本就不会有返回值的函数表达式或箭头函数表达式的返回值类型
+function error(message: string): never{
+  throw new Error(message)
+}
