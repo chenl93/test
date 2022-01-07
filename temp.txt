@@ -1746,7 +1746,7 @@ wifi:
 	
 	Req 1493 支持与GDS Future Order对接
 	feature-1493-smme-normal2FutureOrder-20211206
-	[feat][Req-1493][SMME - Purchase]Purchase下各页面增加orderQty， approvedQty，refOrderNo字段
+	[feat][Req-1493][SMME - Purchase]purchaseOrderApprove详情页面orderType展示修改
 	refOrderNo: 'Ref Order#',
 
 	-----------------------------------------------------
@@ -1920,24 +1920,17 @@ wifi:
 ======================================================
 
 # MDM:  relese-smil-mdm-client
+
+	BUG # 9395 创建或编辑时弹窗锁定	
+	hotfix-9395-dialogCloseOnClickModal-20220106
+	[hotfix][BUG-9395][organisationMangement]: companyManagement,dealerManagement,distributorManagement页面dialog点击空白处不能关闭弹窗
+	:close-on-click-modal="false"
 	
 	----------------------------------------------------------
 	
 	Req 1572 前端 网发部门Q4新需求 
 	feature-req-1572-ScoringAndFiltering-20211221
-	[feat][Req-1572][organisationMangement]: dealer编辑页面sapCode显示submitted
-
-	已暂存代码
-
-	customerRatingDto: {
-          customerSatisfaction: this.customerSatisfaction,
-          dealerNo: this.dialogForm.dealerNo,
-          financialSituation: this.financialSituation,
-          internalManagement: this.internalManagement,
-          internalTraining: this.internalTraining,
-          investInterests: this.investInterests,
-          willingToInvest: this.willingToInvest
-        },
+	[feat][Req-1572][organisationMangement]: distributorManagement页面preview sapCode的disable状态根据franchiseStatus=0
 
 	----------------------------------------------------------
 

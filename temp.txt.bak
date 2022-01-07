@@ -1388,7 +1388,7 @@ wifi:
 	
 	Bug 9321 销售凭证Error Handle未能按SAP Account Date取对应SAP Account Year
 	hotfix-9321-sme-salesSettlementErrorHandleSAPAccountYear-20220105
-	
+	[hotfix][Bug-9321][SME - settlementManagement]: salesSettlement页面Handle弹窗中sapAccountYear根据sapAccountDate变化
 	------------------------------------------------
 
 	Req 1526 客户账号下创建订单德国翻译文字调整
@@ -1920,24 +1920,17 @@ wifi:
 ======================================================
 
 # MDM:  relese-smil-mdm-client
+
+	BUG # 9395 创建或编辑时弹窗锁定	
+	hotfix-9395-dialogCloseOnClickModal-20220106
+	[hotfix][BUG-9395][organisationMangement]: companyManagement,dealerManagement,distributorManagement页面dialog点击空白处不能关闭弹窗
+	:close-on-click-modal="false"
 	
 	----------------------------------------------------------
 	
 	Req 1572 前端 网发部门Q4新需求 
 	feature-req-1572-ScoringAndFiltering-20211221
-	[feat][Req-1572][organisationMangement]: dealer编辑页面sapCode显示submitted
-
-	已暂存代码
-
-	customerRatingDto: {
-          customerSatisfaction: this.customerSatisfaction,
-          dealerNo: this.dialogForm.dealerNo,
-          financialSituation: this.financialSituation,
-          internalManagement: this.internalManagement,
-          internalTraining: this.internalTraining,
-          investInterests: this.investInterests,
-          willingToInvest: this.willingToInvest
-        },
+	[feat][Req-1572][organisationMangement]: distributorManagement页面preview sapCode的disable状态根据franchiseStatus=0
 
 	----------------------------------------------------------
 
