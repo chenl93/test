@@ -230,7 +230,7 @@ wifi:
 
 	Req # 1698 DN List下载excel字段调整
 	feature-smev-1698-addColumnInDnList-20220112
-	[feat][Req-1610][SME - logistics]: dnList页面列表增加cdnClearTime，groupName字段
+	[feat][Req-1610][SME - logistics]:
 
 	------------------------------------------------
 	
