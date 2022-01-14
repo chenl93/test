@@ -1,13 +1,159 @@
-function chunkArrayInGroups(arr, size) {
-  let length = arr.length;
-  let newArr = []
-  for (let i = 0; i < length; i += size) {
-    newArr.push(arr.splice(0, size))
+// 设置
+const contacts = [{
+    firstName: "Akira",
+    lastName: "Laine",
+    number: "0543236543",
+    likes: ["Pizza", "Coding", "Brownie Points"],
+  },
+  {
+    firstName: "Harry",
+    lastName: "Potter",
+    number: "0994372684",
+    likes: ["Hogwarts", "Magic", "Hagrid"],
+  },
+  {
+    firstName: "Sherlock",
+    lastName: "Holmes",
+    number: "0487345643",
+    likes: ["Intriguing Cases", "Violin"],
+  },
+  {
+    firstName: "Kristian",
+    lastName: "Vos",
+    number: "unknown",
+    likes: ["JavaScript", "Gaming", "Foxes"],
+  },
+];
+
+function lookUpProfile(name, prop) {
+  // 只修改这一行下面的代码
+  let flag = false;
+  for (let i = 0; i < contacts.length; i++) {
+    console.log(contacts[i]);
+    if (contacts[i].firstName == name) {
+      flag = true;
+      if (contacts[i].hasOwnProperty(prop)) {
+        return contacts[i][prop]
+      } else {
+        return "No such property"
+      }
+    } 
   }
-  return newArr;
+  if (!flag) return "No such contact";
+  // 只修改这一行上面的代码
 }
 
-console.log(chunkArrayInGroups(["a", "b", "c", "d"], 2));
+console.log(lookUpProfile("Kristian", "lastName"));
+
+// // 设置
+// const myArray = [];
+
+// // 只修改这一行下面的代码
+// for (let i = 9; i >= 1; i -= 2) {
+//   myArray.push(i)
+// }
+// console.log(myArray);
+// // 设置
+// const recordCollection = {
+//   2548: {
+//     albumTitle: 'Slippery When Wet',
+//     artist: 'Bon Jovi',
+//     tracks: ['Let It Rock', 'You Give Love a Bad Name']
+//   },
+//   2468: {
+//     albumTitle: '1999',
+//     artist: 'Prince',
+//     tracks: ['1999', 'Little Red Corvette']
+//   },
+//   1245: {
+//     artist: 'Robert Palmer',
+//     tracks: []
+//   },
+//   5439: {
+//     albumTitle: 'ABBA Gold'
+//   }
+// };
+
+// // 只修改这一行下面的代码
+// function updateRecords(records, id, prop, value) {
+
+//   let res = ""
+//   if (prop != "tracks" && value != "") {
+//     records[id][prop] = value
+//     res = records[id][prop]
+//   } else if (prop == "tracks" && !records.hasOwnProperty(prop)) {
+//     records[id][prop] = []
+//     res = records[id][prop] = value
+//   } else if (prop == "tracks" && records[id].hasOwnProperty(prop) && value != "") {
+//     res = records[id][prop].push(value)
+//   } else if (value == "") {
+//     res = delete records[id][prop]
+//   }
+
+//   return res;
+// }
+
+// updateRecords(recordCollection, 5439, 'artist', 'ABBA');
+// function checkObj(obj, checkProp) {
+//   // 只修改这一行下面的代码
+//   return obj.hasOwnProperty(checkProp) || "Not Found";
+//   // 只修改这一行上面的代码
+// }
+// console.log(checkObj({
+//   gift: "pony",
+//   pet: "kitten",
+//   bed: "sleigh"
+// }, "gift"));
+
+
+// let count = 0;
+
+// function cc(card) {
+//   // 只修改这一行下面的代码
+//   switch(card){
+//     case 2:
+//     case 3:
+//     case 4:
+//     case 5:
+//     case 6:
+//       count+=1
+//       break;
+//     case -1:
+//     case 10:
+//     case 'J':
+//     case 'Q':
+//     case 'K':
+//     case 'A':
+//       count-=1
+//       break;
+//   }
+//   // 只修改这一行上面的代码
+// }
+
+// cc(2); 
+// cc(3); 
+// cc(4); 
+// cc(5);
+// cc(6);
+// cc(7)
+// cc(8)
+// cc(9)
+// if (count > 0) {
+//   return count + ' ' + 'Bet';
+// } else {
+//   return count + ' ' + 'Hold';
+// }
+
+// function chunkArrayInGroups(arr, size) {
+//   let length = arr.length;
+//   let newArr = []
+//   for (let i = 0; i < length; i += size) {
+//     newArr.push(arr.splice(0, size))
+//   }
+//   return newArr;
+// }
+
+// console.log(chunkArrayInGroups(["a", "b", "c", "d"], 2));
 // function chunkArrayInGroups(arr, size) {
 //   let length = Number(((arr.length+1) / size).toFixed());
 //   let newArr = []
