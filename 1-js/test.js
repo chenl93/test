@@ -1,49 +1,75 @@
-// 设置
-const contacts = [{
-    firstName: "Akira",
-    lastName: "Laine",
-    number: "0543236543",
-    likes: ["Pizza", "Coding", "Brownie Points"],
-  },
-  {
-    firstName: "Harry",
-    lastName: "Potter",
-    number: "0994372684",
-    likes: ["Hogwarts", "Magic", "Hagrid"],
-  },
-  {
-    firstName: "Sherlock",
-    lastName: "Holmes",
-    number: "0487345643",
-    likes: ["Intriguing Cases", "Violin"],
-  },
-  {
-    firstName: "Kristian",
-    lastName: "Vos",
-    number: "unknown",
-    likes: ["JavaScript", "Gaming", "Foxes"],
-  },
-];
+let quoteSample = "Beware of bugs in the above code; I have only proved it correct, not tried it.";
+let vowelRegex = /[aeiou]/gi; // 修改这一行
+let result = quoteSample.match(vowelRegex); // 修改这一行
 
-function lookUpProfile(name, prop) {
-  // 只修改这一行下面的代码
-  let flag = false;
-  for (let i = 0; i < contacts.length; i++) {
-    console.log(contacts[i]);
-    if (contacts[i].firstName == name) {
-      flag = true;
-      if (contacts[i].hasOwnProperty(prop)) {
-        return contacts[i][prop]
-      } else {
-        return "No such property"
-      }
-    } 
-  }
-  if (!flag) return "No such contact";
-  // 只修改这一行上面的代码
-}
+// let arr = []
 
-console.log(lookUpProfile("Kristian", "lastName"));
+// function rangeOfNumbers(startNum, endNum) {
+//   if (startNum > endNum) {
+//     return [];
+//   }
+//   arr.push(startNum)
+//   rangeOfNumbers(startNum + 1, endNum)
+//   return arr;
+// };
+// // 只修改这一行下面的代码
+// let arr = []
+// function countdown(n) {
+//   if (n < 1) {
+//     return [];
+//   }
+//   arr.push(n)
+//   countdown(n - 1)
+//   return arr;
+// }
+// console.log(countdown(10));
+// 只修改这一行上面的代码
+// // 设置
+// const contacts = [{
+//     firstName: "Akira",
+//     lastName: "Laine",
+//     number: "0543236543",
+//     likes: ["Pizza", "Coding", "Brownie Points"],
+//   },
+//   {
+//     firstName: "Harry",
+//     lastName: "Potter",
+//     number: "0994372684",
+//     likes: ["Hogwarts", "Magic", "Hagrid"],
+//   },
+//   {
+//     firstName: "Sherlock",
+//     lastName: "Holmes",
+//     number: "0487345643",
+//     likes: ["Intriguing Cases", "Violin"],
+//   },
+//   {
+//     firstName: "Kristian",
+//     lastName: "Vos",
+//     number: "unknown",
+//     likes: ["JavaScript", "Gaming", "Foxes"],
+//   },
+// ];
+
+// function lookUpProfile(name, prop) {
+//   // 只修改这一行下面的代码
+//   let flag = false;
+//   for (let i = 0; i < contacts.length; i++) {
+//     console.log(contacts[i]);
+//     if (contacts[i].firstName == name) {
+//       flag = true;
+//       if (contacts[i].hasOwnProperty(prop)) {
+//         return contacts[i][prop]
+//       } else {
+//         return "No such property"
+//       }
+//     } 
+//   }
+//   if (!flag) return "No such contact";
+//   // 只修改这一行上面的代码
+// }
+
+// console.log(lookUpProfile("Kristian", "lastName"));
 
 // // 设置
 // const myArray = [];
