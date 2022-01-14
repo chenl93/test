@@ -228,9 +228,15 @@ wifi:
 
 	-------------------------------------------------------
 
+	Req 9542 Warehouse Management 分页失效
+	hotfix-smev-9542-WarehouseManagementListPageError-20220113
+	[hotfix][Bug-9542][SMEV - masterData]: WarehouseManagement页面newtable组件axiosType修改为get
+
+	------------------------------------------------
+
 	Req # 1698 DN List下载excel字段调整
 	feature-smev-1698-addColumnInDnList-20220112
-	[feat][Req-1610][SME - logistics]:
+	[feat][Req-1610][SME - logistics]: dnList页面列表增加cdnClearTime，groupName字段
 
 	------------------------------------------------
 	
