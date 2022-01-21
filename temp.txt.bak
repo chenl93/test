@@ -70,6 +70,14 @@ wifi:
     sme_veh_opt_9010 / 123456（财务）
     veh_finance / ukNYPpR0  (国家经理跟财务)
     pq100 / W2sZAuyC (dt用户)
+    sme_veh_opt_9000 / 123456 (Vehicle Tracking - country manager)
+    gebranch / q6uzz5AX (Vehicle Tracking - logistics)
+
+  --------------------------------------
+  大通整车：
+    gds_maxus_admin/123456 (mg+maxus)
+    gds_maxus/123456 (maxus)
+    gds_maxus_mg/123456 (mg)
   --------------------------------------
   smi 印尼：
     smi_operator/123456
@@ -102,6 +110,7 @@ wifi:
     Maxomotive / P@ss1234 客户，比利时（外销，欧盟内）
     FAT / P@ss1234 客户，法国
     NMGA / P@ss1234 客户，挪威（外销，欧盟外）
+    AAB  / P@ss1234 客户
   UAT - SMME:
     salih / P@ss1234
 
@@ -218,8 +227,7 @@ wifi:
 =======================================================
 
 # 整车： TestENV：feature-smev-testEnv-20210609 
-
-	-------------------------------------------------------
+	
 	
 	Req 1553 单点登录集成的需求
 
@@ -228,7 +236,34 @@ wifi:
 
 	-------------------------------------------------------
 
-	Req 9542 Warehouse Management 分页失效
+	Req # 1718 Vehcile Tracking页面调整
+	feature-smev-1718-addColumnInVehicleTracking-20220118
+	[feat][Req-1718][SME - logistics]: Vehcile Tracking页面增加dnStatus,CurrentStatus查询条件
+
+	-------------------------------------------------------
+
+	Req # 1716 Quota添加按VIN分配功能
+	feature-smev-quotaAddVinAllocate-1716-20220114
+	[feat][Req-1716][SME - Quota]: quotaAllocate页面addVINListDialog弹窗vin不能重复判断修改
+
+	RG032 LSJ143729L6651215
+	this.$refs["table"].getTable();
+
+	-------------------------------------------------------
+
+	Bug # 9604 价格包界面Valid拼写修正
+	hotfix-smev-9604-ValidSpellError-20220117
+	[hotfix][Bug-9604][SMEV - Price]: ExpenseMapping，pricePackageManagement页面valid拼写错误
+
+	-------------------------------------------------------
+
+	Req # 1762 Price Package Management页面调整
+	feature-req1762-smev-pricePackageQueryByUpdate-20211218
+	[feat][Req-1762][SME - Price]: pricePackage页面copy弹窗增加查询条件
+
+	-------------------------------------------------------
+
+	Bug # 9542 Warehouse Management 分页失效
 	hotfix-smev-9542-WarehouseManagementListPageError-20220113
 	[hotfix][Bug-9542][SMEV - masterData]: WarehouseManagement页面newtable组件axiosType修改为get
 
@@ -242,14 +277,12 @@ wifi:
 	
 	Req # 1609 配车页面新增批量匹配指定VIN功能子页面
 	feature-smev-allocateAddVinBatchImport-1609-20211231
-	[feat][Req-1609][SMEV - logistics]: todnlist页面隐藏Add按钮
+	[feat][Req-1609][SMEV - logistics]: todnlist页面addVinList窗口添加修改行项目后刷新数据
 
-	wms-to-dn-list-controller
-	/to-dn-list/boAllocateAddVinImport  导入import
-	/to-dn-list/boAllocateAddVinSaveItem 保存save
-	/to-dn-list/boAllocateAddVinSubmitItem
-
-	4BICC122108 LSJ143729L6651215
+	4BICC122108 
+	4BJIJ1213162
+	LSJ143729L6651215
+	LSJ143453L6641143
 
 	-------------------------------------------------------
 
@@ -1422,6 +1455,24 @@ wifi:
 
 # 欧洲配件  release-sme-sprint-20210413
 	
+	Bug 9811 客户主数据内Address改不了
+	hotfix-9811-sme-customerManagementUpdateError-20220121
+	[hotfix][Bug-9811][SME - masterData]: customerManagement页面编辑数据无法修改
+
+	------------------------------------------------
+
+	Req 1771 Sales Item Enquiry页面OTW弹窗实际数量和弹窗中展示的信息不一致
+	feature-sme-1771-salesItemEnquiryOTW-20220118
+	[feat][Req-1771][SME - Customer - salesManagement]:Customer-purchaseItemTracking页面，salesItemEnquiry页面OTW弹窗，去除Processed Part#
+
+	------------------------------------------------
+
+	Bug 9580 Min Order Amount设置报错
+	hotfix-9580-sme-MinOrderAmountSettingsOrderTypeError-20220117
+	[hotfix][Bug-9580][SME - salesManagement]:MinOrderAmountSettings页面添加时OrderType传参错误
+
+	------------------------------------------------
+	
 	Req 1610 销售发票界面增加付款相关信息
 	feature-sme-1610-salesCIQueryInsertMessage-20220110
 	[feat][Req-1610][SME - invoiceManagement]: salesCIManagement，commercialInvoiceEnquiry页面增加字段
@@ -1576,7 +1627,7 @@ wifi:
 	
 	Req 1282  去除所有角色下DN non-pack/Cancelled选项，支持后台取消 
 	feature-1282-sme-deliveryNoteRemoveBtn-20210819
-	[feat][Req-1282][SME - logisticsManagement]: deliveryNote页面隐藏non-pack/Cancelled按钮
+	[feat][Req-1282][SME - logisticsManagement]: deliveryNote页面显示non-pack/Cancelled按钮
 
 	---------------------------------------------------
 
@@ -1790,7 +1841,7 @@ wifi:
 	
 	Req 1493 支持与GDS Future Order对接
 	feature-1493-smme-normal2FutureOrder-20211206
-	[feat][Req-1493][SMME - Purchase]purchaseOrderApprove详情页面orderType展示修改
+	[feat][Req-1493][SMME - Purchase] Purchase Order Enquiry详情页面在Item行项目上面添加一个Approve QTY字段
 	refOrderNo: 'Ref Order#',
 
 	-----------------------------------------------------
@@ -1967,14 +2018,14 @@ wifi:
 
 	BUG # 9395 创建或编辑时弹窗锁定	
 	hotfix-9395-dialogCloseOnClickModal-20220106
-	[hotfix][BUG-9395][organisationMangement]: companyManagement,dealerManagement,distributorManagement页面dialog点击空白处不能关闭弹窗
+	[hotfix][BUG-9395][organisationMangement]: distributorManagement页面dialog点击空白处不能关闭弹窗
 	:close-on-click-modal="false"
 	
 	----------------------------------------------------------
 	
 	Req 1572 前端 网发部门Q4新需求 
 	feature-req-1572-ScoringAndFiltering-20211221
-	[feat][Req-1572][organisationMangement]: distributorManagement页面preview sapCode的disable状态根据franchiseStatus=0
+	[feat][Req-1572][organisationMangement]: distributorManagement页面preview sapCode请求增加companyNo参数
 
 	----------------------------------------------------------
 
@@ -2062,6 +2113,20 @@ wifi:
 	en目录deliveryAdvice.js文件中缺少配置
 
 	2001错误返回时token更新修改
+
+=====================================================
+
+# 大通整车:
+  
+  [feat][oms]: Vehicle页面列表缺少purCurrency，purPrice
+
+  list 接口缺少字段：PI号（custOrderNo），Vehicle VIN（vin），Call车状态(dataStatus: 1:已创建；2：已Call车)
+
+  如果call车状态dataStatus==1，为已创建那么可以修改检验结果；否则不能修改
+
+
+  http://10.130.161.109:8080/gds-maxus-vehicle-api/omsVehicle/omsVehicleList
+  http://10.130.161.109:8080/gds-maxus-vehicle-api/omsVehicle/omsVehicleList
 
 =====================================================
 

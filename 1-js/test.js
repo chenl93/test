@@ -1,6 +1,59 @@
-let quoteSample = "Beware of bugs in the above code; I have only proved it correct, not tried it.";
-let vowelRegex = /[aeiou]/gi; // 修改这一行
-let result = quoteSample.match(vowelRegex); // 修改这一行
+// 只修改这一行下面的代码
+class Thermostat {
+  constructor(temperature) {
+    this._temperature = temperature
+  }
+
+  get temperature() {
+    return 5 / 9 * (this._temperature - 32)
+  }
+  set temperature(temperature) {
+    this._temperature = temperature * 9.0 / 5 + 32
+  }
+}
+// 只修改这一行上面的代码
+
+const thermos = new Thermostat(76); // 设置为华氏刻度
+let temp = thermos.temperature; // 24.44 摄氏度
+thermos.temperature = 26;
+temp = thermos.temperature; // 26 摄氏度
+console.log(temp);
+// const increment = (number, value = number + 1) => number + value;
+// console.log(increment(5));
+
+// let arr = [
+//   {
+//     name: "aa"
+//   },
+//   {
+//     name: "bb"
+//   },
+//   {
+//     name: "cc"
+//   },
+//   {
+//     name: "dd"
+//   }
+// ]
+
+// function test(val, index) {
+//   if(index == 0 || index == 3){
+//     arr.map((item, i)=>{arr[i].active = false})
+//   }else{
+//     arr[0].active = false
+//     arr[3].active = false
+//   }
+//   val.active = true
+// }
+// test(arr[1], 1)
+// test(arr[2], 2)
+// test(arr[0], 0)
+// test(arr[3], 3)
+// test(arr[2], 2)
+// console.log(arr);
+// let quoteSample = "Beware of bugs in the above code; I have only proved it correct, not tried it.";
+// let vowelRegex = /[aeiou]/gi; // 修改这一行
+// let result = quoteSample.match(vowelRegex); // 修改这一行
 
 // let arr = []
 
