@@ -1459,7 +1459,8 @@ wifi:
 # 欧洲配件  release-sme-sprint-20210413
 	
 	Req 1797 增加客户账号Part Data下DCS Group Name字段
-	
+	feature-1797-sme-partDataAddGroupName-20220126
+
 	------------------------------------------------
 
 	Req 1274 SO Enquiry界面增加Approve Date

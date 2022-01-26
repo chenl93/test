@@ -1460,6 +1460,7 @@ wifi:
 	
 	Req 1797 增加客户账号Part Data下DCS Group Name字段
 	feature-1797-sme-partDataAddGroupName-20220126
+	[feat][Req-1797][SME - Customer]: partData页面增加dcsgroupName字段
 
 	------------------------------------------------
 
