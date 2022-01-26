@@ -1457,8 +1457,14 @@ wifi:
 ======================================================
 
 # 欧洲配件  release-sme-sprint-20210413
+	
+	Req 1797 增加客户账号Part Data下DCS Group Name字段
+	
+	------------------------------------------------
 
-	需求 1274 SO Enquiry界面增加Approve Date
+	Req 1274 SO Enquiry界面增加Approve Date
+
+	------------------------------------------------
 	
 	Bug 9811 客户主数据内Address改不了
 	hotfix-9811-sme-customerManagementUpdateError-20220121
@@ -1838,6 +1844,10 @@ wifi:
 
 # 中东 release-DCSSMME-20210121
 	
+	Bug 9474 VOR订单内分配SOH时不应校验是否为Dangerous
+	hotfix-9474-smme-SalesSettlementCustomerNameError-20220126
+	[hotfix][9474][SMME - settlementManagement]: mdm-api/customer/接口未传分页参数，只查出10条，不能完全匹配
+	
 	Req 1604 DT账号Part Data界面Lead Time未能区分Dangerous/Non-dangerous
 	feature-1604-smme-dtPartDataLeadTime-20211230
 	[feat][Req-1604][SMME - Customer - logisticsManagement]: partEnquiry页面dangerousLeadTime，nonDangerousLeadTime字段修改回leadTime
@@ -2021,10 +2031,6 @@ wifi:
 
 # MDM:  relese-smil-mdm-client
 	
-	hotfix-sapCodeAddcompanyNo-20220125
-	[hotfix][organisationMangement]: distributorManagement页面preview sapCode请求增加companyNo参数
-	companyNo: this.dialogForm.companyNo
-
 	----------------------------------------------------------
 
 	BUG # 9395 创建或编辑时弹窗锁定	
