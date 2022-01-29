@@ -239,6 +239,15 @@ wifi:
 
 	-------------------------------------------------------
 
+	Bug # 10021 Invoice List和ANT Data Transaction页面详情页列表close按钮影响点击页码与下一页
+	hotfix-smev-10021-detailPageCloseBtnPosition-20220128
+	[hotfix][Bug-10021][SMEV - Invoice ]: 前端分页问题修改
+	
+	ABSMU122101 4BICC122108
+
+
+	-------------------------------------------------------
+
 	Req # 1718 Vehcile Tracking页面调整
 	feature-smev-1718-addColumnInVehicleTracking-20220118
 	[feat][Req-1718][SME - logistics]: Vehcile Tracking页面增加dnStatus,CurrentStatus查询条件
@@ -1460,6 +1469,7 @@ wifi:
 	
 	Req 1797 增加客户账号Part Data下DCS Group Name字段
 	feature-1797-sme-partDataAddGroupName-20220126
+	[feat][Req-1797][SME - Customer]: partData页面增加dcsgroupName字段
 
 	------------------------------------------------
 
@@ -2138,11 +2148,28 @@ wifi:
   
   [feat][oms]: lmPlan拼写问题
 
-  list 接口缺少字段：PI号（custOrderNo），Vehicle VIN（vin），Call车状态(dataStatus: 1:已创建；2：已Call车)
+  车辆明细查询条件：
+	未Call车没有call日期的
+	未生成采购订单是没有采购单号的
 
+  list 接口缺少字段：PI号（custOrderNo），Vehicle VIN（vin），Call车状态(dataStatus: 1:已创建；2：已Call车)
   如果call车状态priceStatus==1，为已创建那么可以修改检验结果；否则不能修改a
 
-	 (it.show ? it.show(scope.row) : true)
+  - 更改启运港或目的港调用updateVehicleList接口，只传itemNo和启运港会影响目的港的值为空，传no还是value，传No会修改为No.
+	{"dnNo":"DN2022012500001","delVehicleList":[{"itemNo":"1","departurePort":"20895"}]}
+  - 导入车辆接口deliveryPlanImportVehicle，导入还是按照返回excel方式？有没有可以导入成功能数据？
+    导入成功后调用哪个接口添加：updateVehicleList？
+  - 导入模板的地址？
+  - 移除车辆接口报错：
+	{"dnNo":"DN2022012500001","delVehicleList":[{"itemNo":"1"}]}
+
+  - 船名航次下拉列表,getVesselVoyageDropList接口需要传什么参数？传dnNo?
+
+  - deliveryPlanList,发运计划列表 搜索条件type没有效果
+  - deliveryPlanVehicle，发运计划配车详情orderInfo: 缺少 “应预收金额”
+  - getDeliveryLogisticsShip，提交订舱接口参数？
+
+  - 最好是列表接口能把详情的表单数据都带出来，其他详情页的table单独接口
 
 =====================================================
 
