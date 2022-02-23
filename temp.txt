@@ -14,7 +14,9 @@ wifi:
 # 账号：
   am: 
     http://10.130.161.113/opt/#/login
-    amadmin/123456
+    amadmin / 123456
+  AM - uat:
+    admin / xPDeYC71
   --------------------------------------
   mdm - sit：
     mdmadmin/123456
@@ -72,7 +74,7 @@ wifi:
     pq100 / W2sZAuyC (dt用户)
     sme_veh_opt_9000 / 123456 (Vehicle Tracking - country manager)
     gebranch / q6uzz5AX (Vehicle Tracking - logistics)
-
+    fr_credit_finance / W80zcFfQ
   --------------------------------------
   大通整车：
     gds_maxus_admin/123456 (mg+maxus)
@@ -161,12 +163,13 @@ wifi:
     }
 
     各位可以在本地尝试，但不要提交.babelrc文件
-  17、type: number; defaultNull: true;数字框不设置默认值
-  18、 :requsetData="Object.assign(searchOption.formlist, {multipleFlag: true})"
+  18、type: number; defaultNull: true;数字框不设置默认值
+  19、 :requsetData="Object.assign(searchOption.formlist, {multipleFlag: true})"
 	multipleFlag: true不进行查询条件的查询
-  19、isLoading: 行项目按钮增加loading效果，除按钮上增加isLoading属性外还要在行的数据上增加loading属性，
+  20、isLoading: 行项目按钮增加loading效果，除按钮上增加isLoading属性外还要在行的数据上增加loading属性，
   在按钮的事件中设置loading的true/false
   可以看ecocVinList中的send按钮
+  21、otherCombo动态设置comboDatas ,使用otherCombo的visibleChange回调函数
 
 =======================================================
 
@@ -229,13 +232,55 @@ wifi:
 
 =======================================================
 
-# 整车： TestENV：feature-smev-testEnv-20210609 
+# 欧洲整车： TestENV：feature-smev-testEnv-20210609 
 	
-	
-	Req 1553 单点登录集成的需求
 
-	http://localhost:8080/sme-veh/main/sales-order
+	Req 1553 单点登录集成的需求
+	feature-req1553-AM-SSO-20211213
+	[feat][Req-1816][SME - Login]: 通过url获取参数
+
+	http://10.130.161.119/login/
+	sso_test01
+	Aa11111111
+
+	http://localhost:8080/sme-veh/?jwt=eyJhbGciOiJIUzUxMiIsInppcCI6IkRFRiJ9.eNpsjMsKwjAUBf_lrhNI0rRWd1IDFmyV-thYKdFcoSpWmiiC-O_WF3bhds7MucHOldADobtoWBhSI6VHJZeMahSG8o7R3nprNlx7QMCe1408iKbFNFHFQg2JQ-sKaysiBWNMNk5pbeO4ao9HarG-YP2E2kGPB9LnvvA7AQG8nj4g4C9QVwd8holK59_3oj9I4hTeY1QZHJW2-YFl_tPGE5X1Z-MsB5L_ids4bskruD8AAAD__w.l1TyI1hN5FZUhmbTRyaQJYI5ytxPPzs0h6WC9sv28Y46uNDqj9T0HZyswGq68hqX7Gq8Nly4bMJdd5D_Zr34bw&uName=test_sso&orgName=SME&orgCode=420004&uCode=test_sso&roleCodeList=MENU_SME_OPERATOR,MENU_SME_VEH_ADMIN,MENU_SMI_OPERATOR
+
 	beforeEach 进行拦截，判断没有jwt值会跳转到登录页面
+	通过url跳转过来，获取jwt等其他参数，通过拦截器将url参数获取并存取在本地，
+	
+	-------------------------------------------------------
+
+	Req # 1840 ECOC VIN List界面添加条件搜索
+	feature-smev-ecocVinListAddQueryParam-1840-20220221
+	[feat][Req-1840][SME - coc]: ecocVinList页面增加country，selectedVins查询
+
+	LSJ201202L1000714
+	LSJ201202L1000711
+
+	-------------------------------------------------------
+
+	Req # 1767 非西欧车辆 短期解决方案 增加页面 COC - Print - "VIN - Template Relation （Global)"
+	feature-smev-cocPrintTemplateRelationGlobal-1767-20220214
+	[feat][Req-1767][SME - coc]: cocPrintTemplateRelationGlobal页面搜索框length修改
+	LSJE24096MG050886
+	LSJZ14U97LS019639
+	
+	download接口报错
+
+	-------------------------------------------------------
+
+	Req # 1816 新增VC-Free Period Management页面
+	feature-smev-freePeriodAddMaterialCode-1816-20220207
+	[feat][Req-1816][SME - credit]: 新建后保存按钮的loading
+
+	fr_credit_finance
+	W80zcFfQ
+
+	-------------------------------------------------------
+
+	Req 1815 CREDIT MANAGEMENT界面新增行项目
+	feature-smev-creditManagementAddUsedAmount-1815-20220207
+	[feat][Req-1815][SME - credit]: creditManagement页面增加usedAmount字段
 
 	-------------------------------------------------------
 
@@ -244,7 +289,6 @@ wifi:
 	[hotfix][Bug-10021][SMEV - Invoice ]: 前端分页问题修改
 	
 	ABSMU122101 4BICC122108 4BGEE421C123
-
 
 	-------------------------------------------------------
 
@@ -1467,6 +1511,44 @@ wifi:
 
 # 欧洲配件  release-sme-sprint-20210413
 	
+	Req 1542  本地采购功能升级
+	
+	*Purchase Group与Vendor Name是**联动**的下拉框
+	Logistics Management -> Inbound -> Advanced Shipping Note -> Create ASN
+
+	------------------------------------------------
+
+	Bug 10473 XML设置界面不支持分页
+	hotfix-10473-sme-PaymentXmlFilesCloseBtnStyle-20220222
+	[hotfix][Bug-10473][SME - paymentManagement]: paymentXMLFiles页面configureXmlFiles关闭按钮遮挡分页问题修改
+
+	------------------------------------------------
+	
+	Bug 10525 被拒订单无法再次提交
+	feature-sme-10525-OrderSubmitRepeat-20220222
+	[hotfix][Bug-10525][SME - Customer]: purchaseOrderCreation页面详情页面check-item-list重新获取uuid
+
+	------------------------------------------------
+
+	Req 1607 SO Approve界面支持批量审批
+	feature-sme-1607-batchSalesApprove-20220215
+	[feat][Req-1607][SME - salesManagement]: salesOrderApprove页面batchApprove接口参数修改
+	- 与采购单页面的列表按钮Approve,Reject相同
+
+	------------------------------------------------
+	
+	Req 1606  Credit Mgmt界面支持下载
+	feature-sme-1606-customerCreditMgmtDownLoad-20220215
+	[feat][Req-1606][SME - creditManagement]: creditEnquiry页面增加download按钮
+	
+	------------------------------------------------
+
+	Req 1274 SO Enquiry界面增加Approve Date
+	feature-sme-1274-soEnquiryAddApproveDate-20220214
+	[feat][Req-1274][SME - salesManagement]: SO Enquiry界面Approve Date改为Approve Time
+
+	------------------------------------------------
+	
 	Req 1797 增加客户账号Part Data下DCS Group Name字段
 	feature-1797-sme-partDataAddGroupName-20220126
 	[feat][Req-1797][SME - Customer]: partData页面增加dcsgroupName字段
@@ -2042,6 +2124,37 @@ wifi:
 
 # MDM:  relese-smil-mdm-client
 	
+	Req 1798 增加字段【双色顶】 
+	Req 1799 修改整车物料属性字段样式
+	feature-1798-doubleColorTop-20220209
+	[feat][Req-1798-1799][vehicleMaterials]: 物料新增加页面去除提示：存在旧车型，部分字段将引用历史数据
+	
+	MAKHLC13K7UAASC
+	MAKHLC13K7UAAS
+	MAKHLC13K7KKKK
+	bug: 10146
+
+		doubleColorTop ： 双色顶
+		整车物料查询：viewPage,historyPage,comparePage
+		整车物料新增: 物料属性维护,SAP预检、创建过程, 物料新增任务查看
+		整车物料修改: 物料属性维护，物流修改任务查看
+
+		车型平台 - 
+		发动机
+		排放  letOut
+		Model Year   modelYear
+		配置    configuration
+		区域版本   areaVersion
+
+	----------------------------------------------------------
+
+	Req 1820  整车物料查询页面优化
+
+	品牌，物料编码，物料短码，SAP物料编号，车型平台，是否纯电，双色顶，
+	发动机，变速箱，*排放，电机功率，*电池类型，电池容量，*驱动，Model Year，
+	*区域版本，*配置，*车系，*工厂，*状态，规格型号，许可证名称，HS CODE，
+	创建人，创建日期开始，创建日期结束
+
 	----------------------------------------------------------
 
 	BUG # 9395 创建或编辑时弹窗锁定	
@@ -2144,36 +2257,53 @@ wifi:
 
 =====================================================
 
-# 大通整车:
-  
-  [feat][oms]: lmPlan拼写问题
+# 大通-代理-整车:
+	
+	[feat][All]: 接口返回2001重发请求重复
 
-  车辆明细查询条件：
-	未Call车没有call日期的
-	未生成采购订单是没有采购单号的
+	bug修复
+	InboundOrder页面联调，
 
-  list 接口缺少字段：PI号（custOrderNo），Vehicle VIN（vin），Call车状态(dataStatus: 1:已创建；2：已Call车)
-  如果call车状态priceStatus==1，为已创建那么可以修改检验结果；否则不能修改a
+	DN2022021100006  AN2022021600002
 
-  - 更改启运港或目的港调用updateVehicleList接口，只传itemNo和启运港会影响目的港的值为空，传no还是value，传No会修改为No.
-	{"dnNo":"DN2022012500001","delVehicleList":[{"itemNo":"1","departurePort":"20895"}]}
-  - 导入车辆接口deliveryPlanImportVehicle，导入还是按照返回excel方式？有没有可以导入成功能数据？
-    导入成功后调用哪个接口添加：updateVehicleList？
-  - 导入模板的地址？
-  - 移除车辆接口报错：
-	{"dnNo":"DN2022012500001","delVehicleList":[{"itemNo":"1"}]}
+	过账信息管理
 
-  - 船名航次下拉列表,getVesselVoyageDropList接口需要传什么参数？传dnNo?
+		过账列表：lm-account-record-controller  /lmAccountRecord/accountRecordList
 
-  - deliveryPlanList,发运计划列表 搜索条件type没有效果
-  - deliveryPlanVehicle，发运计划配车详情orderInfo: 缺少 “应预收金额”
-  - getDeliveryLogisticsShip，提交订舱接口参数？
+		过账详情：lm-account-record-controller  /lmAccountRecord/accountRecordDetails
 
-  - 最好是列表接口能把详情的表单数据都带出来，其他详情页的table单独接口
+		根据过账编号查看发运单列表：lm-delivery-order-controller  /lmDeliveryOrder/orderByAccountList
+
+		生成入库单及内向按钮
+		  过账管理入库单列表及状态返回：
+
+		Lm-account-record-controller  /lmAccountRecord/createInbound
+
+		推送：只有状态大于0的可以推送
+
+		推送顺序：一条条推送，状态为5（内向过账成功）时推送结束
+
+		Lm-inbound-vc-push-contrller  /lmInboundVc/generateInboundVc
+
+		外向
+
+		入库单管理：
+
+		内向推送手工处理：
+
+		Lm-inbound-vc-push-contrller  /lmInboundVc/inboundVcHandle
+
 
 =====================================================
 
 # AM: 
+	
+	BUG # 10040 AM对已存在用户编辑时强制重新选择组织
+	hotfix-10040-userListEditorShowDicName-20220207
+	[hotfix][BUG-10040][userList]:  用户编辑时组织树反显,公共树组件修改
+	
+	----------------------------------------------------
+
 	BUG # 8762 AM-权限管理-角色授权页面增一个“返回“按钮。点击之后返回前一个页面。
 	hotfix-8762-roleAuthorizationListBackBtn-20211220
 	[hotfix][BUG-8762][roleAuthorizationList]:  角色授权页面增一个“返回“按钮
