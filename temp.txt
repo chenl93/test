@@ -257,12 +257,18 @@ wifi:
 
 	beforeEach 进行拦截，判断没有jwt值会跳转到登录页面
 	通过url跳转过来，获取jwt等其他参数，通过拦截器将url参数获取并存取在本地，
+	
+	-------------------------------------------------------
+
+	Req 1616 SAP凭证批量重推功能
+	feature-smev-sapVoucherBatchToPush-1616-20220215
+	[feat][Req-1616][SME - adminTools]: gateInSettlement页面凭证重推时间问题修改
 
 	-------------------------------------------------------
 
 	Req # 1853 因乘用车物料号编码改动车辆描述结构
 	feature-req1853-smev-vehicleDataUpdate-20220229
-	[feat][Req-1853][SME - vehicle]: vehicleData页面增加模板和上传功能，详情页面增加字段
+	[feat][Req-1853][SME - vehicle]: vehicleData页面导入按钮名称修改
 
 	-------------------------------------------------------
 
@@ -2181,7 +2187,7 @@ wifi:
 
 	Req 1820  整车物料查询页面优化
 	feature-1798-doubleColorTop-20220209
-	[feat][Req-1820][vehicleMaterials]: vehicleEnquiry页面车型平台，发动机，Model Year查询搜索改为下拉框
+	[feat][Req-1820][vehicleMaterials]: vehicleEnquiry页面查询条件样式修改
 	品牌，物料编码，物料短码，SAP物料编号，车型平台，是否纯电，双色顶，
 	发动机，变速箱，*排放，电机功率，*电池类型，电池容量，*驱动，Model Year，
 	*区域版本，*配置，*车系，*工厂，*状态，规格型号，许可证名称，HS CODE，
@@ -2293,10 +2299,12 @@ wifi:
 
 # 大通-代理-整车:
 	
-	[feat][All]: 增加配票功能
+	[feat][All]: 发运单页面列表字段调整
  
 	bug修复
 	InboundOrder页面联调，
+
+	发运单管理增加那10个按钮
 
 	DN2022021100006  AN2022021600002
 
