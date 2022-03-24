@@ -11,7 +11,7 @@ wifi:
 
 	---xu-admin
 
-# 账号：
+# 账号：chenl W8o193v9+
   am: 
     http://10.130.161.113/opt/#/login
     amadmin / 123456
@@ -75,11 +75,18 @@ wifi:
     sme_veh_opt_9000 / 123456 (Vehicle Tracking - country manager)
     gebranch / q6uzz5AX (Vehicle Tracking - logistics)
     fr_credit_finance / W80zcFfQ
+    sme_veh_dt_it / JWmjN6J8 （9040）
   --------------------------------------
   大通整车：
+    订单员：
     gds_maxus_admin/123456 (mg+maxus)
     gds_maxus/123456 (maxus)
     gds_maxus_mg/123456 (mg)
+    物流：
+    gds_maxus_admin_lm/123456 (mg+maxus)
+    gds_maxus_lm/123456 (maxus)
+    gds_maxus_mg_lm/123456 (mg)
+
   --------------------------------------
   smi 印尼：
     smi_operator/123456
@@ -239,9 +246,27 @@ wifi:
 
 =======================================================
 
-# 欧洲整车： TestENV：feature-smev-testEnv-20210609 
+# 欧洲整车： TestENV：feature-smev-testEnv-20210609 release-smev-sprint-20210426 
 	
 	Req 1832 德国Zulassung Teil 2 打印
+	feature-smev-1832-ZulassungTeil2-20220323
+	[feat][Req-1832][SME - germanCarRegister]: 增加新页面
+
+	https://eappfile.blob.core.windows.net/sme-veh-template/ZulassungBasicInfoMaintaince.xlsx
+
+	-------------------------------------------------------
+
+	Bug 11325 经销商enquiryByVin界面搜索错误
+	hotfix-smev-11325-poEnquiryByVINError-20220322
+	[hotfix][Bug-11325][SMEV - Customer]: poEnquiryByVIN页面筛选项重复修改
+	
+	- 第三个中的option.data,这里的data装的有问题
+
+	-------------------------------------------------------
+
+	Req 1868 批量导入新仓库outbound lead time
+	feature-smev-uploadOutboundLeadTime-20220308
+	[feat][Req-1868][SME - logistics]: outboundLeadTime页面增加模板，导入功能，添加修改时增加必填
 
 	-------------------------------------------------------
 
@@ -260,6 +285,22 @@ wifi:
 	
 	-------------------------------------------------------
 
+	Bug # 10602 Receipt新增界面联动
+	feature-smev-updatePaymentReceiptCustomerQuery-10602-20220309
+	[feat][Bug-10602][SME - payment]: receiptInformation新增加页面customer下拉框与salesCompany联动
+
+	-------------------------------------------------------
+
+	Req 1851 dealer 意大利客户下单界面信贷选项调整
+	feature-smev-updateSalesOrderCreidtCompany-1851-20220309
+	[feat][Req-1851][SME - Customer]: purchaseOrder详情页面useFinanceCompany下拉框接口修改
+
+	dealer 下单新增接口查询信贷公司
+	credit-management-controller
+	/credit/credit-company/dealer/list
+
+	-------------------------------------------------------
+
 	Req 1616 SAP凭证批量重推功能
 	feature-smev-sapVoucherBatchToPush-1616-20220215
 	[feat][Req-1616][SME - adminTools]: gateInSettlement页面凭证重推时间问题修改
@@ -268,19 +309,25 @@ wifi:
 
 	Req # 1853 因乘用车物料号编码改动车辆描述结构
 	feature-req1853-smev-vehicleDataUpdate-20220229
-	[feat][Req-1853][SME - vehicle]: vehicleData页面导入按钮名称修改
+	[feat][Req-1853][SME - vehicle]: vehicleData编辑页面增加物料号显示
 
 	-------------------------------------------------------
 
 	Req # 1845 Vendor Type新增Credit Management
 	feature-smev-addVendorTypeCreditManagement-1845-20220224
-	[feat][Req-1845][SME - masterData - credit]: vendorManagement页面vendorType增加creditManagement，creditManagement页面creditCompany下拉框接口指定vendorType为creditManagement
+	[feat][Req-1845][SME - masterData - credit]: Credit Management页面模板、上传按钮名称修改
+	
+	-------------------------------------------------------
+
+	Bug # 10797  ECOC_ECOC VIN List页面中country为必选框改为非必选框
+	hotfix-smev-10797-ECOCVINListCountrySearchError-20220303
+	[hotfix][Bug-10797][SMEV - COC]: ecocVinList页面country搜索条件去除required
 	
 	-------------------------------------------------------
 
 	Req # 1840 ECOC VIN List界面添加条件搜索
 	feature-smev-ecocVinListAddQueryParam-1840-20220221
-	[feat][Req-1840][SME - coc]: ecocVinList页面增加country，selectedVins查询
+	[feat][Req-1840][SME - coc]: ecocVinList页面country搜索条件去除required
 
 	LSJ201202L1000714
 	LSJ201202L1000711
@@ -1537,10 +1584,21 @@ wifi:
 ======================================================
 
 # 欧洲配件  release-sme-sprint-20210413
+
+	Req 1848 9000索赔模块优化 
+	feature-sme-7651-claimModuleOpt-20220321
+	[feat][Req-1848][SME - claimManagement]:  索赔类型为Wrong Parts时应该是可以输入大于Invoice QTY
+
+	6A9XXX207010
+
+	------------------------------------------------
 	
 	Req 1542  本地采购功能升级
 	feature-sme-1542-upgradeLocalPurchasingFunction-20220223
-	[feat][Req-1542][SME - logisticsManagement]: advancedShippingNote页面添加CreateASNPOLinesBased
+	[feat][Req-1542][SME - All]: advancedShippingNote页面createASNPOLinesBased弹窗vendor下拉框去除SAIC MOTOR INTERNATIONAL CO., LTD
+
+	SAC1010002
+	SAC1010001
 	
 	- 看是否新的上传和模板，如果有新的再考虑，如果不是新的就增加判断使用之前的组件
 
@@ -1974,6 +2032,11 @@ wifi:
 
 # 中东 release-DCSSMME-20210121
 	
+	Bug 10845  Sales Price By Order Type没有数据
+	hotfix-10845-smme-SalesPriceByOrderTypeError-20220304
+	[hotfix][10845][SMME - priceManagement]: SalesPriceByOrderType页面pageOptions的button未传入_this
+
+	
 	Bug 9474 VOR订单内分配SOH时不应校验是否为Dangerous
 	hotfix-9474-smme-SalesSettlementCustomerNameError-20220126
 	[hotfix][9474][SMME - settlementManagement]: mdm-api/customer/接口未传分页参数，只查出10条，不能完全匹配
@@ -2160,16 +2223,22 @@ wifi:
 ======================================================
 
 # MDM:  relese-smil-mdm-client
+
+	REQ 1860 物料主数据新增页面及下载EXCEL增加SAP物料号字段
+	feature-1798-doubleColorTop-20220209
+	[feat][Req-1860][vehicleMaterials]: 物料主数据prev页面增加SAP物料号字段
+
+	----------------------------------------------------------
 	
 	Req 1798 增加字段【双色顶】 
 	Req 1799 修改整车物料属性字段样式
 	feature-1798-doubleColorTop-20220209
-	[feat][Req-1798-1799][vehicleMaterials]: bug10593-新增物料非电车必填提示错误
+	[feat][Req-1798-1799][vehicleMaterials]: bug10952物料compare数据错行
 	
-	MAKHLC13K7UAASC
-	MAKHLC13K7UAAS
-	MAKHLC13K7KKKK
-	bug: 10146
+		MAKHLC13K7UAASC
+		MAKHLC13K7UAAS
+		MAKHLC13K7KKKK
+		bug: 10146
 
 		doubleColorTop ： 双色顶
 		整车物料查询：viewPage,historyPage,comparePage
@@ -2187,7 +2256,7 @@ wifi:
 
 	Req 1820  整车物料查询页面优化
 	feature-1798-doubleColorTop-20220209
-	[feat][Req-1820][vehicleMaterials]: vehicleEnquiry页面查询条件样式修改
+	[feat][Req-1820][vehicleMaterials]: 拦截器header中增加Local-Date
 	品牌，物料编码，物料短码，SAP物料编号，车型平台，是否纯电，双色顶，
 	发动机，变速箱，*排放，电机功率，*电池类型，电池容量，*驱动，Model Year，
 	*区域版本，*配置，*车系，*工厂，*状态，规格型号，许可证名称，HS CODE，
@@ -2206,7 +2275,7 @@ wifi:
 	
 	Req 1572 前端 网发部门Q4新需求 
 	feature-req-1572-ScoringAndFiltering-20211221
-	[feat][Req-1572][organisationMangement]: distributorManagement页面preview sapCode请求增加companyNo参数
+	[feat][Req-1572][organisationMangement]: dealerManagement prev页面networkFunction，authorizationType字段增加toolTip
 
 	----------------------------------------------------------
 
@@ -2299,12 +2368,23 @@ wifi:
 
 # 大通-代理-整车:
 	
-	[feat][All]: 发运单页面列表字段调整
- 
+	[feat][All]: 提交配舱页面lcnoStatus未解析不可点击
+
+	827073600002637-UAT
+
+	复制一份新的页面出来 只包含配船按钮 新的页面给物流员角色，
+	老的页面给订单员角色 去除配船按钮
+
+	TEST03072
+	TEST030423
+	DN2022030700003
+	
 	bug修复
 	InboundOrder页面联调，
 
-	发运单管理增加那10个按钮
+	可用余额 = 收款单金额 - 已用金额 - 本次使用金额
+	  - 下面行项目保存后调用后端详情接口更新收款单金额，已用金额字段
+	  - 本次使用金额根据下面行项目table数值变化
 
 	DN2022021100006  AN2022021600002
 
