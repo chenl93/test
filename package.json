@@ -1,7 +1,7 @@
 {
   "devDependencies": {
     "browser-sync": "^2.18.12",
-    "gulp": "^3.9.1"
+    "gulp": "^4.0.2"
   },
   "dependencies": {
     "jshint": "^2.10.1",
