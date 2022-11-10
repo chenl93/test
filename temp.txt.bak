@@ -1,6 +1,8 @@
 ﻿2021-12-10 崴脚
 2021-12-22 大媛肠胃镜
 
+腾讯会议号：704-3066-0360
+
 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
 https://github.com.cnpmjs.org/
@@ -51,10 +53,10 @@ wifi:
     SME_IT_SUB_DT1 / 123456
     SME_SP_SUB_OPERATOR / 123456
     SME_SP_SUB_FINANCE / 123456
-
     AAB / 123456
-
     sme_claim / 123456 (Claim operator角色)
+    sme_admin / P@ss1234 （create asn按钮的显示）
+    AAB_R / P@ss1234 (MENU_SME_DT_READONLY，用来控制客户只读权限帐号)
   --------------------------------------
   smme 中东 sit：
     salih/123456(订单审批角色)
@@ -63,6 +65,7 @@ wifi:
     tnc/123456(客户角色)
     jeyakumar/123456(订单操作角色)
     smme_claim_orerator/123456 (Claim operator角色)
+    warehouse / 5lQDnGhM
   --------------------------------------
   sme_veh 整车：
     SME_VEH_ADMIN: 123456
@@ -76,6 +79,7 @@ wifi:
     gebranch / q6uzz5AX (Vehicle Tracking - logistics)
     fr_credit_finance / W80zcFfQ
     sme_veh_dt_it / JWmjN6J8 （9040）
+    DEALER_OPERAT_FR / IH5ez69m 欧洲经销商操作员FR
   --------------------------------------
   大通整车：
     订单员：
@@ -86,7 +90,6 @@ wifi:
     gds_maxus_admin_lm/123456 (mg+maxus)
     gds_maxus_lm/123456 (maxus)
     gds_maxus_mg_lm/123456 (mg)
-
   --------------------------------------
   smi 印尼：
     smi_operator/123456
@@ -96,9 +99,19 @@ wifi:
   smmx 墨西哥：
      smmx_approver/123456
      smmx_dt1/123456
+  --------------------------------------
   smsa 南美配件：
      http://10.130.161.113/smsa/login
      smsa_operator / 123456
+  --------------------------------------
+  dcs-global-vehicle-client - sit
+    veh_reg_admin / 123456 销售公司
+    smuk_290199 / 123456 经销商
+    smuk_290277 / 123456 经销商
+  --------------------------------------
+  global_parts - sit
+    global_fr / 123456 
+    sme_dt1 / 123456 
   --------------------------------------
   uat - sim: 
     vincent p@ss1234
@@ -122,6 +135,9 @@ wifi:
     AAB  / P@ss1234 客户
   UAT - SMME:
     salih / P@ss1234
+    warehouse / h2suGaRi
+  --------------------------------------
+
 
 =======================================================
 
@@ -184,7 +200,15 @@ wifi:
 	这次增加的效果是行项目上多个按钮都需要loading效果，对原有的单个按钮loading不影响
   
   21、otherCombo动态设置comboDatas ,使用otherCombo的visibleChange回调函数
-
+  22、comboMixinMethod设置：异步预加载combo data
+  23、noEnter 配置在查询条件ew-search中，按下回车键不进行查询
+  24、comboMixinMethod: 异步预加载combo data
+  25、condiction.vue公共组件中增加link组件
+  26、tooltipHtml：true 表格中列的tooltip按照html标签显示
+  27、fontBtn
+  28、tableDataflag为特定的值的时候才会查询table，设置为空时不进行查询，当需要查询时再设置值，在mixin.js中可以看到如果设置
+	- this.tableDataflag = new Date().getTime() + ',' + val
+  29、v-smil-role="{excluded: ['MENU_SMME_READONLY']}" 排除角色的权限
 =======================================================
 
 # VSCode快捷键
@@ -246,13 +270,427 @@ wifi:
 
 =======================================================
 
-# 欧洲整车： TestENV：feature-smev-testEnv-20210609 release-smev-sprint-20210426 
+# 欧洲整车： TestENV：feature-smev-testEnv-20220815 release-smev-sprint-20210426
+
+	Req # 2551 TO DN LIST新增Select VINs按钮
+	feature-smev-queryToDnListByVins-2551-20221104
+	[feat][Req-2551][SMEV - logistics]: toDnList页面增加selectedVins
+	
+	LSJ201202L1000920
+	LSJ144344L6671033
+
+	------------------------------------------------------
+	
+	Req # 2509 LOT功能调整
+	feature-smev-delLotField-2509-20221102
+	[feat][Req-2509][SMEV - logistics warehouse]: 删除各页面lot字段
+
+	------------------------------------------------------
+
+	BUG # 15538  报表功能setting界面优化
+	hotfix-smev-queryBoardSettingOperationError-15538-20221031
+	[hotfix][Bug-15538][SMEV - queryBoard]: queryList页面setting弹窗中Operation为area时placeholder修改
+
+	------------------------------------------------------
+
+	Req # 2498 Credit Management页面新增下载按钮
+	feature-smev-downloadCreditInformation-2498-20221031
+	[feat][Req-2498][SMEV - credit]: creditManagement页面增加下载接口修改
+
+	------------------------------------------------------
+
+	BUG # 15299  销售发票凭证批量重推失败
+	hotfix-smev-requestTimeoutError-15299-20221026
+	[hotfix][Bug-15299][SMEV - ALL]: 欧洲配件，中东配件，印尼测试超时时间
+
+	------------------------------------------------------
+
+	BUG # 15335 页面按钮及弹窗等大小写问题
+	hotfix-smev-TextModify-15335-20221026
+	[hotfix][Bug-15335][SMEV - ALL]: Select VINs等文字修改
+
+	------------------------------------------------------
+
+	Req # 2485 付款模块Account Enquiry功能优化
+	feature-smev-accountDownloadAndAddSearchCondition-2485-20221025
+	[feat][Req-2485][SMEV - payment]: accountEnquiry页面advancedReceipt弹窗下载接口参数修改
+
+	------------------------------------------------------
+
+	BUG 15080 CustomerManagement送货信息zip code添加必填标志
+	hotfix-smev-customerManagementZipCodeRequired-15080-20221014
+	[hotfix][Bug-15080][SMEV - masterData]: CustomerManagement详情页Delivery Address的zipCode增加必填
+
+	------------------------------------------------------
+
+	BUG 15038 PRD，删除lot的vin时有偶发性白屏问题
+	hotfix-smev-LotDetailTableError-15038-20221013
+	[hotfix][Bug-15038][SMEV - logistics]: lot详情页table功能修改
+
+	------------------------------------------------------
+
+	Bug 14972 创建Receipt报错
+	hotfix-smev-ReceiptInfoAddDateError-14972-20221012
+	[hotfix][Bug-14972][SMEV - sales]: ReceiptInfo添加页面New Receipt列表paymentDate修改后日期模式错误
+
+	------------------------------------------------------
+
+	Req # 2421 Sales Order新增一车一单批量下单功能
+	feature-smev-salesOrderCreateByVin-2421-20220927
+	[feat][Req-2421][SMEV - sales]:  SalesOrder页面submitByVIN按钮loading状态修改
+
+	loading 和报错后关闭弹窗
+
+	------------------------------------------------------
+
+	Req # 2422 Sales Order页面下DEMO订单物料号展示方式变更
+	feature-smev-SalesOrderDemoItemTable-2422-20220927
+	[feat][Req-2422][SMEV - sales]: admin，dt用户创建salesOrder页面orderType为demo时不再获取物料信息
+
+	------------------------------------------------------
+
+	Bug 14524  SalesOrder下单批量上传报错
+	hotfix-smev-SalesOrderUploadError-14524-20220926
+	[hotfix][Bug-14524][SMEV - sales]: dt用户SalesOrder复制订单详情页面上传模板url参数错误修改
+
+	------------------------------------------------------
+
+	BUG 14508
+	BUG # 14397 PRD，SO Enquiry By Vin页面查询条件仅录入起始时间时，返回结果为全量数据  BUG14508 起始日期无法选择
+	hotfix-smev-udpateSoByVinTimeQuery-14397-20220920
+	[feat][Req-14508][SMEV - sales]: SO By Vin Enquiry页面，截止日期选好后再清空，起始日期无法选择
+
+	------------------------------------------------------
+
+	Req # 2406 SO Enquiry By Vin页面默认查半年内的数据
+	feature-smev-SOEnquiryByVinSetDefaultCreateTimeFrom-2406-20220923
+	[feat][Req-2406][SMEV - sales]: SO Enquiry By Vin页面开始时间结束时候查询错误修改
+
+	------------------------------------------------------
+
+	Req # 2411 VC-Free Period Management页面新增Free Period搜索框
+	feature-smev-addQueryCriteriaForVCFreePeriod-2411-20220922
+	[feat][Req-2411][SMEV - credit]: vcFreePeriodManagement页面freePeriod搜索框修改后刷新
+
+	------------------------------------------------------
+
+	Req # 2403 更新Query Board菜单左侧图标
+	feature-smev-addQueryBoardMenuIcon-2403-20220920
+	[feat][Req-2403][SMEV - icons]: icons目录下增加queryBoard图标配置
+
+	------------------------------------------------------
+
+	Req # 2399 PAYMENT页面优化及新增II
+	feature-smev-optimizReceiptAndPayment-2399-20220920
+	feat][Req-2399][SMEV - payment]: payment-confirm页面增加dcsVoucher
+
+	------------------------------------------------------
+	
+	Req 2376 Settlement页面优化及新增II
+	feature-smev-updateSettlementView-2376-20220908
+	[feat][Req-2376][SMEV - settlement]: subsidiaryGateIn页面dcsVoucherNo修改
+
+	------------------------------------------------------
+
+	Req 2389 信贷账户查询界面及免息期管理界面增加导出Excel功能
+	feature-smev-creditAccountAddExcelDownlaod-2389-20220916
+	[feat][Req-2389][SMEV - credit]: Account Enquiry,VC-Free Period Management页面增加download按钮
+
+	------------------------------------------------------
+
+	Bug # 14076 经销商PO Enquiry by VIN页面筛选显示问题
+	hotfix-smev-POEnquirybyVINSearchError-14076-20220907
+	[hotfix][Bug-14076][SMEV - customer]: searchClass.js中将为null,''的数据去除
+
+	15212
+
+	------------------------------------------------------
+
+	Req # 2356 修改订单价格II
+	feature-smev-priceEditAddField-2356-20220906
+	[feat][Req-2356][SMEV - adminTools]: SalesOrderPriceEdit页面add时只有多个价格包显示空白
+
+	4BGEE122901
+	4BLIC122803
+
+	------------------------------------------------------
+
+	Req 2329 新增Customer Reference#字段
+	feature-smev-addCustomerReference-2329-20220830
+	[feat][Req-2329][SMEV - sales]: SO Enquiry By VC、SO Enquiry By VIN、PO Enquiry By VIN(Dearler)页面增加customerReferenceNo联调
+
+	------------------------------------------------------
+	
+	Req 2248 简易报表平台
+	feature-smev-BIPlatform-2248-20220802
+	[feat][Req-2248][SMEV - queryBoard]: queryList页面setting弹窗，value字段去除前后空格
+	
+	dev与test新拉分支，dev与test上已无1832代码
+
+	------------------------------------------------------
+
+	Bug # 13937 Sales Order Price Edit未分页显示
+	hotfix-smev-salesOrderPriceEditPagination-13937-20220831
+	[hotfix][Bug-13937][SMEV - adminTools]: salesOrderPriceEdit页面行项目保存错误修改
+
+	4BSSC122810
+	4BSSC122809
+	4BSSC122808
+	4BSSC122807
+
+	------------------------------------------------------
+
+	Req 2307 价格包新增InteriorPrice字段
+	feature-req2307-addInteriorPrice20220822
+	[feat][Req-2307][SMEV - price]: pricePackageManagement页面Discount字段只允许小于等于0
+	MZKCSC19FCCWSB
+
+	formatter: (val, row) => {
+              return val;
+            }
+
+	------------------------------------------------------
+
+	Bug # 13909 Sales Order Price Edit页面报错信息展示不完整
+	hotfix-smev-salesOrderPriceEditErrorMessage-13909-20220830
+	[hotfix][Bug-13909][SMEV - adminTools]: 修改common.css增加报错信息弹窗换行样式
+
+	------------------------------------------------------
+
+	Req 2262 修改订单价格
+	feature-smev-changeSalesOrderPrice-20220802
+	[feat][Req-2262][SMEV - adminTools]: salesOrderPriceEdit页面confirmEdit增加table不在editor状态时不可提交
+
+	git stash "Req 2262 增加新页面"
+
+	4BJIJ122826
+	4BJIJ122827
+	
+	dev与test新拉分支，dev与test上已无1832代码
+	
+	------------------------------------------------------
 	
 	Req 1832 德国Zulassung Teil 2 打印
 	feature-smev-1832-ZulassungTeil2-20220323
-	[feat][Req-1832][SME - germanCarRegister]: 
+	[feat][Req-1832][SMEV - germanCarRegister]: basicInfoMaintaince页面上传字段修改
 
-	https://eappfile.blob.core.windows.net/sme-veh-template/ZulassungBasicInfoMaintaince.xlsx
+	https://eappfile.blob.core.windows.net/sme-veh-template/GermanyApprovalTemplate.xlsx
+
+	-------------------------------------------------------
+
+	Bug # 13544 Purchase Settlement部分页面的Voucher Date 字段未显示数据
+	hotfix-smev-purPreviewDataError-13544-20220811
+	[feat][Bug-13544][SMEV - settlement]: gateInSettlement，returnGateIn页面voucherDate字段显示修改
+
+	------------------------------------------------------
+
+	BUG # 13425  Sales Order Approvement中Reject页面Reason字段在前端页面重复
+	hotfix-smev-salesOrderApproveLabelError-13425-20220805
+	[hotfix][Bug-13425][SMEV - sales]: salesOrderApprove页面reject弹窗样式修改
+
+	------------------------------------------------------
+
+	Req 2179 价格包 不同客户 批量导入 功能
+	feature-smev-req2179-batchAddPricePackage20220801
+	[feat][Req-2179][SMEV - price]: pricePackageManagement页面copy功能中validFrom，validTo字段时区+2
+	
+	270294_VN_08212111
+
+	validFrom: "2022-09-28T22:00:00.000+0000"
+	validTo: "2022-12-30T21:59:59.000+0000"
+
+	-------------------------------------------------------
+
+	Req # 2194 Settlement页面优化及新增
+	feature-settlementAddView-smev-2194-20220727
+	[feat][Req-2194][SMEV - settlement]: gateInSettlement，returnGateIn页面voucherDate字段显示修改
+
+	-------------------------------------------------------
+
+	Req 2219 So Management页面优化
+	feature-smev-batchCloseOrder-2219-20220726
+	[feat][Req-2219][SMEV - sales]: goSysAxios方法catch中弹窗提示增加dangerouslyUseHTMLString: true,
+	4BICC122721
+	4BSSC122714
+
+	-------------------------------------------------------
+
+	Req 2201  Payment页面优化
+	feature-smev-addFieldForPayment-2201-20220719
+	[feat][Req-2201][SMEV - payment]: paymentInfo页面列表增加customerName字段
+
+	-------------------------------------------------------
+	
+	BUG # 12958 12955 复制订单页面，客户简称未正常复制到新订单页面
+	hotfix-smev-salesOrderDulplicateError-12958-12955-20220713
+	[hotfix][Bug-12958 - 12955][SMEV - sales]: salesOrderDetail页面删除debugger
+
+	-------------------------------------------------------
+
+	Req 2173 DN List页面及下载调整II
+	feature-smev-addFieldForDnList-2173-20220705
+	[feat][Req-2173][SMEV - logistics]: dnList页面增加contactName，contactNo字段
+
+	-------------------------------------------------------
+
+	Req # 2162 Vehicle Data页面字段调整
+	feature-req2162-smev-vehicleDataDescriptionUpdate-20220629
+	[feat][Req-2162][SMEV - vehicle]: vehicleData页面去除twentyFourGhzRadarIndLocalName必填校验
+
+	-------------------------------------------------------
+	
+	Req # 1979 Accrual Warranty 三包计提方案变更
+	feature-req1979-smev-updateAccrualWarranty-20220624 
+	[feat][Req-1979][SMEV - price]: AccrualWarranty页面salesCompany字段禁止修改
+	-------------------------------------------------------
+
+	Req 2029 销售订单批量编辑功能
+	feature-smev-batchSalesOrderEidt-2029-20220622
+	[feat][Req-2029][SMEV - adminTools]: salesOrderEdit页面增加上传下载
+
+	-------------------------------------------------------
+	
+	Req 2030 Payment模块新增SAP error msg字段
+	feature-smev-receiptAndPaymentConfirmErrorMessage-2030-20220622
+	[feat][Req-2030][SMEV - Payment]: paymentConfirm,receiptConfirm页面增加SAP error msg字段
+
+	-------------------------------------------------------
+
+	BUG # 12412 Token超时报错语句优化
+	hotfix-smev-timeoutErrorMsg-12412-20220622
+	[hotfix][Bug-12412][SMEV - All]: 上传功能添加-Token超时报错语句优化
+	
+
+	-------------------------------------------------------
+
+	Bug # 12326 ECOC Template页面上传错误格式的模板失败后再上传正确格式的模板上传成功，提示上传成功模板名字中有错误的模板名字
+	hotfix-smev-ecocTemplateUploadErrorMsg-12326-20220608
+	[hotfix][Bug-12326][SMEV - settlement]: ECOC Template页面上传文件提示修改
+
+	-------------------------------------------------------
+
+	Req # 1987 新增形式发票菜单页
+	feature-smev-createProformaInvoice-1987-20220525
+	[feat][Req-1987][SMEV - adminTools]: 增加Proforma页面，联调
+	
+	sales-invoice-controller
+	/sales/proforma/invoice/info形式发票信息查询
+	/sales/proforma/invoice/generate生成形式发票
+	
+	LSJ174945M0651046
+	LSJ174945M0651045
+
+	LSJ143140L5251067
+
+	-------------------------------------------------------
+
+	Bug # 12244 采购发票凭证冲销失败未出现重推按钮
+	hotfix-smev-purchaseInvoiceSettlementAddReverseErrorHandle-12244-20220527
+	[hotfix][Bug-12244][SMEV - settlement]: purchaseInvoiceSettlement，subsidiaryPurchaseInvoice页面增加reverseErrorHandle
+
+	subsidiaryPurchaseInvoice页面也需要增加reverseErrorHandle
+
+	详情应该都是调用的一个接口 
+	/pur/preview
+	新加了一个冲销重推的接口
+	/pur/pur-cancel-error    
+	pur-settlement冲销重推
+
+	subsidiary-settlement-controller分公司凭证查询
+	1.新增接口
+	/subsidiary/pur-cancel-error分公司pur冲销重推
+	2.更新接口
+	/subsidiary/pur-preview查询分公司采购凭证详情
+	新增返回字段:
+	    "sapAccDateRev": "2021-11-10 07:50:54",
+	    "sapCompanyNoRev": "9020",
+	    "sapAccYearRev": 2021
+
+	-------------------------------------------------------
+
+	Req 1954 销售订单编辑功能
+	feature-smev-salesOrderEidt-1954-20220506
+	[feat][Req-1954][SME - adminTools]: salesOrderEdit页面联调
+
+	- 前端框架不支持在不点保存的情况下继续添加多行数据
+	- 如果要修改框架，可能会影响原本table的功能
+	- 没有信心能做好这种修改
+
+	按钮是整个页面上的Confirm Edit
+
+	4BGEE122504
+	4BXXX122507
+
+	新增接口
+	1./sales-order-modify/modifySalesOrder/info/{orderNo} 根据订单号获取订单信息(包含地址和信贷公司)
+	2./sales-order-modify/modifySalesOrder 修改销售订单
+
+	oms-sales-order-modify-controller 销售订单修改controller
+
+	-------------------------------------------------------
+
+	Bug # 12030/12031 COC_VIN - Template Relation 文件下载报错新优化
+	hotfix-smev-cocTemplateRelationDownloadErrorMessage-12030-20220509
+	[hotfix][Bug-12030/12031][SMEV - coc]: vinTemplateRelation, vinTemplateRelationGlobal页面行项目下载未弹出报错信息修改
+	LSJ111637M0771024
+
+	-------------------------------------------------------
+
+	Bug # 12003 MEMCTC19LCCPBC的Accrual Warranty带空格
+	hotfix-smev-AccrualWarrantyVehicleMaterialCodeTrim-12003-20220506
+	[hotfix][Bug-12003][SMEV - price]: AccrualWarranty页面AddItem时VehicleMaterialCode去掉前后空格
+
+	-------------------------------------------------------
+
+	Req # 1930 Payment添加批量检索发票功能
+	feature-paymentAddInvoiceBatchQuery-1930-20220420
+	[feat][Req-1930][SME - Payment]: paymentInfo页面增加invoiceList批量查询
+
+	SMEBV22VEA00324I
+	SMEBV22VEA00323I
+
+	-------------------------------------------------------
+
+	Req # 1888 意大利信贷重发页面新增字段
+	feature-smev-creaditFreezeDeductionViewAddErrorMessage-1888-20220418
+	[feat][Req-1888][SME - creadit]: Credit Freeze Unfreeze和Credit Deduction Cancel Deduction页面中的VIN #后添加一列Error Message
+
+	-------------------------------------------------------
+
+	Req # 1911 DEALER VIEW 法语页面II
+	feature-smev-DEALERVIEWII-1911-20220408
+	[feat][Req-1911][SME - Customer]: COC, Credit页面增加法语配置
+
+	从 REQ 1904 feature-smev-1904-addRoleFR-20220406 merge的代码
+
+	-------------------------------------------------------
+
+	Req # 1907 DN List页面及下载调整
+	feature-smev-updateDnListAddFields-1907-20220407
+	[feat][Req-1907][SMEV - logistics]:  DN List页面新增Name of Vessel字段
+
+	-------------------------------------------------------
+
+	Req # 1904 主数据-新增“欧洲经销商操作员FR”角色
+	feature-smev-1904-addRoleFR-20220406
+	[feat][Req-1904][SME - layouts]: side增加新角色显示多语言
+	MENU_SME_VEH_DEALER_OPERAT_FR
+
+	-------------------------------------------------------
+
+	Bug 11408  dnList界面问题及selectVins检索错误
+	hotfix-smev-dnListQueryError-11408-20220329
+	[hotfix][Bug-11408][SMEV - logistics]: dnList页面selectVins查询时status状态调置
+
+	LSJ130316L2721057
+	LSJ130316L2721058
+	LSJ103029M3531079
+
+	-------------------------------------------------------
+
+	Bug 11461 Recepit日期问题
+	hotfix-smev-RecepitDateError-11461-20220330
+	[hotfix][Bug-11461][SMEV - payment]: receiptInformation添加receiptDate不增加utc格式
 
 	-------------------------------------------------------
 
@@ -279,6 +717,7 @@ wifi:
 	Aa11111111
 
 	http://localhost:8080/sme-veh/?jwt=eyJhbGciOiJIUzUxMiIsInppcCI6IkRFRiJ9.eNpsjMsKwjAUBf_lrhNI0rRWd1IDFmyV-thYKdFcoSpWmiiC-O_WF3bhds7MucHOldADobtoWBhSI6VHJZeMahSG8o7R3nprNlx7QMCe1408iKbFNFHFQg2JQ-sKaysiBWNMNk5pbeO4ao9HarG-YP2E2kGPB9LnvvA7AQG8nj4g4C9QVwd8holK59_3oj9I4hTeY1QZHJW2-YFl_tPGE5X1Z-MsB5L_ids4bskruD8AAAD__w.l1TyI1hN5FZUhmbTRyaQJYI5ytxPPzs0h6WC9sv28Y46uNDqj9T0HZyswGq68hqX7Gq8Nly4bMJdd5D_Zr34bw&uName=test_sso&orgName=SME&orgCode=420004&uCode=test_sso&roleCodeList=MENU_SME_OPERATOR,MENU_SME_VEH_ADMIN,MENU_SMI_OPERATOR
+	http://10.130.161.113/sme-veh/?jwt=eyJhbGciOiJIUzUxMiIsInppcCI6IkRFRiJ9.eNpsjMEKgkAURf_lrWdgtBlH3YUKBamh1SZDNJ9gRYYzRRD9eyMSbeLuzj33vuCkO_DB5VUjj9KiKGRNueQtdSshqIWV7Vhew2RbAwF1r40cBnmZx1G5ixZEo9KlUj3hNmOMG6dTyji6P-OVKhweOIyw0uBbjmDCk2zmEMDnbQKOyQiG_oLjMI6S7fe9nIfxMoGpDPoGV50yP7Avflq6jrL5Js0KIMWfcQEHeH8AAAD__w.wa6R08r_wDdfI7uH-9LI_2hTLtU7pmWJk7KRPT8zOUClGAfTm-EvU6pB1QVviZV0ZMymSP9zxrLQ640ieXuOxw&uName=test_sso&orgName=SME&orgCode=420004&uCode=test_sso&roleCodeList=MENU_SME_OPERATOR,MENU_SME_VEH_ADMIN
 
 	beforeEach 进行拦截，判断没有jwt值会跳转到登录页面
 	通过url跳转过来，获取jwt等其他参数，通过拦截器将url参数获取并存取在本地，
@@ -1585,9 +2024,209 @@ wifi:
 
 # 欧洲配件  release-sme-sprint-20210413
 
+	需求2482 新增未审批Claim红点通知
+
+	-----------------------------------------------
+
+	Bug 15087 Purcahse Part data的preview按钮里面Purchase Status应该展示为Y或N
+	hotfix-15087-sme-PurcahsePartDataPreviewPurchaseStatusError-20221014
+	[hotfix][Bug-15087][SME - partManagement]: purchasePartData页面prev中PurchaseStatus显示修改
+
+	-----------------------------------------------
+
+	Req 2438 Purchase Settlement新增搜索条件
+	feature-2438-sme-purchaseSettlementAddSearchCriteria-20221014
+	[feat][Req-2438][SME - Settlement Management]:subCompanypurchaseSettlement分公司页面增加CIRef#搜索框
+
+	-----------------------------------------------
+
+	Bug 14616 批量审批和批量驳回存在事务问题
+	hotfix-14616-sme-approveRejectTransactionProblem-20220928
+	[hotfix][Bug-14616][SME - salesManagement]: salesOrderApprove页面approve批量接口参数修改
+	  - approve,reject操作后增加与cancel相同的提示
+	  - 详情页里面的按钮,都换成这个批量操作的接口
+
+	-----------------------------------------------
+
+	Bug13997 行项目选了超过10个的索赔单，然后翻页到第二页的时候，选了索赔方式后，没有对应的处理方式显示出来
+	hotfix-sme-13997-claimRequestCreationItemTableError-20220902
+	[hotfix][Bug-13997][SME - claimManagement]: claimItemsTable组件中删除行项目时，当删除最后一页的行项目时，前面的行项目没法显示了
+	
+	- 前端分支将第二页的数据删除后table不再显示数据
+
+	-----------------------------------------------
+
+	Req 2322  Sales BO Adjustment权限调整后
+	feature-2322-SalesBOAdjustmentEditorBtnRule-20220829
+	[feat][Req-2322][SME - salesManagement]: salesBOTracking页面角色为DATA_SME_SUB时不显示editor按钮
+
+	-----------------------------------------------
+	
+	Req 2268 新增取消订单功能
+	feature-2268-NewOrderCancellationFunction-20220822
+	[feat][Req-2268][SME - salesManagement]: bug13866,13760修改
+
+	-----------------------------------------------
+	
+	Req 2257 新增Sales BO adjustment页面下载功能
+	feature-sme-2257-BoDownload-20220729
+	[feat][Req-2257][SME - salesManagement]: salesBOTracking页面取消藏download
+
+	-----------------------------------------------
+
+	Bug 13144 Claim索赔单金额不正确
+	hotfix-sme-13144-claimTotalApprovePriceError-20220721
+	[hotfix][Bug-13144][SME - claimManagement]: outboundClaimRequestReview页面totalApprovePrice计算错误
+
+	-----------------------------------------------
+
+	Req 2199 填加GR Date(adj.)及Comment字段
+	feature-sme-2199-addAdjGrDateAndComment-20220719
+	[feat][Req-2199][SME - logisticsManagement - salesManagement]: Sales B/O Adjustment页面去掉Comment字段
+
+	1.Sales Item Enquiry->OTW Allocated
+	2.Part Tracking
+	3.Sales B/O Adjustment
+
+	4.Advanced Shipping Note 页面增加add asn弹窗重拆为一个组件，需要测试add asn功能
+	5.Inbound Tracking->
+	
+	根据状态Not Started判断,是否可以 adj添加时间
+
+	-----------------------------------------------
+
+	Req 2190 查询页面添加loading动效
+	feature-sme-2190-addLoading-20220713
+	[feat][Req-2190][SME - sales - logisticsManagement - salesManagement]: Sales Order Approve,deliveryNote详情页面增加loading
+	Sales Order Approve  详情页
+	Sales Order Enquiry  详情页
+	Delivery Note        详情页
+
+	-----------------------------------------------
+
+	Bug 12908 索赔单审核报错
+	hotfix-sme-12908-reviewedClaimError-20220713
+	[hotfix][Bug-12908][SME - claimManagement]: outboundClaimRequestApprove，outboundClaimRequestReview页面totalVatAmount值增加toFiexd(2)
+
+	-----------------------------------------------
+
+	Req 2044 按9010、9020、9030和9050发票提交的索赔Repair/Frieight Cost不可编辑
+	feature-sme-2044-RepairAndFrieightCostDisabled-20220711
+	[feat][Req-2044][SME - claimManagement]: 根据coNo设置Repair/Frieight Cost不可编辑
+
+	dt1: 6AFXXX218002
+
+	-----------------------------------------------
+	
+	bug 12444 GI Discrepancy未能展示完整的挪回SOH的数量
+	hotfix-12444-sme-moveToSohError-20220624
+	[feat][Req-504][SME - warehouseManagement]: GIDiscrepancy页面move-to-soh接口giItemNo参数修改
+
+	-----------------------------------------------
+	
+	Req 1984 基于9000发票提交的Wrong Pricing索赔项，允许修改索赔单价
+	feature-sme-1984-updateClaimTypeWrongPricing-20220601
+	[feat][Req-1984][SME - claimManagement]: uat 问题6，7修改
+	
+	// 先根据claimIdentity判断，如果没有再根据9000判断
+        // 没有的话按9000判断
+
+	-----------------------------------------------
+
+	Bug 12303 恢复Create DNs按钮
+	hotfix-12303-sme-addCreateDNsBtn-20220606
+	[hotfix][Bug-12303][SME - logisticsManagement]: 前台恢复Create DNs按钮
+
+	-----------------------------------------------
+	
+	Bug 12291 前台暂时去除Create DNs按钮
+	hotfix-12291-sme-removeCreateDNsBtn-20220602
+	[hotfix][Bug-12291][SME - logisticsManagement]: 前台暂时去除Create DNs按钮
+
+	-----------------------------------------------
+
+	Req 504 Inventory Enquiry界面GI Discrepncy调整
+	feature-sme-504-GIDiscrepncyAddField-20220531
+	[feat][Req-504][SME - warehouseManagement]: GIDiscrepancy页面qty默认为空
+
+	-----------------------------------------------
+
+	Req 1910 查看分公司客户和自身DN
+	feature-sme-1910-updateQueryDnListForSub-20220523
+	[feat][Req-1910][SME - logisticsManagement]: deliveryNote, outboundTracking页面salesCompany搜索条件为DATA_SME_SUB角色时增加9000
+	
+	-----------------------------------------------
+
+	Req 1275 PO Enquiry增加Creator字段 
+	feature-sme-1275-POEnquiryAddCreatorField-20220217
+	[feat][Req-1275][SME - purchaseManagement]: purchaseOrderEnquiry页面增加creator字段，高速Vendor Name位置
+
+	-----------------------------------------------
+
+	Req 1967 客户只读权限账号
+	feature-1967-sme-CustomerReadOnly-20220509
+	[feat][Req-1967][SME - Customer]: table显示
+
+	Supersession Relationship 去掉source列和查询条件
+	dt 用户下Part Data，Part Tracking页面根据新角色去掉相关红色字段，使用新的接口
+
+	新建了一个角色：MENU_SME_DT_READONLY，用来控制客户只读权限帐号。
+	同时我创建了一个帐号：AAB_R，与法国分公司下客户帐号AAB一个组织层级关系的，
+	区别就是：AAB的角色为MENU_SME_DT，AAB_R的角色为MENU_SME_DT_READONLY
+
+	-----------------------------------------------
+
+	Req 1850 支持SMIL提供的CI, PL, BL文件上传及下载 【参考墨西哥 1835】
+	feature-sme-1850-ManuallyUploadCiPlBolAndOtherFilesToDCS-20220510
+	[feat][Req-1850][SME - invoiceManagement - logisticsManagement]:asn页面Create ASN(PO Lines Based)按钮，GR Comfirm按钮仓库角色不显示
+
+	角色
+		Purchase CI Enquiry-上传：MENU_SME_OPERATOR，MENU_SME_APPROVER
+		Purchase CI Enquiry-Download Details：MENU_SME_FINANCE，SMBV_FINANCE
+		asn下载：SMBV_FINANCE，MENU_SME_FINANCE
+
+	-----------------------------------------------
+
+	Req 1915 支持德国和葡萄牙直营业务模式
+
+	-----------------------------------------------
+
+	Req 1322 分公司索赔功能
+	feature-1245-sme-OutboundClaim-20211111
+	[feat][Req-1322][SME - Customer]: claimRequestCreation页面cost值置灰修改
+
+	dt -> sme review -> sme approve
+	只有Pending For Ship Back是需要将cost的值置灰
+
+	发票号： 6A9RSA207003
+
+	sme_dt1: 6A9XXX207007
+	AAB: 6AFAAB221001
+
+	Payment Confirm列表原型上有两个Customer Name
+	
+	http://10.130.161.109:8080/dcs-sme-api/clmCreation/getInvoiceDetails
+	返回coNo!=9000 :claimType-》excess 中没有new order类型
+
+	-----------------------------------------------  
+	
+	Req 1922  将Create ASN按钮统一到Admin账号
+	feature-1922-sme-CreateASNBtnAccess-20220418
+	[feat][Req-1922][SME - logisticsManagement]: advancedShippingNote页面createASN按钮只有角色为BUTTON_SME_ADMIN时展示
+
+	v-if="it.show ? it.show() : true"
+
+	-----------------------------------------------
+
+	Req 1902 更新西班牙发票和装箱单内Billing Address和email
+	feature-sme-1902-updateSpainInvoive-20220407
+	[feat][Req-1902][SME - masterData]: salesCompany页面invoiceAddress字段length加大
+
+	------------------------------------------------
+
 	Req 1848 9000索赔模块优化 
 	feature-sme-7651-claimModuleOpt-20220321
-	[feat][Req-1848][SME - claimManagement]:  索赔类型为Wrong Parts时应该是可以输入大于Invoice QTY
+	[feat][Req-1848][SME - claimManagement]:  utils.js中索赔类型为Wrong Parts时应该是可以输入大于Invoice QTY
 
 	6A9XXX207010
 
@@ -1595,7 +2234,7 @@ wifi:
 	
 	Req 1542  本地采购功能升级
 	feature-sme-1542-upgradeLocalPurchasingFunction-20220223
-	[feat][Req-1542][SME - All]: advancedShippingNote页面createASNPOLinesBased弹窗vendor下拉框去除SAIC MOTOR INTERNATIONAL CO., LTD
+	[feat][Req-1542][SME - purchaseManagement]: advancedShippingNote页面purchaseGroup为1时Vendor下拉框去除2400011
 
 	SAC1010002
 	SAC1010001
@@ -1742,17 +2381,6 @@ wifi:
 	[hotfix][Bug-8790][SME - partManagement]: salesPartData页面upload,template按钮显示权限
 
 	------------------------------------------------
-	
-	Req 1322 分公司索赔功能
-	feature-1245-sme-OutboundClaim-20211111
-	[feat][Req-1322][SME - All]: outboundClaimRequestReview页面修改
-
-	6ANXXX218001
-	
-	http://10.130.161.109:8080/dcs-sme-api/clmCreation/getInvoiceDetails
-	返回coNo!=9000 :claimType-》excess 中没有new order类型
-
-	-----------------------------------------------
 
 	Req # 1321 采购单取消信息同步
 	feature-sme-1321-cancelPurOrder-20211115
@@ -2030,16 +2658,71 @@ wifi:
 
 =======================================================
 
+# 车辆COC和注册上牌
+
+	全球整车分支：feature-dcsUKEvolution-sprint3-20220801 
+	全球整车dev分支：dev-sprint3
+
+	collectionManagement
+	v55File
+	[dev][collectionManagement]: dvlaRegistrationResultd页面registrationDate格式调整
+	[dev][coc]: coc页面下载功能修改
+	[dev][coc retailManagement]: iframe页面缓存问题修改
+
+	certHolderSurname
+	nationalInsuranceNumber
+	certHolderDOB
+
+	certHolderSurnameIndex
+	nationalInsuranceNumberIndex
+	certHolderDOBIndex
+
+	vinList 
+	orderNoList
+	materialCodeList
+
+=======================================================
+
 # 中东 release-DCSSMME-20210121
 	
+	Req 2516 按售后要求提供仓库账号
+	feature-smme-2516-userWarehousePermissions-20221102
+	[feat][Req-2516][SMME - Invoice Management Logistics Management: 根据uat要求修改
+
+	-----------------------------------------------------
+
+	Bug 13306 上传模板提示Error，未展示实际报错内容
+	hotfix-13306-smme-dtPurchaseOrderCreationItemUpload504Error-20220802
+	[hotfix][13306][SMME - purchaseManagement]: dt用户purchaseOrderCreation详情页面上传接口504增加提示
+
+	在proxyTable中增加timeout未生效
+	怀疑是浏览器本身的超时设置有影响，但使用chrome和firefox都是5分钟的时长
+	
+	-----------------------------------------------------
+	
+	Bug 12862  页面添加默认值
+	hotfix-12862-smme-outboundTrackingSearchSetDefaultVal-2022711
+	[hotfix][12862][SMME - logisticsManagement]: outboundTracking页面Date Type，From，End 设置默认值
+
+	-----------------------------------------------------
+
+ 	Req 1871 修改客户超期发票的邮件收件人
+	feature-smme-1871-emailNotificationRule-20220324
+	[feat][Req-1871][SMME - masterData]: emailNotificationRule页面toEmail,ccEmail字段length加长
+
+	-----------------------------------------------------
+
 	Bug 10845  Sales Price By Order Type没有数据
 	hotfix-10845-smme-SalesPriceByOrderTypeError-20220304
 	[hotfix][10845][SMME - priceManagement]: SalesPriceByOrderType页面pageOptions的button未传入_this
 
+	-----------------------------------------------------
 	
 	Bug 9474 VOR订单内分配SOH时不应校验是否为Dangerous
 	hotfix-9474-smme-SalesSettlementCustomerNameError-20220126
 	[hotfix][9474][SMME - settlementManagement]: mdm-api/customer/接口未传分页参数，只查出10条，不能完全匹配
+
+	-----------------------------------------------------
 	
 	Req 1604 DT账号Part Data界面Lead Time未能区分Dangerous/Non-dangerous
 	feature-1604-smme-dtPartDataLeadTime-20211230
@@ -2222,7 +2905,72 @@ wifi:
 
 ======================================================
 
+# DSR: release-dsr dev-i18n
+	单点登录
+	feature-11832-loginRedirection-20220421
+	[feat][Req-11832][SMME - login]: 单点登录增加roleCode == 'distributor'判断
+
+	http://10.130.161.119/login/
+	https://uat-sso.smil.com/login/
+	https://uat-dsr.smil.com
+	sso_test01
+	Aa11111111
+
+	sso_test01 Aa11111111
+	sso_TestDSR    123456
+	C000123 公司用户
+	S0123876总代用户 
+	S0123875 经销商用户
+	S0123874 经销商用户
+
+	http://localhost:9527/dsr/login?code=OC-51-XhyygRNEQJxrDBufSYHc67sh5lEUJBovR0k&state=http%3A%2F%25
+	https://uat-dsr.smil.com/dsr/login?code=OC-54-jGUfDzOLJEudW6X00IoRQaildeQy14CxHUi&state=http%3A%2F%25
+
+	S0023801 是总代用户，总代用户会卡在同意面板，但是刷新页面又进去控制台了
+
+======================================================
+
 # MDM:  relese-smil-mdm-client
+	
+	req 2458  Country of sales页面下新增字段
+	feature-req2458-countryOfSalesUpdate-20221017
+	[feat][Req-2458][organisationMangement]: countryOfSatesManagement页面salesRegion，salesSubRegion列增加必填
+
+	----------------------------------------------------------
+	
+	Req 2410 按销售公司默认主数据创建信息
+
+	----------------------------------------------------------
+
+	Req 2455 Distributor/Dealer Management Query显示页面中增加显示“Franchise Status”
+	feature-2455-DistributorDealerQueryAddFranchiseStatus-20221013
+	[feat][Req-2455][organisationMangement]: dealerManagement,distributorManagement列表增加Franchise Status列
+
+	----------------------------------------------------------
+	
+	Req 2189 MDMQ3新需求 
+	feature-2198-downloadAddField-20220712
+	[feat][Req-2189][organisationMangement]: dealerManagement, distributorManagement页面Closed状态下，Franchise Starting Date不再必填，为选填
+
+	----------------------------------------------------------
+	
+	Req 2021 新增Distributor类型及修改名称重复性校验 
+	feature-2021-TheNuptialvalidation-20220616
+	[feat][Req-2021][organisationMangement]: distributorManagement页面type编辑时不可修改
+
+	----------------------------------------------------------
+
+	Req 1553 单点登录集成的需求
+	feature-req1553-AM-SSO-20220422
+	[feat][Req-1553][Login]: mdm增加单点登录
+
+	http://10.130.161.119/login/
+	sso_test01
+	Aa11111111
+
+	http://localhost:8080/#/login?jwt=eyJhbGciOiJIUzUxMiIsInppcCI6IkRFRiJ9.eNpEjMEOgjAQRP9lz21SkNbCzciFhMrBoxhS6JpUBQxFY2L8d4sQve28eTsvOI8WEhBG11pIRk-mDmkUy5rGjRQ0iFaaY8NQNgYIuHvt5b3K8kqlirSm1aa1HeGMMV9b53w99hfsqMPhgcME9QhJIDgTbBXxNQF83hYQhF8w9FecHv1ktUlVtiPTVSwBZmHbG8yt81twKP9qCWROxQ8c4f0BAAD__w.pGxYKn5s_LA-3ZpWtrn3BC2R3RhBsOADI4CxbNhrefYhtPxnixyZTK1FOoI9Bdln5d5dH9RoPE4kGQgIMnXzhw&uName=test_sso&orgName=SMIL&orgCode=5000&uCode=test_sso&roleCodeList=MDM_ADMIN,MDM_OM_ADMIN
+
+	----------------------------------------------------------
 
 	REQ 1860 物料主数据新增页面及下载EXCEL增加SAP物料号字段
 	feature-1798-doubleColorTop-20220209
@@ -2275,7 +3023,7 @@ wifi:
 	
 	Req 1572 前端 网发部门Q4新需求 
 	feature-req-1572-ScoringAndFiltering-20211221
-	[feat][Req-1572][organisationMangement]: dealerManagement prev页面networkFunction，authorizationType字段增加toolTip
+	[feat][Req-1572][organisationMangement]: dealerManagement prev页面networkFunction，authorizationType字段问号修改为图标
 
 	----------------------------------------------------------
 
@@ -2366,9 +3114,9 @@ wifi:
 
 =====================================================
 
-# 大通-代理-整车:
+# 大通-代理-整车:  release-GDSMAXUS-20220309
 	
-	[feat][All]: 提交配舱页面lcnoStatus未解析不可点击
+	[feat][All]: 点发运单生成提示操作成功-取消提示
 
 	827073600002637-UAT
 
@@ -2392,6 +3140,30 @@ wifi:
 
 # AM: 
 	
+	Req # 2403 更新Query Board菜单左侧图标
+	feature-am-addQueryBoardMenuIcon-2403-20220920
+	[feat][Req-2403][am - userList]: menuList页面增加Query Board菜单图标
+
+	----------------------------------------------------
+
+	#Req 2025 用户列表页面优化
+	feature-req2025-AM-addUserQuery-20220616
+	[feat][Req-2025][am - userList]: 直接点击保存提示勾选节点提示修改
+
+	----------------------------------------------------
+
+	BUG # 12379  AM销售公司最大客户数调整
+	feature-am-bug12379-ByteUpdateInt-20220615
+	[hotfix][BUG-12379][dictionaryList dimensionList menuList]: 页面显示顺序不能大于127验证去除
+
+	----------------------------------------------------
+	
+	BUG # 11848 AM新增用户组织号缓存问题
+	hotfix-11848-userListAddDicName-20220422
+	[hotfix][BUG-11848][userList]: userList页面编辑或者新增后再次打开新增页面tree的搜索条件缓存上条数据
+
+	----------------------------------------------------
+
 	BUG # 10040 AM对已存在用户编辑时强制重新选择组织
 	hotfix-10040-userListEditorShowDicName-20220207
 	[hotfix][BUG-10040][userList]:  用户编辑时组织树反显,公共树组件修改
