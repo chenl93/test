@@ -1,7 +1,6 @@
 ﻿2021-12-10 崴脚
 2021-12-22 大媛肠胃镜
 
-腾讯会议号：704-3066-0360
 
 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
@@ -270,7 +269,47 @@ wifi:
 
 =======================================================
 
-# 欧洲整车： TestENV：feature-smev-testEnv-20220815 release-smev-sprint-20210426
+# 欧洲整车： TestENV：feature-smev-testEnv-20220815 release-sprint-20220824
+
+	Req # 2569 新增经销商端Dealer View修改订单信息页面
+	feature-smev-updateDealerSalesOrder-2569-20221111
+	[feat][Req-2569][SMEV - Customer]: 增加custPurchaseOrderEdit页面
+
+	/sales-order-modify/purchase/updateSalesOrder   经销商端修改销售订单POST
+	/sales-order-modify/purchase/salesOrder/info/    获取经销商修改销售订单信息GET
+	/sales-order-modify/purchase/SalesOrder/info/upload   获取经销商上传修改销售订单信息POST
+
+	------------------------------------------------------
+	
+	Req # 2573 Vehicle Tracking页面搜索优化
+	feature-smev-vehicleTrackingOptimizefunctions-2573-20221117
+	[feat][Req-2573][SMEV - logistics]: Vehicle Tracking页面搜索优化
+
+	------------------------------------------------------
+	
+	Bug # 15667  Gate Out的Transportation Vendor下拉框显示供应商重复
+	hotfix-smev-TransportationVendorComboDataDistinct-15667-20221117
+	[hotfix][Bug-15667][SMEV - logistics]: transportationVendorNo联动下拉框数据增加去重
+
+	------------------------------------------------------
+
+	Bug # 15749 Invoice页面的sap invoice date与重推选择的sap account date不符
+	hotfix-smev-updateSalesSapInvoiceDate-15749-20221111
+	[hotfix][Bug-15749][SMEV - Invoice]: invoicelist页面sapInvoiceDate字符名称修改为DCS Voucher Create Date
+
+	------------------------------------------------------
+
+	BUG # 16052 Purchase Settlement》Gate In Settlement搜索框位置优化
+	hotfix-smev-GateInSettlemenSearchFieldPosition-16052-20221114
+	[hotfix][Bug-16052][SMEV - Settlement]: Gate In Settlement搜索框位置优化
+
+	------------------------------------------------------
+
+	Req # 2471 Add VIN List新增信贷订单配车逻辑
+	feature-smev-allocateByVinUpdateCreditOrderValid-2471-20221104
+	[feat][Req-2471][SMEV - logistics]: toDnList页面addVINList弹窗修改为页面，保存提交接口修改
+
+	------------------------------------------------------
 
 	Req # 2551 TO DN LIST新增Select VINs按钮
 	feature-smev-queryToDnListByVins-2551-20221104
@@ -2024,7 +2063,29 @@ wifi:
 
 # 欧洲配件  release-sme-sprint-20210413
 
+	需求2512 Claim模块优化
+	feature-2512-sme-ClaimAddResolution-20221116
+	[feat][Req-2512][SME - claimManagement]: claim页面两个cost值是否可编辑状态修改
+
+	分公司客户提交索赔：cost不可以编辑（意大利分公司除外）
+	分公司售后审核分公司客户索赔：cost不可以编辑（意大利分公司除外）
+	母公司售后审核分公司索赔：cost不可以编辑（意大利分公司除外）
+
+
+	母公司客户提交索赔：cost可以编辑（pending for ship back不可编辑）
+	母公司售后审核母公司客户提交索赔：cost可编辑（to be closed不可编辑）
+
+	-----------------------------------------------
+	
+	需求2553 修复处理尾差逻辑
+	feature-2553-sme-claimVoucherAmountError-20221109
+	[feat][Req-2553][SME - claimManagement]: outboundClaimRequestApprove，outboundClaimRequestReview页面totalApprovePrice值计算逻辑修改
+
+	-----------------------------------------------
+
 	需求2482 新增未审批Claim红点通知
+	hotfix-15856-sme-smallRedCircleOtherPageDisplayCheck-20221108
+	[hotfix][2482][SME]: queryImTodo接口增加处理deliveryNote菜单小红点
 
 	-----------------------------------------------
 
