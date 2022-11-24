@@ -271,19 +271,33 @@ wifi:
 
 # 欧洲整车： TestENV：feature-smev-testEnv-20220815 release-sprint-20220824
 
+	Bug # 16467  SO Management页面Close按钮首字母大写
+	hotfix-smev-SOManagementCloseBtn-16468-20221123
+	[hotfix][Bug-16467][SMEV - sales]: 
+
+	------------------------------------------------------
+
+	Bug # 16458  Gate Out的Transportation Vendor下拉框显示供应商重复
+	hotfix-smev-QueryBoardSettingDateControl-16458-20221123
+	[hotfix][Bug-16458][SMEV - QueryBoard]: queryList页面fieldType为date时value修改为日历控件
+
+	------------------------------------------------------
+
 	Req # 2569 新增经销商端Dealer View修改订单信息页面
 	feature-smev-updateDealerSalesOrder-2569-20221111
-	[feat][Req-2569][SMEV - Customer]: 增加custPurchaseOrderEdit页面
+	[feat][Req-2569][SMEV - Customer]: custPurchaseOrderEdit页面联调
 
 	/sales-order-modify/purchase/updateSalesOrder   经销商端修改销售订单POST
 	/sales-order-modify/purchase/salesOrder/info/    获取经销商修改销售订单信息GET
 	/sales-order-modify/purchase/SalesOrder/info/upload   获取经销商上传修改销售订单信息POST
 
+	4BJIJ122B22
+
 	------------------------------------------------------
 	
 	Req # 2573 Vehicle Tracking页面搜索优化
 	feature-smev-vehicleTrackingOptimizefunctions-2573-20221117
-	[feat][Req-2573][SMEV - logistics]: Vehicle Tracking页面搜索优化
+	[feat][Req-2573][SMEV - logistics]: Vehicle Tracking页面搜索条件字段名称修改
 
 	------------------------------------------------------
 	
