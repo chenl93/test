@@ -208,6 +208,7 @@ wifi:
   28、tableDataflag为特定的值的时候才会查询table，设置为空时不进行查询，当需要查询时再设置值，在mixin.js中可以看到如果设置
 	- this.tableDataflag = new Date().getTime() + ',' + val
   29、v-smil-role="{excluded: ['MENU_SMME_READONLY']}" 排除角色的权限
+  30、allEditor情况下设置某行的字段disabled，需要在table的数据某行数据上加"字段_disabled"
 =======================================================
 
 # VSCode快捷键
@@ -271,15 +272,43 @@ wifi:
 
 # 欧洲整车： TestENV：feature-smev-testEnv-20220815 release-sprint-20220824
 
-	Bug # 16467  SO Management页面Close按钮首字母大写
-	hotfix-smev-SOManagementCloseBtn-16468-20221123
-	[hotfix][Bug-16467][SMEV - sales]: 
+	Req # 2606 新增不同客户批量下销售单功能
 
 	------------------------------------------------------
 
-	Bug # 16458  Gate Out的Transportation Vendor下拉框显示供应商重复
+	Bug # 16875 Sales Order的note字段未落表
+	hotfix-smev-SalesOrderNoteFieldError-16875-20221201
+	[hotfix][Bug-16875][SMEV - sales]:
+
+	------------------------------------------------------
+
+	Req # 2585 荷兰直销业务变更
+	feature-smev-updateNetherlandsDirectVat-2585-20221123
+	[feat][Req-2585][SMEV - invoice]: toinvoicelistd页面createInvoice，createByVIN功能修改
+
+	LSJ094202L5601055
+	LSJ151558L0751061
+
+	------------------------------------------------------
+	
+	Bug # 16586 Good Receive Confirmation页面订单搜索框应展示为PO#
+	hotfix-smev-GoodReceiveConfirmationSearchFieldError-16586-20221125
+	[hotfix][Bug-16586][SMEV - Customer]: Good Receive Confirmation页面订单搜索框应展示为PO#
+
+	------------------------------------------------------
+
+	Bug # 16467  SO Management页面Close按钮首字母大写
+	hotfix-smev-SOManagementCloseBtn-16468-20221123
+	[hotfix][Bug-16467][SMEV - sales]: transferOrderManagement页面Close按钮首字母大写
+
+	------------------------------------------------------
+
+	Bug # 16458  报表日期字段输入格式问题
 	hotfix-smev-QueryBoardSettingDateControl-16458-20221123
-	[hotfix][Bug-16458][SMEV - QueryBoard]: queryList页面fieldType为date时value修改为日历控件
+	[hotfix][Bug-16458][SMEV - QueryBoard]: queryList页面bug16616修改
+
+	let index = _this.settingList.findIndex(it => it.id == _this.id)
+              _this.$set(_this.settingList[index], 'fieldType', row.fieldType)
 
 	------------------------------------------------------
 
@@ -2759,6 +2788,12 @@ wifi:
 =======================================================
 
 # 中东 release-DCSSMME-20210121
+	
+	Req 2568 客户账号下Purchase Item Tracking界面增加DN QTY字段
+	feature-smme-2568-PurchaseItemTrackingInterfaceAddsADNQTYField-20221124
+	[feat][Req-2568][SMME - Customer]: 客户账号下Purchase Item Tracking界面增加DN QTY字段
+
+	-----------------------------------------------------
 	
 	Req 2516 按售后要求提供仓库账号
 	feature-smme-2516-userWarehousePermissions-20221102
