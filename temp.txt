@@ -116,10 +116,9 @@ wifi:
     vincent p@ss1234
   --------------------------------------
   uat - smev:
-    FILIPPI2 / KmOVdHnD
-    FILIPPI/qxHCXWlW
     sme_veh_operator/SAICECars2019
     admin/xPDeYC71
+    270312 gWINVVHh
   UAT - sme:
     smf_approver / P@ss1234 
     sme_approver / P@ss1234 订单审批
@@ -273,6 +272,18 @@ wifi:
 # 欧洲整车： TestENV：feature-smev-testEnv-20220815 release-sprint-20220824
 
 	Req # 2606 新增不同客户批量下销售单功能
+
+	------------------------------------------------------
+
+	Req # 16995 Sales Company页添加VAT报异常
+	hotfix-smev-SalesCompanyDetailItemListError-16995-20221206
+	[hotfix][Bug-16995][SMEV - masterData]: itemList添加数据未保存的情况下，itemList中会插入一条只有id的数据
+
+	------------------------------------------------------
+
+	Bug # 16957 报表Setting的日期展示修改后带时间
+	hotfix-smev-QueryBoardSettingDateError-16957-20221205
+	[hotfix][Bug-16957][SMEV - QueryBoard]: queryList页面bug16957修改
 
 	------------------------------------------------------
 
@@ -2788,6 +2799,12 @@ wifi:
 =======================================================
 
 # 中东 release-DCSSMME-20210121
+	
+	Req 2614 Sales Item界面 - 增加DN#字段 #2 
+	feature-smme-2614-AddDNToTheSalesItemPage-20221207 
+	[feat][Req-2614][SMME - Customer - salesManagement]: 在售后及财务角色Sales Item Tracking, 以及客户角色下Purchase Item Tracking界面，增加DN#字段
+
+	-----------------------------------------------------
 	
 	Req 2568 客户账号下Purchase Item Tracking界面增加DN QTY字段
 	feature-smme-2568-PurchaseItemTrackingInterfaceAddsADNQTYField-20221124

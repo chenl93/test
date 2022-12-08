@@ -116,10 +116,9 @@ wifi:
     vincent p@ss1234
   --------------------------------------
   uat - smev:
-    FILIPPI2 / KmOVdHnD
-    FILIPPI/qxHCXWlW
     sme_veh_operator/SAICECars2019
     admin/xPDeYC71
+    270312 gWINVVHh
   UAT - sme:
     smf_approver / P@ss1234 
     sme_approver / P@ss1234 订单审批
@@ -276,9 +275,21 @@ wifi:
 
 	------------------------------------------------------
 
+	Req # 16995 Sales Company页添加VAT报异常
+	hotfix-smev-SalesCompanyDetailItemListError-16995-20221206
+	[hotfix][Bug-16995][SMEV - masterData]: itemList添加数据未保存的情况下，itemList中会插入一条只有id的数据
+
+	------------------------------------------------------
+
+	Bug # 16957 报表Setting的日期展示修改后带时间
+	hotfix-smev-QueryBoardSettingDateError-16957-20221205
+	[hotfix][Bug-16957][SMEV - QueryBoard]: queryList页面bug16957修改
+
+	------------------------------------------------------
+
 	Bug # 16875 Sales Order的note字段未落表
 	hotfix-smev-SalesOrderNoteFieldError-16875-20221201
-	[hotfix][Bug-16875][SMEV - sales]:
+	[hotfix][Bug-16875][SMEV - sales]: Sales Order的note字段未落表
 
 	------------------------------------------------------
 
